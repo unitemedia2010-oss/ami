@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>THE PRIVE — Bản đồ tiện ích (GĐ1)</title>
+<style>
+  :root{ --bg:#0A2340; --coral:#F2A488; --gold:#E0A93F; --green:#58B98A; --cream:#E9E4D5; }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;overflow:hidden;background:var(--bg);
+    font-family:"Segoe UI",system-ui,Arial,sans-serif;color:#D8E2EE}
+  #stage{position:fixed;inset:0;cursor:grab;touch-action:none}
+  #stage.drag{cursor:grabbing}
+  svg{width:100%;height:100%;display:block}
+  #bar{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;
+    align-items:flex-start;padding:16px 20px;pointer-events:none;gap:12px}
+  #bar .box{pointer-events:auto;background:rgba(6,18,33,.88);backdrop-filter:blur(10px);
+    border:1px solid rgba(224,169,63,.35);border-radius:14px;padding:12px 16px;box-shadow:0 10px 34px rgba(0,0,0,.55)}
+  h1{margin:0;font-family:Georgia,serif;font-weight:700;font-size:clamp(20px,2.4vw,29px);
+    letter-spacing:.24em;color:var(--cream);padding-left:.24em}
+  .sub{margin-top:4px;font-size:10.5px;letter-spacing:.28em;color:#C0B088;text-transform:uppercase}
+  .loc{margin-top:6px;font-size:12px;color:#9FB4C8}.loc b{color:var(--gold);font-weight:600}
+  #legend{display:flex;flex-direction:column;gap:7px;min-width:186px;cursor:pointer}
+  #legend .row{display:flex;align-items:center;gap:9px;font-size:12.5px;color:#C6D4E2;padding:3px 5px;
+    border-radius:8px;transition:.2s}
+  #legend .row:hover{background:rgba(255,255,255,.08)}
+  #legend .row.off{opacity:.3;text-decoration:line-through}
+  #legend .dot{width:11px;height:11px;border-radius:50%;box-shadow:0 0 9px 2px currentColor;flex:0 0 auto}
+  #legend .cap{font-size:10px;letter-spacing:.3em;color:#7F93A8;border-bottom:1px solid rgba(255,255,255,.12);
+    padding-bottom:6px;margin-bottom:2px}
+  #foot{position:fixed;left:20px;bottom:16px;z-index:5;font-size:11px;color:rgba(200,215,230,.5);pointer-events:none}
+  #zoom{position:fixed;right:20px;bottom:16px;z-index:5;display:flex;gap:8px}
+  #zoom button{width:40px;height:40px;border-radius:50%;border:1px solid rgba(224,169,63,.4);
+    background:rgba(6,18,33,.85);color:var(--gold);font-size:17px;cursor:pointer;transition:.2s}
+  #zoom button:hover{background:rgba(224,169,63,.25);transform:translateY(-2px)}
+  #tip{position:fixed;z-index:9;pointer-events:none;opacity:0;transform:translate(-50%,-150%);
+    background:rgba(4,12,22,.96);border:1px solid currentColor;border-radius:10px;padding:6px 11px;
+    font-size:12px;white-space:nowrap;transition:opacity .15s;box-shadow:0 6px 24px rgba(0,0,0,.65)}
+  #tip .c{margin-top:2px;font-size:10px;letter-spacing:.16em;opacity:.75;text-transform:uppercase}
+
+  .pulse{animation:pl 2.8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes pl{0%{opacity:.45;transform:scale(.75)}100%{opacity:0;transform:scale(1.8)}}
+  .poi{cursor:pointer}.poi:hover .lbl{fill:#fff}
+
+  .lbl{font-size:9.5px;font-weight:600;fill:#CBD9E7;paint-order:stroke;stroke:#07182C;
+    stroke-width:3.2px;stroke-linejoin:round}
+  .lbl.air{font-size:10.5px;fill:#DCE9F5;stroke-width:3.6px}
+  .lbl.rd{font-size:12.5px;font-weight:700;fill:#F3F7FB;stroke-width:3.6px;letter-spacing:.05em}
+  .lbl.dt{font-size:16px;font-weight:700;fill:#C0B088;letter-spacing:.2em;stroke-width:4.5px;opacity:.9}
+  .lbl.lm{font-size:17px;font-weight:600;fill:#93AE90;letter-spacing:.08em;stroke-width:4.5px;opacity:.85}
+  .lbl.mt{font-size:12px;font-weight:700;fill:#E0A93F;letter-spacing:.05em;stroke-width:3.6px}
+  .lbl.hw{font-size:11.5px;font-weight:700;fill:#58B98A;letter-spacing:.05em;stroke-width:3.6px}
+  .lbl.br{font-size:9px;fill:#A9C4DA;stroke-width:3px}
+  .lbl.ga{font-size:8.5px;fill:#DCE9F5;stroke-width:2.8px}
+  .lbl.ttl{font-family:Georgia,serif;font-size:32px;font-weight:700;letter-spacing:8px;fill:#F1EBDB;stroke-width:4px}
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <svg id="map" viewBox="0 0 2000 1400" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <linearGradient id="gWater" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2B5E8E"/><stop offset="1" stop-color="#1A4167"/>
+      </linearGradient>
+      <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#F5DE93"/><stop offset=".5" stop-color="#D9B75A"/>
+        <stop offset="1" stop-color="#86C2A2"/>
+      </linearGradient>
+      <radialGradient id="gBg">
+        <stop offset="0" stop-color="#0F2C4D"/><stop offset="1" stop-color="#071B32"/>
+      </radialGradient>
+      <path id="pSG" d="M30,760 C250,860 430,1000 650,1085 C910,1185 1210,1265 1560,1302 C1740,1322 1900,1315 2010,1285"/>
+      <path id="pDN" d="M1990,40 C1935,330 1910,640 1950,905 C1975,1090 1995,1210 2000,1355"/>
+    </defs>
+
+    <rect width="2000" height="1400" fill="url(#gBg)"/>
+
+    <!-- SÔNG -->
+    <g fill="none" stroke-linecap="round">
+      <use href="#pSG" stroke="#153450" stroke-width="36"/>
+      <use href="#pSG" stroke="url(#gWater)" stroke-width="27"/>
+      <use href="#pSG" stroke="#5490C2" stroke-width="1.2" opacity=".4"/>
+      <use href="#pDN" stroke="#153450" stroke-width="32"/>
+      <use href="#pDN" stroke="url(#gWater)" stroke-width="24"/>
+      <use href="#pDN" stroke="#5490C2" stroke-width="1.2" opacity=".4"/>
+    </g>
+
+    <!-- METRO -->
+    <g fill="none" stroke="#E0A93F" stroke-width="3.5" stroke-dasharray="11 9">
+      <path d="M620,815 C860,845 1120,858 1450,832"/>
+      <path d="M300,300 C470,352 620,398 730,432"/>
+    </g>
+
+    <!-- CAO TỐC / VÀNH ĐAI -->
+    <g fill="none" stroke="#58B98A" stroke-width="2.5" opacity=".8">
+      <path d="M1955,20 C1915,330 1895,650 1935,930 C1955,1090 1965,1200 1965,1340"/>
+    </g>
+
+    <!-- ĐƯỜNG LỚN -->
+    <g fill="none" stroke="#F2A488" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1105,230 C1103,380 1104,560 1106,700 C1108,830 1110,930 1112,1020"/>
+      <path d="M820,760 C980,752 1160,750 1330,756 C1420,760 1470,758 1500,756"/>
+      <path d="M480,790 C640,786 830,784 1010,788"/>
+      <path d="M1080,770 C1082,850 1084,920 1086,1000"/>
+      <path d="M700,480 C900,440 1160,404 1520,360"/>
+      <path d="M1300,700 C1440,690 1600,684 1760,688"/>
+      <path d="M440,850 C620,843 830,842 1010,846"/>
+      <path d="M620,960 C780,932 900,912 1020,900"/>
+      <path d="M660,1060 C820,1035 940,1015 1050,1005"/>
+      <path d="M400,640 C600,690 820,730 1010,748"/>
+      <path d="M1112,1020 C1200,1035 1300,1030 1400,1000"/>
+      <path d="M1240,1120 C1330,1070 1420,1010 1500,930"/>
+      <path d="M1330,756 C1430,790 1540,790 1660,755"/>
+      <path d="M560,1085 C700,1040 860,1000 1010,972"/>
+      <path d="M1450,832 C1560,842 1680,836 1800,812"/>
+    </g>
+    <!-- đường nhỏ -->
+    <g fill="none" stroke="#CE8A6C" stroke-width="3" opacity=".55" stroke-linecap="round">
+      <path d="M700,480 C660,560 640,640 640,720"/>
+      <path d="M500,700 C520,780 530,860 530,940"/>
+      <path d="M760,760 C740,830 740,900 750,970"/>
+      <path d="M900,758 C890,830 900,900 920,970"/>
+      <path d="M1104,700 C1200,716 1300,720 1400,712"/>
+      <path d="M1110,900 C1200,916 1300,922 1400,916"/>
+      <path d="M1180,420 C1180,520 1170,610 1150,690"/>
+      <path d="M1300,700 C1320,790 1310,870 1290,940"/>
+      <path d="M1560,690 C1580,770 1570,850 1550,920"/>
+      <path d="M470,850 C450,930 450,1010 470,1090"/>
+      <path d="M1000,470 C980,560 970,640 975,720"/>
+      <path d="M300,1000 C420,1030 540,1055 660,1075"/>
+      <path d="M820,900 C900,950 980,990 1060,1020"/>
+      <path d="M1140,1030 C1240,1060 1340,1075 1450,1070"/>
+    </g>
+
+    <!-- CẦU (nơi đường cắt sông) -->
+    <g stroke="#C6DDF0" stroke-width="3.2" stroke-linecap="round" opacity=".92">
+      <line x1="120" y1="800" x2="146" y2="822"/><line x1="136" y1="790" x2="162" y2="812"/>
+      <line x1="230" y1="848" x2="256" y2="870"/>
+      <line x1="330" y1="906" x2="356" y2="928"/><line x1="346" y1="896" x2="372" y2="918"/>
+      <line x1="470" y1="990" x2="496" y2="1012"/>
+      <line x1="700" y1="1105" x2="726" y2="1127"/>
+      <line x1="1000" y1="1200" x2="1026" y2="1222"/>
+      <line x1="1320" y1="1272" x2="1346" y2="1294"/>
+      <line x1="1660" y1="1305" x2="1686" y2="1327"/>
+    </g>
+
+    <!-- KHU VỰC -->
+    <g class="lbl dt">
+      <text x="430" y="700">QUẬN 1</text>
+      <text x="250" y="960">QUẬN 4</text>
+      <text x="430" y="1240">QUẬN 7</text>
+      <text x="830" y="1160">THỦ THIÊM</text>
+      <text x="1560" y="560">TP.THỦ ĐỨC</text>
+      <text x="1420" y="1140">CÁT LÁI</text>
+      <text x="1660" y="1240">NHƠN TRẠCH</text>
+    </g>
+    <g class="lbl lm">
+      <text x="640" y="392">THANH ĐÁ</text>
+      <text x="830" y="575">THẢO ĐIỀN</text>
+    </g>
+
+    <!-- NHÃN ĐƯỜNG -->
+    <g class="lbl rd">
+      <text x="880" y="424" transform="rotate(-6 880 424)">PHẠM VĂN ĐỒNG</text>
+      <text x="1128" y="640" transform="rotate(87 1128 640)">VÕ CHÍ CÔNG</text>
+      <text x="1230" y="742">NGUYỄN DUY TRINH</text>
+      <text x="500" y="774">LƯƠNG ĐỊNH CỦA</text>
+      <text x="1094" y="960" transform="rotate(84 1094 960)">MAI CHÍ THỌ</text>
+      <text x="1332" y="684">ĐỒNG VĂN CỐNG</text>
+      <text x="462" y="834">NGUYỄN VĂN CỪ</text>
+      <text x="672" y="948" transform="rotate(-9 672 948)">VÕ VĂN KIỆT</text>
+      <text x="712" y="1050" transform="rotate(-8 712 1050)">LÊ VĂN VIỆT</text>
+      <text x="424" y="620" transform="rotate(12 424 620)">TRẦN ĐÌNH CỦA</text>
+      <text x="1560" y="806" transform="rotate(-6 1560 806)">ĐƯỜNG SẮT THỦ THIÊM – LONG THÀNH</text>
+    </g>
+    <g class="lbl mt">
+      <text x="660" y="846" transform="rotate(-3 660 846)">TUYẾN METRO SỐ 2</text>
+      <text x="330" y="278" transform="rotate(20 330 278)">TUYẾN METRO BÊN THÀNH – SUỐT TIẾN</text>
+    </g>
+    <g class="lbl hw">
+      <text x="1948" y="560" transform="rotate(90 1948 560)">VÀNH ĐAI 3</text>
+      <text x="1240" y="900" transform="rotate(-8 1240 900)">CAO TỐC TP.HCM – LONG THÀNH – DẦU GIÂY</text>
+    </g>
+
+    <!-- NHÃN CẦU -->
+    <g class="lbl br">
+      <text x="160" y="836" text-anchor="middle">Cầu Bình Quới</text>
+      <text x="268" y="884" text-anchor="middle">Cầu Bình Triệu</text>
+      <text x="374" y="942" text-anchor="middle">Cầu Sài Gòn</text>
+      <text x="508" y="1006" text-anchor="middle">Cầu Bến Nghé</text>
+      <text x="740" y="1152" text-anchor="middle">Cầu Thủ Thiêm</text>
+      <text x="1040" y="1246" text-anchor="middle">Cầu Phú Mỹ</text>
+      <text x="1360" y="1318" text-anchor="middle">Cầu Cát Lái</text>
+      <text x="1700" y="1352" text-anchor="middle">Cầu Nhơn Trạch</text>
+    </g>
+
+    <!-- GA METRO -->
+    <g fill="#EAF2FA">
+      <circle cx="700" cy="830" r="4.5"/><circle cx="880" cy="848" r="4.5"/>
+      <circle cx="1060" cy="856" r="4.5"/><circle cx="1260" cy="848" r="4.5"/>
+    </g>
+    <g class="lbl ga">
+      <text x="694" y="824">Ga Bến Thành</text><text x="874" y="842">Ga An Phú</text>
+      <text x="1054" y="850">Ga Tân Thạnh</text><text x="1254" y="842">Ga Thủ Đức</text>
+    </g>
+
+    <!-- DỰ ÁN -->
+    <g id="prives">
+      <ellipse class="pulse" cx="1215" cy="656" rx="46" ry="34" fill="#D9B75A" opacity=".45"/>
+      <path d="M1178,678 C1196,646 1240,638 1262,662 C1276,678 1266,698 1240,706
+               C1214,714 1186,706 1178,678 Z" fill="url(#gGold)"/>
+      <path d="M1178,678 C1196,646 1240,638 1262,662 C1276,678 1266,698 1240,706
+               C1214,714 1186,706 1178,678 Z" fill="none" stroke="#A6E8CB" stroke-width="2" opacity=".75"/>
+      <circle cx="1204" cy="662" r="6.5" fill="#fff" opacity=".92"/>
+      <line x1="1215" y1="596" x2="1215" y2="640" stroke="#D9B75A" stroke-width="1.5"/>
+      <circle cx="1215" cy="644" r="4" fill="#D9B75A"/>
+      <text x="1215" y="500" class="lbl ttl" text-anchor="middle">THE PRIVE</text>
+      <text x="1215" y="524" class="lbl" font-size="9.5" letter-spacing="3" text-anchor="middle"
+            style="fill:#C0B088">KHU PHỨC HỢP · CÔNG NGHỆ RẠCH CHIẾC</text>
+    </g>
+
+    <g id="pois"></g>
+  </svg>
+</div>
+
+<div id="bar">
+  <div class="box">
+    <h1>THE PRIVE</h1>
+    <div class="sub">Bản đồ tiện ích · GĐ1</div>
+    <div class="loc">📍 Nguyễn Duy Trinh – Võ Chí Công, <b>TP. Thủ Đức</b></div>
+  </div>
+  <div class="box"><div id="legend"><div class="cap">CHÚ GIẢI</div></div></div>
+</div>
+
+<div id="foot">Kéo để di chuyển · Lăn chuột để zoom · Rê chuột lên điểm để xem chi tiết</div>
+<div id="zoom"><button id="zin">+</button><button id="zout">−</button><button id="reset">⟲</button></div>
+<div id="tip"><div class="t"></div><div class="c"></div></div>
+
+<script>
+const CAT = {
+  school:{label:"Trường học",color:"#D4659C"}, hospital:{label:"Bệnh viện / Y tế",color:"#E7657F"},
+  shop:{label:"Mua sắm",color:"#DCAC50"}, golf:{label:"Sân Golf",color:"#93A3B0"},
+  airport:{label:"Sân bay quốc tế",color:"#7FA8CC"}, park:{label:"Công viên",color:"#6FBF9A"}
+};
+
+/* tên | loại | lng | lat | vị trí nhãn: r / l / b */
+const POI = [
+  ["SB Quốc tế Tân Sơn Nhất","airport",106.6520,10.8180,"b"],
+  ["SB Quốc tế Long Thành","airport",106.8100,10.8700,"b"],
+
+  ["Trường QT AIS","school",106.7600,10.8260,"r"],
+  ["Trường QT BIS","school",106.7570,10.8255,"l"],
+  ["Trường THPT Thủ Thiêm","school",106.7000,10.7560,"l"],
+  ["TH College","school",106.7350,10.7800,"l"],
+  ["KĐT Thủ Thiêm","school",106.6980,10.7750,"r"],
+  ["Khu vui chơi Snow Town","school",106.7420,10.7820,"r"],
+  ["Gem Sky World","school",106.7900,10.8200,"r"],
+  ["Trường QT Việt Nam","school",106.7450,10.7720,"r"],
+  ["HV Hàng không VN","school",106.8000,10.8300,"r"],
+
+  ["BV Đức Bà","hospital",106.6870,10.7810,"l"],
+  ["BV Quốc tế Mỹ (Anh)","hospital",106.7060,10.7790,"r"],
+  ["BV Hoàn Mỹ Thủ Đức","hospital",106.7300,10.7900,"l"],
+  ["BV Đa khoa Nam Thủ Đức","hospital",106.7260,10.7820,"l"],
+  ["TT Y tế TP Thủ Đức","hospital",106.7550,10.8150,"l"],
+  ["BV Lê Văn Thịnh","hospital",106.7380,10.7950,"r"],
+  ["TT Y tế Rạch Chiếc","hospital",106.7480,10.8040,"l"],
+  ["PKĐK An Phú","hospital",106.6960,10.7560,"r"],
+
+  ["Mega Mall Thủ Thiêm","shop",106.7020,10.7660,"r"],
+  ["MM Mega Market","shop",106.7100,10.7840,"r"],
+  ["Vincom Mega Mall","shop",106.7040,10.7630,"l"],
+  ["ESTELLA PLACE","shop",106.7290,10.7770,"r"],
+  ["GIGAMALL Thủ Đức","shop",106.7040,10.8090,"l"],
+  ["THISO MALL SALA","shop",106.7090,10.7450,"r"],
+  ["The Global City","shop",106.7280,10.8030,"l"],
+  ["TTTM Rạch Chiếc","shop",106.7550,10.7960,"r"],
+
+  ["Sân Golf Rạch Chiếc","golf",106.7220,10.7860,"l"],
+  ["Sân Golf Thủ Đức","golf",106.8080,10.8560,"r"],
+
+  ["CV ven sông Thủ Thiêm","park",106.6900,10.7620,"l"],
+  ["CV Nhơn Trạch","park",106.8250,10.7520,"r"]
+];
+
+const CX=1100, CY=720, LON0=106.750, LAT0=10.810, K=6300;
+const X=lng=>CX+(lng-LON0)*K, Y=lat=>CY-(lat-LAT0)*K;
+
+const ICON={
+  school:'<path d="M-7,-2 L0,-6 L7,-2 L0,2 Z" fill="#0A2340"/><path d="M-4,0 v4 c0,2 8,2 8,0 V0" fill="#0A2340"/>',
+  hospital:'<path d="M-1.6,-6 h3.2 v4.4 H6 v3.2 H1.6 V6 h-3.2 V1.6 H-6 v-3.2 h4.4 Z" fill="#0A2340"/>',
+  shop:'<path d="M-6,-3 h12 l-1.2,9 h-9.6 Z" fill="#0A2340"/><path d="M-3,-3 a3,3 0 0 1 6,0" fill="none" stroke="#0A2340" stroke-width="1.4"/>',
+  golf:'<path d="M-4,7 v-13 l9,2.5 l-9,2.6" fill="#0A2340"/><circle cx="-4" cy="7.4" r="1.6" fill="#0A2340"/>',
+  airport:'<path d="M0,-9 c1.5,0 2.1,1.7 2.1,4.2 v3.1 l8.4,5.2 v2.1 l-8.4,-2.1 v4.2 l2.6,1.7 v1.7 L0,10.6 l-4.7,1.7 v-1.7 l2.6,-1.7 v-4.2 l-8.4,2.1 v-2.1 l8.4,-5.2 v-3.1 c0,-2.5 .6,-4.2 2.1,-4.2 Z" fill="#0A2340"/>',
+  park:'<path d="M0,-6 c4,3 6,6 6,8 a6,6 0 0 1 -12,0 c0,-2 2,-5 6,-8 Z" fill="#0A2340"/>'
+};
+
+/* ---- tự giãn nhãn để tránh chồng chữ ---- */
+const nodes = POI.map(([name,cat,lng,lat,side]) => ({
+  name, cat, side, x:X(lng), y:Y(lat), oy:0,
+  w:(cat==="airport"?name.length*5.6:name.length*4.9)+10
+}));
+for(let it=0; it<260; it++){
+  for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){
+    const a=nodes[i], b=nodes[j];
+    const ax = a.side==="l" ? a.x-a.w : a.side==="b" ? a.x-a.w/2 : a.x;
+    const bx = b.side==="l" ? b.x-b.w : b.side==="b" ? b.x-b.w/2 : b.x;
+    if((ax+a.w > bx+4) && (bx+b.w > ax+4) && Math.abs(a.oy-b.oy) < 16){
+      const d = a.oy <= b.oy ? -1 : 1;
+      a.oy += d; b.oy -= d;
+    }
+  }
+}
+nodes.forEach(n => { n.oy = Math.max(-150, Math.min(150, n.oy)); });
+
+/* vòng 2: dọn theo cột — các nhãn cùng dải ngang bị đẩy nhau */
+for(let it=0; it<120; it++){
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const a=nodes[i], b=nodes[j];
+      if(Math.abs(a.x-b.x) > 130) continue;
+      const gap = Math.abs(a.oy-b.oy);
+      if(gap < 15){
+        const d = a.oy <= b.oy ? -1 : 1;
+        a.oy += d*0.8; b.oy -= d*0.8;
+      }
+    }
+  }
+}
+nodes.forEach(n => { n.oy = Math.max(-150, Math.min(150, n.oy)); });
+
+const poisG=document.getElementById("pois"), tip=document.getElementById("tip");
+nodes.forEach(n => {
+  const c = CAT[n.cat].color;
+  const g=document.createElementNS("http://www.w3.org/2000/svg","g");
+  g.setAttribute("class","poi"); g.dataset.cat=n.cat;
+  g.setAttribute("transform",`translate(${n.x.toFixed(1)},${(n.y+n.oy).toFixed(1)})`);
+  const dx = n.side==="l" ? -14 : n.side==="b" ? 0 : 14;
+  const ty = n.side==="b" ? 22 : 3.5;
+  const anchor = n.side==="l" ? "end" : n.side==="b" ? "middle" : "start";
+  g.innerHTML =
+    `<line x1="${n.side==="l"?8:n.side==="b"?0:-8}" y1="0" x2="${dx*0.72}" y2="0"
+       stroke="${c}" stroke-width="1" opacity=".45"/>` +
+    `<circle r="14" fill="${c}" opacity=".14"/><circle class="hit" r="8.5" fill="${c}"/>` +
+    `<g transform="translate(0,-10) scale(.6)">${ICON[n.cat]}</g>` +
+    `<text class="lbl${n.cat==="airport"?" air":""}" x="${dx}" y="${ty}" text-anchor="${anchor}">${n.name}</text>`;
+  g.addEventListener("mouseenter", ev=>{
+    tip.querySelector(".t").textContent=n.name; tip.querySelector(".c").textContent=CAT[n.cat].label;
+    tip.style.color=c; tip.style.opacity=1; g.querySelector(".hit").setAttribute("r","10.5");
+  });
+  g.addEventListener("mousemove", ev=>{ tip.style.left=ev.clientX+"px"; tip.style.top=ev.clientY+"px"; });
+  g.addEventListener("mouseleave", ()=>{ tip.style.opacity=0; g.querySelector(".hit").setAttribute("r","8.5"); });
+  poisG.appendChild(g);
+});
+
+const legend=document.getElementById("legend");
+Object.entries(CAT).forEach(([k,v])=>{
+  const row=document.createElement("div"); row.className="row";
+  row.innerHTML=`<span class="dot" style="background:${v.color};color:${v.color}"></span>${v.label}`;
+  row.onclick=()=>{ const off=row.classList.toggle("off");
+    document.querySelectorAll(`.poi[data-cat="${k}"]`).forEach(p=>p.style.display=off?"none":""); };
+  legend.appendChild(row);
+});
+
+/* PAN / ZOOM */
+const svg=document.getElementById("map");
+const FULL={x:0,y:0,w:2000,h:1400};          // toàn cảnh
+const HOME={x:470,y:270,w:1180,h:826};        // mặc định: zoom vùng dự án
+let vb={...HOME}, dragging=false, sx=0, sy=0, ox=0, oy=0;
+function apply(){ svg.setAttribute("viewBox",`${vb.x.toFixed(1)} ${vb.y.toFixed(1)} ${vb.w.toFixed(1)} ${vb.h.toFixed(1)}`); }
+function zoomAt(f,cx,cy){ const nw=Math.min(2600,Math.max(340,vb.w*f)), k=nw/vb.w;
+  vb.x=cx-(cx-vb.x)*k; vb.y=cy-(cy-vb.y)*k; vb.w=nw; vb.h*=k; apply(); }
+function zoomCenter(f){ const r=svg.getBoundingClientRect(), k=vb.w/r.width;
+  zoomAt(f, vb.x+(r.width/2)*k, vb.y+(r.height/2)*k); }
+const stage=document.getElementById("stage");
+stage.addEventListener("wheel",e=>{ e.preventDefault();
+  const r=svg.getBoundingClientRect(), k=vb.w/r.width;
+  zoomAt(e.deltaY>0?1.14:1/1.14, vb.x+(e.clientX-r.left)*k, vb.y+(e.clientY-r.top)*k); },{passive:false});
+stage.addEventListener("pointerdown",e=>{ dragging=true; stage.classList.add("drag");
+  sx=e.clientX; sy=e.clientY; ox=vb.x; oy=vb.y; stage.setPointerCapture(e.pointerId); });
+stage.addEventListener("pointermove",e=>{ if(!dragging) return;
+  const r=svg.getBoundingClientRect(), k=vb.w/r.width;
+  vb.x=ox-(e.clientX-sx)*k; vb.y=oy-(e.clientY-sy)*k; apply(); });
+["pointerup","pointercancel"].forEach(ev=>stage.addEventListener(ev,()=>{ dragging=false; stage.classList.remove("drag"); }));
+document.getElementById("zin").onclick=()=>zoomCenter(1/1.3);
+document.getElementById("zout").onclick=()=>zoomCenter(1.3);
+document.getElementById("reset").onclick=()=>{ vb={...HOME}; apply(); };
+document.addEventListener("keydown",e=>{
+  if(e.key==="0"){ vb={...HOME}; apply(); }
+  if(e.key==="9"){ vb={...FULL}; apply(); }
+  if(e.key==="+"||e.key==="=") zoomCenter(1/1.3);
+  if(e.key==="-") zoomCenter(1.3);
+});
+apply();   // áp khung nhìn mặc định (zoom vùng dự án)
+</script>
+</body>
+</html>

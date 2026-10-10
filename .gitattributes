@@ -1,0 +1,22 @@
+# Dùng LF cho mọi file khi lưu vào git.
+#
+# Windows mặc định ghi CRLF. Nếu không chuẩn hoá, mỗi lần commit trên máy
+# khác sẽ thấy toàn bộ file bị "đổi" dù nội dung không đổi, và file nào có
+# dấu tiếng Việt dễ bị hỏng byte khi qua nhiều lần chuyển đổi.
+* text=auto eol=lf
+
+# Nhưng Windows vẫn cần CRLF cho file thực thi dạng text
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# File nhị phân — không đụng tới
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+*.xlsx binary

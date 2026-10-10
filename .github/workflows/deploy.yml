@@ -1,0 +1,85 @@
+name: Deploy lên GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Cần đúng 3 quyền này để xuất bản Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Cho phép chạy nhiều lần; job mới sẽ huỷ job cũ đang chờ
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Cài thư viện
+        working-directory: web
+        run: npm ci
+
+      # ⚠ RAM: GitHub Actions có 7 GB. next.config.mjs đã đặt
+      #   experimental.cpus = 2 để tránh chạm trần RAM khi sinh trang.
+      #   Nếu job bị "process out of memory", hãy thêm NODE_OPTIONS ở bước build.
+      - name: Build
+        working-directory: web
+        env:
+          # Trang là "project site" của GitHub nên nằm trong thư mục con /ami.
+          # Thiếu biến này: HTML mở được nhưng mọi file _next/*.js trả 404.
+          # Đặt thành rỗng khi đã gắn tên miền riêng cho Pages.
+          NEXT_PUBLIC_BASE_PATH: /ami
+          # Để TRỐNG = chế độ dữ liệu tĩnh: trang đọc thẳng web/public/data.
+          # Đặt URL Worker/Supabase khi đã nối máy chủ thật.
+          NEXT_PUBLIC_API_URL: ${{ vars.API_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
+          NEXT_PUBLIC_SITE_URL: https://unitemedia2010-oss.github.io/ami
+        run: npm run build
+
+      - name: Kiểm tra bản build
+        # Phòng ngừa: dữ liệu tĩnh bị .gitignore loài mất, hoặc tiền tố
+        # /ami rơi khỏi bundle → deploy ra trang trắng mà không có lỗi build.
+        run: |
+          set -e
+          if [ ! -f web/out/data/listings.json ]; then
+            echo "::error::Thiếu web/public/data/listings.json — chạy: node tools/export_static.mjs"
+            exit 1
+          fi
+          if ! grep -q '/ami/_next' web/out/index.html; then
+            echo "::error::Thiếu tiền tố /ami trong HTML — kiểm tra NEXT_PUBLIC_BASE_PATH"
+            exit 1
+          fi
+          if grep -rn "address_line" web/out --include="*.html" --include="*.js"; then
+            echo "::error::Cột PII (address_line) lọt vào bản build — DỪNG lại"
+            exit 1
+          fi
+          echo "OK: dữ liệu tĩnh, tiền tố /ami, không lộ cột PII"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

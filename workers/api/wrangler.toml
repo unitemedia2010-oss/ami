@@ -1,0 +1,57 @@
+# =============================================================================
+#  Cloudflare Worker — API Gateway
+#  Cấu hình deploy cho website Bất động sản TP.HCM
+# =============================================================================
+
+name = "bds-api"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# ------------------------------------------------------------------ KV store
+# Dùng cho rate limiting và danh sách fingerprint bị chặn.
+# Tạo trước:  wrangler kv:namespace create RATE_LIMIT
+[[kv_namespaces]]
+binding = "KV"
+id = "THAY_BẰNG_KV_NAMESPACE_ID"
+
+# ------------------------------------------------------------------ R2 bucket
+# Tạo trước:  wrangler r2 bucket create bds-images
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "bds-images"
+
+# ------------------------------------------------------------------ biến môi trường
+# KHÔNG BAO GIỜ commit file .dev.vars — file đó chứa secrets thật.
+# Đặt bằng:  wrangler secret put TEN_BIEN
+[vars]
+ALLOWED_ORIGINS = "https://bds.example.com,https://www.bds.example.com"
+IMAGE_BASE_URL  = "https://img.bds.example.com"
+BLOCK_DATACENTER = "true"
+
+# =============================================================================
+#  DANH SÁCH SECRET (đặt qua `wrangler secret put`)
+# -----------------------------------------------------------------------------
+#
+#  SB_URL             https://<project-ref>.supabase.co
+#  SB_ANON_KEY        anon public key (được nhúng trong trình duyệt — không bí mật)
+#  SB_SERVICE_KEY     ⚠ BÍ MẬT TUYỆT ĐỐI — chỉ ở server
+#  SB_JWT_SECRET      lấy từ Supabase → Settings → API → JWT Secret
+#  TURNSTILE_SECRET   Turnstile → Settings → Secret key
+#  FP_SECRET          chuỗi ngẫu nhiên để hash fingerprint (tự sinh: openssl rand -hex 32)
+#  R2_KEY_ID          Cloudflare → R2 → Manage R2 API Tokens
+#  R2_SECRET          như trên
+#
+# =============================================================================
+
+# ------------------------------------------------------------------ kiểm thử
+[env.staging]
+name = "bds-api-staging"
+vars = { ALLOWED_ORIGINS = "https://staging.bds.example.com", IMAGE_BASE_URL = "https://img.bds.example.com", BLOCK_DATACENTER = "false" }
+
+# ------------------------------------------------------------------ giám sát
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true
+invocation_logs = true

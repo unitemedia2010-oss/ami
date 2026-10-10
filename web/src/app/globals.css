@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+ *  SGREALTY — HỆ THỐNG THIẾT KẾ "HOẢNG LỮ"
+ *  Tông vàng → cam → đỏ, gradient chuyển sắc, hiệu ứng liquid glass.
+ *
+ *  Ba nguyên tắc:
+ *   1. Màu nóng chỉ dùng cho ĐIỂM NHẤN (CTA, giá, nổi bật). Nền và chữ
+ *      giữ tông kem/trung tính để màu nóng nổi lên thay vì chìm.
+ *   2. Mọi gradient đi qua cả ba bước vàng → cam → đỏ, không gradient
+ *      hai màu (gradient 2 màu dễ bị "loè", ví dụ cam sang đỏ trông bẩn).
+ *   3. Hiệu ứng kính (glass) chỉ dùng trên nền có gradient hoặc ảnh phía
+ *      sau — trên nền trắng phẳng thì kính không nhìn ra và chỉ gây rối.
+ * ========================================================================== */
+
+@layer base {
+  :root {
+    --grad-flame:  linear-gradient(135deg, #FBBF24 0%, #F97316 45%, #E11D48 100%);
+    --grad-sunset: linear-gradient(135deg, #FDE68A 0%, #FB923C 50%, #EF4444 100%);
+    --grad-anim:   linear-gradient(115deg, #FBBF24, #F97316, #E11D48, #FB923C, #FBBF24);
+  }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    @apply bg-cream-100 text-coal-800;
+    font-feature-settings: 'cv02', 'cv03', 'cv04';
+  }
+
+  /* Vòng focus rõ ràng — bắt buộc cho người dùng bàn phím */
+  :focus-visible {
+    @apply outline-none ring-2 ring-amber-500 ring-offset-2 ring-offset-cream-100 rounded-lg;
+  }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type='number'] { -moz-appearance: textfield; }
+
+  /* Thanh cuộn tông nóng */
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { @apply bg-cream-200; }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-gradient-to-b from-gold-400 to-flame-500 border-2 border-cream-200;
+  }
+  ::-webkit-scrollbar-thumb:hover { @apply from-gold-500 to-flame-600; }
+}
+
+/* =============================================================================
+ *  NỀN GRADIENT + KHỐI SÁNG (liquid blobs)
+ * ========================================================================== */
+@layer components {
+  /* Nền gradient chuyển động — dùng cho hero, CTA, footer */
+  .bg-liquid {
+    @apply bg-glow-deep;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  /* Ba khối sáng mờ trôi nền. Không thêm thẻ chúng vào DOM — chỉ qua ::before
+     và ::after — để không phát sinh phần tử rác trong JSX. */
+  .bg-liquid::before,
+  .bg-liquid::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 9999px;
+    filter: blur(72px);
+    opacity: .55;
+    will-change: transform;
+  }
+
+  .bg-liquid::before {
+    width: 34rem; height: 34rem;
+    top: -12rem; left: -8rem;
+    background: radial-gradient(circle, #FBBF24 0%, transparent 68%);
+    animation: float 16s ease-in-out infinite;
+  }
+
+  .bg-liquid::after {
+    width: 30rem; height: 30rem;
+    bottom: -14rem; right: -6rem;
+    background: radial-gradient(circle, #E11D48 0%, transparent 68%);
+    animation: float-slow 22s ease-in-out infinite;
+  }
+
+  /* Lưới mờ phủ lên nền — gợi mặt phẳng bản đồ, rất hợp bất động sản */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Nền gradient nhạt cho vùng nội dung (thay thế nền trắng thuần) */
+  .bg-aurora {
+    background:
+      radial-gradient(70% 55% at 12% 0%,  rgba(253,186,116,.42) 0%, transparent 62%),
+      radial-gradient(60% 50% at 92% 12%, rgba(254,205,211,.40) 0%, transparent 60%),
+      radial-gradient(75% 60% at 50% 100%, rgba(254,243,199,.55) 0%, transparent 66%);
+  }
+}
+
+/* =============================================================================
+ *  KÍNH (liquid glass)
+ * ========================================================================== */
+@layer components {
+  .glass {
+    @apply bg-white/55 backdrop-blur-xl backdrop-saturate-150
+           border border-white/60 shadow-glass;
+  }
+
+  .glass-strong {
+    @apply bg-white/75 backdrop-blur-2xl backdrop-saturate-150
+           border border-white/70 shadow-glass;
+  }
+
+  /* Kính tối — dùng trên nền gradient đậm */
+  .glass-dark {
+    @apply bg-white/10 backdrop-blur-xl backdrop-saturate-150
+           border border-white/20;
+  }
+
+  /* Viền gradient: lớp giả bên dưới gradient, lớp trên nền của thẻ.
+     Dùng cho thẻ nổi bật, không lạm dụng. */
+  .grad-ring {
+    position: relative;
+    background: linear-gradient(#fff, #fff) padding-box,
+                var(--grad-flame) border-box;
+    border: 1.5px solid transparent;
+  }
+}
+
+/* =============================================================================
+ *  CHỮ GRADIENT
+ * ========================================================================== */
+@layer components {
+  .grad-text {
+    @apply bg-grad-flame bg-clip-text text-transparent;
+    /* Safari cần -webkit- mới hiện đúng */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .grad-text-anim {
+    @apply bg-grad-anim bg-clip-text text-transparent bg-[length:300%_300%];
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: grad-shift 7s ease infinite;
+  }
+}
+
+/* =============================================================================
+ *  NÚT
+ * ========================================================================== */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3
+           text-sm font-bold transition-all duration-300
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none;
+  }
+
+  /* Nút chính — gradient + quầng sáng, hover nổi lên */
+  .btn-primary {
+    @apply btn text-white shadow-glow hover:-translate-y-0.5 hover:shadow-glow-lg
+           hover:brightness-[1.06] active:translate-y-0 bg-grad-flame bg-[length:180%_180%];
+    background-position: 0% 50%;
+    transition: background-position .5s ease, transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  }
+  .btn-primary:hover { background-position: 100% 50%; }
+
+  /* Nút trắng — trên nền gradient đậm */
+  .btn-white {
+    @apply btn bg-white text-flame-700 shadow-lift hover:-translate-y-0.5 hover:shadow-glass;
+  }
+
+  /* Nút viền gradient */
+  .btn-outline {
+    @apply btn bg-white/70 text-flame-700 border border-gold-200 backdrop-blur
+           hover:bg-white hover:border-gold-400 hover:-translate-y-0.5 hover:shadow-soft;
+  }
+
+  .btn-ghost { @apply btn text-coal-600 hover:bg-gold-50 hover:text-flame-700; }
+
+  .btn-sm { @apply px-4 py-2 text-[13px]; }
+  .btn-lg { @apply px-10 py-4 text-base gap-3 rounded-2xl; }
+
+  .btn-icon {
+    @apply h-10 w-10 inline-grid place-items-center rounded-full transition-all duration-300;
+  }
+}
+
+/* =============================================================================
+ *  THẺ
+ * ========================================================================== */
+@layer components {
+  .card {
+    @apply bg-white/85 backdrop-blur-sm rounded-2xl border border-cream-300
+           shadow-soft overflow-hidden transition-all duration-300
+           hover:-translate-y-1 hover:shadow-lift hover:border-gold-300;
+  }
+
+  .stat-card {
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl border border-cream-300
+           shadow-soft flex items-center gap-4 p-6
+           transition-all duration-300 hover:-translate-y-1 hover:shadow-lift hover:border-gold-300;
+  }
+
+  .section-card {
+    @apply bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-cream-300 shadow-soft;
+  }
+
+  .field-box {
+    @apply bg-white/80 backdrop-blur-sm p-4 rounded-2xl border border-cream-300 shadow-soft;
+  }
+
+  .listing-grid {
+    @apply grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+}
+
+/* =============================================================================
+ *  CHỮ
+ * ========================================================================== */
+@layer components {
+  .h1 { @apply text-3xl md:text-4xl font-extrabold text-coal-900 tracking-tight; }
+  .h2 { @apply text-2xl font-bold text-coal-900; }
+  .h3 { @apply text-lg font-bold text-coal-900; }
+
+  .label-xs {
+    @apply text-[10px] font-bold uppercase tracking-wider text-coal-500;
+  }
+
+  .field-label {
+    @apply block text-xs font-bold text-coal-500 mb-2 uppercase;
+  }
+}
+
+/* =============================================================================
+ *  FORM & CHIP
+ * ========================================================================== */
+@layer components {
+  .field {
+    @apply w-full px-4 py-3 rounded-2xl border border-cream-300 bg-white/90
+           text-sm font-medium text-coal-800 placeholder:text-coal-400
+           focus:ring-2 focus:ring-amber-500/70 focus:border-amber-400
+           transition-shadow duration-200;
+  }
+  .field-sm { @apply field px-3 py-2 text-[13px]; }
+  textarea.field { @apply resize-y; }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5
+           text-xs font-bold bg-white/75 text-coal-600 border border-cream-300
+           transition-all duration-200
+           hover:border-gold-400 hover:text-flame-700 hover:-translate-y-px;
+  }
+
+  .chip-active {
+    @apply text-white border-transparent shadow-glow bg-grad-flame
+           hover:text-white hover:-translate-y-0;
+  }
+}
+
+/* =============================================================================
+ *  HIỆU ỨNG
+ * ========================================================================== */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+  .skeleton { @apply bg-cream-300 animate-pulse rounded; }
+
+  /* Vệt sáng lướt qua nút gradient */
+  .shine { @apply relative overflow-hidden; }
+  .shine::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.55) 50%, transparent 62%);
+    transform: translateX(-120%);
+    pointer-events: none;
+  }
+  .shine:hover::after { animation: shimmer 1.1s ease; }
+
+  /* Ánh sáng quanh ô nhập tiêu đề */
+  .glow-focus:focus-within { @apply border-gold-400 shadow-glow; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+}
+
+/* Tôn trọng thiết lập giảm chuyển động — quan trọng cho người nhạy cảm thị giác */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .bg-liquid::before, .bg-liquid::after { display: none; }
+}

@@ -1,0 +1,6528 @@
+[
+  {
+    "seq": 1,
+    "stt": 1,
+    "page": 1,
+    "name": "Republic Plaza",
+    "address": "18E Cộng Hòa, Tân Bình",
+    "district": "Tân Bình",
+    "count": 266,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 47.0,
+        "area_max": 55.0,
+        "rent_min": 13.0,
+        "rent_max": 16.0,
+        "price_min": 2.64,
+        "price_max": 3.42
+      },
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 85.0,
+        "rent_min": 16.0,
+        "rent_max": 20.0,
+        "price_min": 3.6,
+        "price_max": 5.5
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 104.0,
+        "rent_min": 20.0,
+        "rent_max": 25.0,
+        "price_min": 5.5,
+        "price_max": 7.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 2,
+    "stt": 2,
+    "page": 1,
+    "name": "245 Hoàng Văn Thụ, Tân Bình",
+    "address": "",
+    "district": "Tân Bình",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 70.0,
+        "area_max": 90.0,
+        "price_min": 4.0,
+        "price_max": 6.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 115.0,
+        "price_min": 6.0,
+        "price_max": 7.2
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": true
+  },
+  {
+    "seq": 3,
+    "stt": 3,
+    "page": 1,
+    "name": "Sky Center",
+    "address": "5B Phổ Quang, Tân Bình",
+    "district": "Tân Bình",
+    "count": 495,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 75.0,
+        "rent_min": 14.0,
+        "rent_max": 17.5,
+        "price_min": 5.5,
+        "price_max": 6.02
+      },
+      {
+        "type": "3PN",
+        "area_min": 95.0,
+        "area_max": 130.0,
+        "rent_min": 20.0,
+        "rent_max": 29.0,
+        "price_min": 8.25,
+        "price_max": 11.37
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 4,
+    "stt": 4,
+    "page": 1,
+    "name": "Botanica Premier",
+    "address": "108 Hồng Hà, Tân Bình",
+    "district": "Tân Bình",
+    "count": 909,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 50.0,
+        "area_max": 56.0,
+        "rent_min": 13.0,
+        "rent_max": 15.0,
+        "price_min": 3.55,
+        "price_max": 5.83
+      },
+      {
+        "type": "2PN",
+        "area_min": 67.0,
+        "area_max": 75.0,
+        "rent_min": 15.0,
+        "rent_max": 18.0,
+        "price_min": 4.54,
+        "price_max": 6.18
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 106.0,
+        "rent_min": 19.5,
+        "rent_max": 23.0,
+        "price_min": 7.03,
+        "price_max": 8.2
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 5,
+    "stt": 5,
+    "page": 1,
+    "name": "The Botanica",
+    "address": "104 Phổ Quang, Tân Bình",
+    "district": "Tân Bình",
+    "count": 564,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 75.0,
+        "rent_min": 14.0,
+        "rent_max": 16.0,
+        "price_min": 4.5,
+        "price_max": 6.08
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 98.0,
+        "rent_min": 20.0,
+        "rent_max": 20.0,
+        "price_min": 6.96,
+        "price_max": 7.95
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 6,
+    "stt": 6,
+    "page": 1,
+    "name": "Park Legend",
+    "address": "251 Hoàng Văn Thụ, Tân Bình",
+    "district": "Tân Bình",
+    "count": 176,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 75.0,
+        "rent_min": 15.0,
+        "rent_max": 19.0,
+        "price_min": 6.5,
+        "price_max": 7.1
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 110.0,
+        "rent_min": 20.0,
+        "rent_max": 25.0,
+        "price_min": 8.8,
+        "price_max": 9.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 7,
+    "stt": 7,
+    "page": 1,
+    "name": "Bảy Hiền Tower",
+    "address": "",
+    "district": "Tân Bình",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 1,
+    "district_estimated": true
+  },
+  {
+    "seq": 8,
+    "stt": 9,
+    "page": 1,
+    "name": "Phạm Phú Thứ, Tân Bình",
+    "address": "33 triệuương Công Định, Tân Bình",
+    "district": "Tân Bình",
+    "count": 186,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 101.0,
+        "rent_min": 12.0,
+        "rent_max": 15.0,
+        "price_min": 3.8,
+        "price_max": 4.5
+      },
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 85.0,
+        "rent_min": 11.0,
+        "rent_max": 13.3,
+        "price_min": 4.2,
+        "price_max": 4.66
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 112.0,
+        "rent_min": 12.5,
+        "rent_max": 15.0,
+        "price_min": 5.5,
+        "price_max": 5.96
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 9,
+    "stt": 10,
+    "page": 1,
+    "name": "Palacio Garden",
+    "address": "678 Âu Cơ, Tân Bình",
+    "district": "Tân Bình",
+    "count": 1345,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 90.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 10,
+    "stt": 11,
+    "page": 1,
+    "name": "Phúc Yên 1",
+    "address": "Phan Huy Ích, Tân Bình",
+    "district": "Tân Bình",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 90.0,
+        "rent_min": 12.0,
+        "rent_max": 15.0,
+        "price_min": 3.8,
+        "price_max": 4.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 11,
+    "stt": 12,
+    "page": 1,
+    "name": "Phúc Yên 2",
+    "address": "Phan Huy Ích, Tân Bình",
+    "district": "Tân Bình",
+    "count": 200,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 79.5,
+        "area_max": 90.0,
+        "rent_min": 9.0,
+        "rent_max": 11.0,
+        "price_min": 3.3,
+        "price_max": 4.2
+      },
+      {
+        "type": "3PN",
+        "area_min": 95.0,
+        "area_max": 106.7,
+        "rent_min": 11.0,
+        "rent_max": 14.0,
+        "price_min": 4.0,
+        "price_max": 5.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 12,
+    "stt": 13,
+    "page": 1,
+    "name": "Phúc Yên 3 / Hope Garden",
+    "address": "Phan Huy Ích, Tân Bình",
+    "district": "Tân Bình",
+    "count": 323,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 50.0,
+        "area_max": 69.0,
+        "rent_min": 7.0,
+        "rent_max": 9.0,
+        "price_min": 2.9,
+        "price_max": 3.0
+      },
+      {
+        "type": "3PN",
+        "rent_min": 9.0,
+        "rent_max": 12.0,
+        "price_min": 3.5,
+        "price_max": 3.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 13,
+    "stt": 14,
+    "page": 1,
+    "name": "Ruby Garden",
+    "address": "2A Nguyễn Sỹ Sách, Tân Bình",
+    "district": "Tân Bình",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 85.0,
+        "rent_min": 9.0,
+        "rent_max": 11.0,
+        "price_min": 3.2,
+        "price_max": 4.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 90.0,
+        "rent_min": 10.0,
+        "rent_max": 12.0,
+        "price_min": 4.0,
+        "price_max": 4.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 14,
+    "stt": 15,
+    "page": 1,
+    "name": "Golf View Palace",
+    "address": "6 Tân Sơn, Tân Bình",
+    "district": "Tân Bình",
+    "count": 470,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 56.0,
+        "area_max": 74.0,
+        "price_min": 2.8,
+        "price_max": 3.5
+      },
+      {
+        "type": "3PN",
+        "area_min": 81.0,
+        "area_max": 81.0,
+        "price_min": 3.5,
+        "price_max": 3.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 15,
+    "stt": 16,
+    "page": 1,
+    "name": "Bee Home – Tân Bình Chưa tìm được SL",
+    "address": "",
+    "district": "Tân Bình",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": true
+  },
+  {
+    "seq": 16,
+    "stt": 17,
+    "page": 1,
+    "name": "Carillon 1",
+    "address": "171A Hoàng Hoa Thám, Tân Bình",
+    "district": "Tân Bình",
+    "count": 484,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 85.0,
+        "rent_min": 11.0,
+        "rent_max": 13.0,
+        "price_min": 4.2,
+        "price_max": 6.4
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 90.0,
+        "rent_min": 14.0,
+        "rent_max": 16.0,
+        "price_min": 6.4,
+        "price_max": 7.75
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 17,
+    "stt": 18,
+    "page": 1,
+    "name": "Carillon 3",
+    "address": "171 Hoàng Hoa Thám, Tân Bình",
+    "district": "Tân Bình",
+    "count": 90,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 45.0,
+        "area_max": 55.0,
+        "rent_min": 9.0,
+        "rent_max": 11.0,
+        "price_min": 2.55,
+        "price_max": 2.55
+      },
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 80.0,
+        "rent_min": 11.0,
+        "rent_max": 13.5,
+        "price_min": 4.3,
+        "price_max": 4.85
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 90.0,
+        "rent_min": 14.0,
+        "rent_max": 16.0,
+        "price_min": 6.6,
+        "price_max": 6.6
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 18,
+    "stt": 19,
+    "page": 2,
+    "name": "Cộng Hòa Garden",
+    "address": "",
+    "district": "Tân Bình",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": true
+  },
+  {
+    "seq": 19,
+    "stt": 20,
+    "page": 2,
+    "name": "Cộng Hòa, Tân Bình",
+    "address": "Quách Văn Tuấn/K300, Tân Bình",
+    "district": "Tân Bình",
+    "count": 1225,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 80.0,
+        "rent_min": 12.0,
+        "rent_max": 14.0,
+        "price_min": 3.1,
+        "price_max": 4.85
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 90.0,
+        "rent_min": 15.5,
+        "rent_max": 18.0,
+        "price_min": 5.0,
+        "price_max": 5.0
+      },
+      {
+        "type": "1PN",
+        "price_min": 2.7,
+        "price_max": 2.7
+      },
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 80.0,
+        "rent_min": 8.0,
+        "rent_max": 11.0,
+        "price_min": 3.3,
+        "price_max": 3.4
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 20,
+    "stt": 21,
+    "page": 2,
+    "name": "Cộng Hòa Plaza",
+    "address": "19 Cộng Hòa, Tân Bình",
+    "district": "Tân Bình",
+    "count": 188,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 85.0,
+        "area_max": 95.0,
+        "rent_min": 15.0,
+        "rent_max": 17.0,
+        "price_min": 5.5,
+        "price_max": 7.0
+      },
+      {
+        "type": "Penthouse 4PN",
+        "rent_min": 20.0,
+        "rent_max": 20.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 21,
+    "stt": 22,
+    "page": 2,
+    "name": "The Useful Apartment",
+    "address": "654 Lạc Long Quân, Tân Bình",
+    "district": "Tân Bình",
+    "count": 490,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 22,
+    "stt": 23,
+    "page": 2,
+    "name": "Bàu Cát II",
+    "address": "Vũ Ngọc Phan/Bàu Cát, TB",
+    "district": "Tân Bình",
+    "count": 1553,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 80.0,
+        "rent_min": 8.0,
+        "rent_max": 10.0,
+        "price_min": 2.5,
+        "price_max": 4.21
+      },
+      {
+        "type": "3PN",
+        "area_min": 85.0,
+        "area_max": 100.0,
+        "rent_min": 10.5,
+        "rent_max": 11.5,
+        "price_min": 4.23,
+        "price_max": 5.3
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 23,
+    "stt": 24,
+    "page": 2,
+    "name": "Central Plaza",
+    "address": "91 Phạm Văn Hai, Tân Bình",
+    "district": "Tân Bình",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 54.0,
+        "area_max": 71.0,
+        "rent_min": 12.0,
+        "rent_max": 15.0,
+        "price_min": 4.3,
+        "price_max": 6.26
+      },
+      {
+        "type": "3PN",
+        "area_min": 83.0,
+        "area_max": 106.0,
+        "rent_min": 15.0,
+        "rent_max": 17.0,
+        "price_min": 5.6,
+        "price_max": 5.6
+      },
+      {
+        "type": "Penthouse",
+        "rent_min": 18.0,
+        "rent_max": 20.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 1,
+    "district_estimated": false
+  },
+  {
+    "seq": 24,
+    "stt": 1,
+    "page": 24,
+    "name": "Noble Crystal Riverside",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "rent_min": 12.5,
+        "rent_max": 18.0,
+        "price_min": 6.8,
+        "price_max": 13.1
+      },
+      {
+        "type": "3PN",
+        "rent_min": 16.0,
+        "rent_max": 18.0,
+        "price_min": 10.95,
+        "price_max": 14.25
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 25,
+    "stt": 2,
+    "page": 24,
+    "name": "Sunshine City Sài Gòn",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "price_min": 4.28,
+        "price_max": 7.81
+      },
+      {
+        "type": "3PN",
+        "price_min": 7.5,
+        "price_max": 10.22
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "hồ bơi",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 26,
+    "stt": 3,
+    "page": 24,
+    "name": "Eco Green Sài Gòn",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 95.0,
+        "rent_min": 16.0,
+        "rent_max": 25.0,
+        "price_min": 5.0,
+        "price_max": 6.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 27,
+    "stt": 4,
+    "page": 24,
+    "name": "The Riviera Point",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 148.0,
+        "area_max": 148.0,
+        "rent_min": 35.0,
+        "rent_max": 45.0,
+        "price_min": 11.5,
+        "price_max": 12.0
+      },
+      {
+        "type": "4PN",
+        "area_min": 189.0,
+        "area_max": 189.0,
+        "rent_min": 45.0,
+        "rent_max": 65.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 28,
+    "stt": 5,
+    "page": 24,
+    "name": "Cardinal Court",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "rent_min": 41.5,
+        "rent_max": 49.25,
+        "price_min": 11.98,
+        "price_max": 16.1
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 29,
+    "stt": 6,
+    "page": 24,
+    "name": "The Peak Midtown",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 110.0,
+        "area_max": 130.0,
+        "rent_min": 45.0,
+        "rent_max": 68.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 30,
+    "stt": 7,
+    "page": 24,
+    "name": "Sky 89",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 64.0,
+        "area_max": 69.0,
+        "price_min": 4.85,
+        "price_max": 5.27
+      },
+      {
+        "type": "3PN",
+        "area_min": 105.0,
+        "area_max": 105.0,
+        "price_min": 7.5,
+        "price_max": 7.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 31,
+    "stt": 8,
+    "page": 24,
+    "name": "River Panorama",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 62.0,
+        "area_max": 65.0,
+        "rent_min": 11.0,
+        "rent_max": 15.0,
+        "price_min": 4.6,
+        "price_max": 5.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 90.0,
+        "rent_min": 14.0,
+        "rent_max": 19.0,
+        "price_min": 5.9,
+        "price_max": 6.2
+      },
+      {
+        "type": "3PN",
+        "area_min": 112.0,
+        "area_max": 112.0,
+        "rent_min": 16.0,
+        "rent_max": 22.0,
+        "price_min": 7.5,
+        "price_max": 7.8
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 32,
+    "stt": 9,
+    "page": 24,
+    "name": "An Gia Skyline",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 66.0,
+        "area_max": 72.0,
+        "rent_min": 10.0,
+        "rent_max": 12.0,
+        "price_min": 4.6,
+        "price_max": 5.1
+      },
+      {
+        "type": "3PN",
+        "area_min": 83.0,
+        "area_max": 115.0,
+        "rent_min": 14.0,
+        "rent_max": 25.0,
+        "price_min": 5.4,
+        "price_max": 6.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 33,
+    "stt": 10,
+    "page": 24,
+    "name": "An Gia Riverside",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 69.0,
+        "area_max": 69.0,
+        "price_min": 4.6,
+        "price_max": 4.9
+      },
+      {
+        "type": "3PN",
+        "area_min": 79.0,
+        "area_max": 98.0,
+        "price_min": 4.8,
+        "price_max": 6.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 115.0,
+        "area_max": 115.0,
+        "price_min": 6.8,
+        "price_max": 7.3
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 34,
+    "stt": 11,
+    "page": 24,
+    "name": "Q7 Boulevard",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 57.0,
+        "area_max": 70.0,
+        "rent_min": 11.0,
+        "rent_max": 15.0,
+        "price_min": 3.5,
+        "price_max": 4.8
+      },
+      {
+        "type": "3PN",
+        "area_min": 75.0,
+        "area_max": 75.0,
+        "rent_min": 15.0,
+        "rent_max": 18.0,
+        "price_min": 5.0,
+        "price_max": 5.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 35,
+    "stt": 12,
+    "page": 24,
+    "name": "Signial / Smartel Signial — Chưa nên nhập giá Chưa nên nhập giá",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 36,
+    "stt": 13,
+    "page": 24,
+    "name": "Jamona Heights",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "rent_min": 12.15,
+        "rent_max": 13.91,
+        "price_min": 4.86,
+        "price_max": 5.14
+      },
+      {
+        "type": "3PN",
+        "rent_min": 16.0,
+        "rent_max": 16.94,
+        "price_min": 5.5,
+        "price_max": 5.6
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 37,
+    "stt": 14,
+    "page": 24,
+    "name": "Lavida Plus",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "rent_min": 14.95,
+        "rent_max": 18.0,
+        "price_min": 4.55,
+        "price_max": 6.0
+      },
+      {
+        "type": "3PN",
+        "rent_min": 18.75,
+        "rent_max": 30.0,
+        "price_min": 5.93,
+        "price_max": 7.2
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 38,
+    "stt": 15,
+    "page": 24,
+    "name": "TNR Kenton Node / Kenton Node",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 39,
+    "stt": 16,
+    "page": 24,
+    "name": "Chateau Phú Mỹ Hưng Biệt thự khoảng",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 40,
+    "stt": 17,
+    "page": 24,
+    "name": "Viva Plaza",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "rent_min": 9.0,
+        "rent_max": 11.5,
+        "price_min": 3.28,
+        "price_max": 3.84
+      },
+      {
+        "type": "3PN",
+        "area_min": 82.0,
+        "area_max": 82.0,
+        "rent_min": 12.0,
+        "rent_max": 16.0,
+        "price_min": 4.9,
+        "price_max": 5.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 41,
+    "stt": 18,
+    "page": 25,
+    "name": "Babylon Garden (chị ghi Baybylon) — Chưa có giá thuê giao dịch rõ",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 42,
+    "stt": 19,
+    "page": 25,
+    "name": "The Blue Star",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 43,
+    "stt": 20,
+    "page": 25,
+    "name": "Lux Riverview Căn ~59–77m² Chưa đủ listing thuê",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 44,
+    "stt": 21,
+    "page": 25,
+    "name": "Ascent Garden",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 77.0,
+        "area_max": 89.0,
+        "price_min": 5.0,
+        "price_max": 5.72
+      },
+      {
+        "type": "3PN",
+        "area_min": 113.0,
+        "area_max": 116.0,
+        "price_min": 7.35,
+        "price_max": 7.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 45,
+    "stt": 22,
+    "page": 25,
+    "name": "Symphony Phú Mỹ Hưng",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 110.0,
+        "area_max": 130.0,
+        "price_min": 10.0,
+        "price_max": 13.0
+      },
+      {
+        "type": "Penthouse",
+        "price_min": 17.0,
+        "price_max": 40.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 46,
+    "stt": 23,
+    "page": 25,
+    "name": "Lux Star",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 74.0,
+        "area_max": 77.0,
+        "price_min": 3.1,
+        "price_max": 3.3
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 47,
+    "stt": 24,
+    "page": 25,
+    "name": "Marina Park",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 48,
+    "stt": 25,
+    "page": 25,
+    "name": "Green Star Sky Garden",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 70.0,
+        "area_max": 91.0,
+        "price_min": 6.0,
+        "price_max": 8.2
+      },
+      {
+        "type": "4PN",
+        "area_min": 160.0,
+        "area_max": 160.0,
+        "price_min": 9.7,
+        "price_max": 9.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 49,
+    "stt": 26,
+    "page": 25,
+    "name": "Tulip Tower",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 154.0,
+        "area_max": 154.0,
+        "price_min": 5.0,
+        "price_max": 5.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 50,
+    "stt": 27,
+    "page": 25,
+    "name": "Florita",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 57.0,
+        "area_max": 80.0,
+        "rent_min": 12.8,
+        "rent_max": 15.0,
+        "price_min": 4.8,
+        "price_max": 5.5
+      },
+      {
+        "type": "3PN",
+        "rent_min": 15.0,
+        "rent_max": 18.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 51,
+    "stt": 28,
+    "page": 25,
+    "name": "Sunrise Cityview",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 76.0,
+        "area_max": 76.0,
+        "rent_min": 12.0,
+        "rent_max": 15.0,
+        "price_min": 6.0,
+        "price_max": 6.1
+      },
+      {
+        "type": "3PN",
+        "rent_min": 16.0,
+        "rent_max": 18.5,
+        "price_min": 7.0,
+        "price_max": 7.7
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "hồ bơi",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 52,
+    "stt": 29,
+    "page": 25,
+    "name": "Hoàng Quốc Việt — Cần xác định lại tên dự án",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 53,
+    "stt": 30,
+    "page": 25,
+    "name": "The Golden Star",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 56.0,
+        "area_max": 76.0,
+        "rent_min": 10.0,
+        "rent_max": 15.5,
+        "price_min": 3.6,
+        "price_max": 5.2
+      },
+      {
+        "type": "3PN",
+        "area_min": 79.0,
+        "area_max": 83.0,
+        "rent_min": 17.0,
+        "rent_max": 23.0,
+        "price_min": 5.1,
+        "price_max": 5.7
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 54,
+    "stt": 31,
+    "page": 25,
+    "name": "D-Vela",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 70.0,
+        "area_max": 70.0,
+        "rent_min": 8.5,
+        "rent_max": 12.0,
+        "price_min": 3.1,
+        "price_max": 3.8
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 110.0,
+        "rent_min": 11.0,
+        "rent_max": 16.0,
+        "price_min": 3.9,
+        "price_max": 5.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 55,
+    "stt": 32,
+    "page": 25,
+    "name": "The Antonia",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 107.0,
+        "area_max": 115.0,
+        "rent_min": 40.0,
+        "rent_max": 40.0,
+        "price_min": 12.9,
+        "price_max": 16.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 56,
+    "stt": 33,
+    "page": 25,
+    "name": "The Ascentia",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 55.0,
+        "area_max": 77.0,
+        "rent_min": 25.0,
+        "rent_max": 35.0,
+        "price_min": 6.5,
+        "price_max": 8.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 106.0,
+        "area_max": 108.0,
+        "rent_min": 35.0,
+        "rent_max": 53.0,
+        "price_min": 10.9,
+        "price_max": 13.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 57,
+    "stt": 34,
+    "page": 25,
+    "name": "South Gate Tower",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 58,
+    "stt": 35,
+    "page": 25,
+    "name": "Jamona City",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "rent_min": 9.0,
+        "rent_max": 11.0,
+        "price_min": 3.0,
+        "price_max": 3.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 59,
+    "stt": 36,
+    "page": 25,
+    "name": "Đức Long Golden Land",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 60,
+    "stt": 37,
+    "page": 25,
+    "name": "Him Lam Riverside",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 108.0,
+        "area_max": 110.0,
+        "rent_min": 17.0,
+        "rent_max": 20.0,
+        "price_min": 7.8,
+        "price_max": 7.8
+      },
+      {
+        "type": "3PN",
+        "area_min": 145.0,
+        "area_max": 145.0,
+        "rent_min": 26.0,
+        "rent_max": 26.0,
+        "price_min": 9.8,
+        "price_max": 10.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 61,
+    "stt": 38,
+    "page": 25,
+    "name": "Happy Residence Premier / Hưng Phúc Premier",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 83.0,
+        "area_max": 98.0,
+        "rent_min": 23.0,
+        "rent_max": 25.0,
+        "price_min": 7.6,
+        "price_max": 9.5
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 163.0,
+        "area_max": 187.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 62,
+    "stt": 39,
+    "page": 25,
+    "name": "TNR Viva Panorama — Chưa nên nhập giá",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 63,
+    "stt": 40,
+    "page": 26,
+    "name": "Golden King",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "rent_min": 10.0,
+        "rent_max": 15.0,
+        "price_min": 3.15,
+        "price_max": 8.94
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 64,
+    "stt": 41,
+    "page": 26,
+    "name": "M-One Nam Sài Gòn",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 57.0,
+        "area_max": 70.0,
+        "rent_min": 11.0,
+        "rent_max": 14.0,
+        "price_min": 3.6,
+        "price_max": 4.9
+      },
+      {
+        "type": "3PN",
+        "area_min": 93.0,
+        "area_max": 94.0,
+        "rent_min": 14.0,
+        "rent_max": 18.0,
+        "price_min": 6.15,
+        "price_max": 6.3
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 2,
+    "district_estimated": false
+  },
+  {
+    "seq": 65,
+    "stt": 1,
+    "page": 27,
+    "name": "The Pegasuite 1",
+    "address": "Tạ Quang Bửu, QUẬN 8",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 60.0,
+        "rent_min": 11.0,
+        "rent_max": 12.0,
+        "price_min": 3.85,
+        "price_max": 5.15
+      },
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 68.0,
+        "rent_min": 11.0,
+        "rent_max": 13.5
+      },
+      {
+        "type": "2PN",
+        "area_min": 75.0,
+        "area_max": 75.0,
+        "rent_min": 11.0,
+        "rent_max": 11.0
+      },
+      {
+        "type": "2PN",
+        "area_min": 89.0,
+        "area_max": 92.0,
+        "rent_min": 13.5,
+        "rent_max": 14.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 95.0,
+        "area_max": 100.0,
+        "rent_min": 14.0,
+        "rent_max": 14.0,
+        "price_min": 5.65,
+        "price_max": 6.05
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": false
+  },
+  {
+    "seq": 66,
+    "stt": 2,
+    "page": 27,
+    "name": "The Pegasuite 2",
+    "address": "Tạ Quang Bửu, QUẬN 8",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 52.0,
+        "area_max": 52.0,
+        "rent_min": 9.0,
+        "rent_max": 10.0,
+        "price_min": 2.8,
+        "price_max": 3.45
+      },
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 62.0,
+        "rent_min": 11.0,
+        "rent_max": 13.0,
+        "price_min": 4.1,
+        "price_max": 4.8
+      },
+      {
+        "type": "Duplex",
+        "area_min": 84.0,
+        "area_max": 84.0,
+        "rent_min": 12.5,
+        "rent_max": 16.0,
+        "price_min": 5.0,
+        "price_max": 5.3
+      },
+      {
+        "type": "Duplex",
+        "area_min": 95.0,
+        "area_max": 100.0,
+        "rent_min": 14.0,
+        "rent_max": 16.0
+      },
+      {
+        "type": "Duplex",
+        "area_min": 98.0,
+        "area_max": 100.0,
+        "rent_min": 14.0,
+        "rent_max": 20.0,
+        "price_min": 5.5,
+        "price_max": 5.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": false
+  },
+  {
+    "seq": 67,
+    "stt": 3,
+    "page": 27,
+    "name": "CONIC RIVERSIDE",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 73.0,
+        "rent_min": 6.5,
+        "rent_max": 8.5,
+        "price_min": 2.95,
+        "price_max": 3.45
+      },
+      {
+        "type": "3PN",
+        "price_min": 5.8,
+        "price_max": 6.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 68,
+    "stt": 4,
+    "page": 27,
+    "name": "TARA RESIDENCE",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 85.0,
+        "rent_min": 9.5,
+        "rent_max": 13.0,
+        "price_min": 3.75,
+        "price_max": 4.38
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 95.0,
+        "rent_min": 13.5,
+        "rent_max": 15.0,
+        "price_min": 4.5,
+        "price_max": 4.7
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 69,
+    "stt": 5,
+    "page": 27,
+    "name": "THE A VILA",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 72.0,
+        "rent_min": 7.5,
+        "rent_max": 9.0,
+        "price_min": 2.14,
+        "price_max": 2.29
+      },
+      {
+        "type": "3PN",
+        "area_min": 69.0,
+        "area_max": 75.0,
+        "rent_min": 9.0,
+        "rent_max": 10.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 70,
+    "stt": 6,
+    "page": 27,
+    "name": "HEA VEN RIVERVIEW / HEA VEN CITYVIEW",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 62.0,
+        "area_max": 70.0,
+        "rent_min": 7.5,
+        "rent_max": 8.5,
+        "price_min": 1.96,
+        "price_max": 2.6
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 71,
+    "stt": 7,
+    "page": 27,
+    "name": "CITY GATE TOWERS",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 72.0,
+        "area_max": 78.0,
+        "rent_min": 7.5,
+        "rent_max": 10.0,
+        "price_min": 2.8,
+        "price_max": 3.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 92.0,
+        "rent_min": 10.0,
+        "rent_max": 11.0,
+        "price_min": 3.4,
+        "price_max": 3.7
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 72,
+    "stt": 8,
+    "page": 27,
+    "name": "WEST INTELA",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 85.0,
+        "area_max": 85.0,
+        "rent_min": 11.0,
+        "rent_max": 13.0,
+        "price_min": 2.7,
+        "price_max": 2.95
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 73,
+    "stt": 9,
+    "page": 27,
+    "name": "HIM LAM NAM KHÁNH",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 92.0,
+        "area_max": 105.0,
+        "rent_min": 11.0,
+        "rent_max": 12.5,
+        "price_min": 4.3,
+        "price_max": 4.6
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 74,
+    "stt": 10,
+    "page": 27,
+    "name": "CARINA PLAZA",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 97.0,
+        "area_max": 105.0,
+        "rent_min": 8.0,
+        "rent_max": 10.0,
+        "price_min": 3.4,
+        "price_max": 3.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 75,
+    "stt": 11,
+    "page": 27,
+    "name": "BÌNH AN RIVERSIDE",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 41.0,
+        "area_max": 60.0
+      },
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 78.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 105.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 76,
+    "stt": 12,
+    "page": 27,
+    "name": "HIGH INTELA CHƯA XÁC ĐỊNH",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 77,
+    "stt": 13,
+    "page": 27,
+    "name": "GREEN RIVER",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 67.0,
+        "area_max": 75.0,
+        "rent_min": 8.5,
+        "rent_max": 11.0,
+        "price_min": 2.9,
+        "price_max": 3.1
+      },
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 80.0,
+        "rent_min": 10.0,
+        "rent_max": 11.0,
+        "price_min": 3.23,
+        "price_max": 4.12
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 78,
+    "stt": 14,
+    "page": 27,
+    "name": "DREAM HOME RIVERSIDE",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 62.0,
+        "area_max": 62.0,
+        "price_min": 1.7,
+        "price_max": 1.85
+      },
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 65.0,
+        "price_min": 1.85,
+        "price_max": 1.95
+      },
+      {
+        "type": "3PN",
+        "area_min": 75.0,
+        "area_max": 75.0,
+        "price_min": 2.0,
+        "price_max": 2.2
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 79,
+    "stt": 15,
+    "page": 27,
+    "name": "AURORA RESIDENCES",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 50.0,
+        "area_max": 52.0,
+        "rent_min": 7.5,
+        "rent_max": 10.5,
+        "price_min": 2.5,
+        "price_max": 2.7
+      },
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 68.0,
+        "rent_min": 9.0,
+        "rent_max": 13.5,
+        "price_min": 3.44,
+        "price_max": 4.05
+      },
+      {
+        "type": "3PN",
+        "area_min": 76.0,
+        "area_max": 80.0,
+        "rent_min": 10.0,
+        "rent_max": 14.5,
+        "price_min": 3.9,
+        "price_max": 4.25
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 80,
+    "stt": 16,
+    "page": 27,
+    "name": "FELISA RIVERSIDE",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 75.0,
+        "rent_min": 9.5,
+        "rent_max": 11.5,
+        "price_min": 3.1,
+        "price_max": 3.55
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 81,
+    "stt": 17,
+    "page": 27,
+    "name": "CENTRAL PREMIUM OT",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 44.0,
+        "area_max": 51.0,
+        "rent_min": 9.0,
+        "rent_max": 11.0,
+        "price_min": 3.0,
+        "price_max": 4.1
+      },
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 73.0,
+        "rent_min": 13.0,
+        "rent_max": 16.0,
+        "price_min": 4.18,
+        "price_max": 4.32
+      },
+      {
+        "type": "3PN",
+        "area_min": 85.0,
+        "area_max": 97.0,
+        "rent_min": 15.5,
+        "rent_max": 17.0,
+        "price_min": 4.86,
+        "price_max": 6.1
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 82,
+    "stt": 18,
+    "page": 27,
+    "name": "D-AQUA",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 49.0,
+        "area_max": 49.0,
+        "rent_min": 8.5,
+        "rent_max": 11.0,
+        "price_min": 3.3,
+        "price_max": 3.8
+      },
+      {
+        "type": "2PN",
+        "area_min": 54.0,
+        "area_max": 54.0,
+        "rent_min": 9.5,
+        "rent_max": 10.0,
+        "price_min": 3.9,
+        "price_max": 4.0
+      },
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 68.0,
+        "rent_min": 11.0,
+        "rent_max": 16.0,
+        "price_min": 4.4,
+        "price_max": 4.7
+      },
+      {
+        "type": "2PN",
+        "area_min": 70.0,
+        "area_max": 71.0,
+        "rent_min": 12.0,
+        "rent_max": 17.0,
+        "price_min": 4.8,
+        "price_max": 5.2
+      },
+      {
+        "type": "3PN",
+        "area_min": 74.0,
+        "area_max": 82.0,
+        "rent_min": 14.0,
+        "rent_max": 17.0,
+        "price_min": 5.0,
+        "price_max": 5.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "hồ bơi",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 83,
+    "stt": 19,
+    "page": 28,
+    "name": "ROYAL PARK RIVERSIDE chưa có tt dự án đang thi công",
+    "address": "",
+    "district": "Quận 8",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 72.0,
+        "area_max": 72.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 87.0,
+        "area_max": 87.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 3,
+    "district_estimated": true
+  },
+  {
+    "seq": 84,
+    "stt": 1,
+    "page": 29,
+    "name": "Grand Central",
+    "address": "196–202 Nam Kỳ Khởi Nghĩa, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 68.6,
+        "area_max": 81.3,
+        "price_min": 11.0,
+        "price_max": 13.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 106.0,
+        "area_max": 106.0,
+        "price_min": 17.0,
+        "price_max": 17.0
+      },
+      {
+        "type": "4PN",
+        "area_min": 142.5,
+        "area_max": 142.5,
+        "price_min": 22.0,
+        "price_max": 23.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 85,
+    "stt": 2,
+    "page": 29,
+    "name": "Saigon Pavillon",
+    "address": "53–55 Bà Huyện Thanh Quan, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 70.0,
+        "area_max": 85.0,
+        "rent_min": 28.0,
+        "rent_max": 32.0,
+        "price_min": 9.5,
+        "price_max": 12.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 94.0,
+        "area_max": 110.0,
+        "rent_min": 30.0,
+        "rent_max": 38.0,
+        "price_min": 15.0,
+        "price_max": 15.0
+      },
+      {
+        "type": "Duplex",
+        "area_min": 97.0,
+        "area_max": 165.0,
+        "rent_min": 35.0,
+        "rent_max": 40.0,
+        "price_min": 11.0,
+        "price_max": 24.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 86,
+    "stt": 3,
+    "page": 29,
+    "name": "New Pearl Residence",
+    "address": "192 Nam Kỳ Khởi Nghĩa, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 78.0,
+        "area_max": 85.0,
+        "rent_min": 17.0,
+        "rent_max": 19.0,
+        "price_min": 8.6,
+        "price_max": 8.6
+      },
+      {
+        "type": "3PN",
+        "area_min": 94.0,
+        "area_max": 110.0,
+        "rent_min": 20.0,
+        "rent_max": 20.0,
+        "price_min": 10.4,
+        "price_max": 10.4
+      },
+      {
+        "type": "4PN",
+        "area_min": 97.0,
+        "area_max": 165.0,
+        "rent_min": 25.0,
+        "rent_max": 25.0,
+        "price_min": 10.7,
+        "price_max": 10.7
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 87,
+    "stt": 4,
+    "page": 29,
+    "name": "Léman Luxury Apartments",
+    "address": "117 Nguyễn Đình Chiểu, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 96.0,
+        "area_max": 118.0,
+        "rent_min": 35.0,
+        "rent_max": 50.0,
+        "price_min": 15.0,
+        "price_max": 19.6
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 150.0,
+        "area_max": 330.0,
+        "rent_min": 60.0,
+        "rent_max": 81.0,
+        "price_min": 28.0,
+        "price_max": 36.0
+      },
+      {
+        "type": "1PN",
+        "area_min": 42.0,
+        "area_max": 50.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 88,
+    "stt": 6,
+    "page": 29,
+    "name": "Terra Royal",
+    "address": "83 Lý Chính Thắng / Nam Kỳ Khởi Nghĩa, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 58.0,
+        "area_max": 77.0,
+        "rent_min": 17.0,
+        "rent_max": 24.0,
+        "price_min": 6.5,
+        "price_max": 9.9
+      },
+      {
+        "type": "3PN",
+        "area_min": 79.0,
+        "area_max": 110.0,
+        "rent_min": 25.0,
+        "rent_max": 28.0,
+        "price_min": 9.5,
+        "price_max": 12.0
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 115.0,
+        "area_max": 115.0,
+        "rent_min": 40.0,
+        "rent_max": 40.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 89,
+    "stt": 7,
+    "page": 29,
+    "name": "An Phú Plaza",
+    "address": "117–119 Lý Chính Thắng, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 154.0,
+        "area_max": 154.0,
+        "rent_min": 48.0,
+        "rent_max": 48.0,
+        "price_min": 5.7,
+        "price_max": 8.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 90,
+    "stt": 8,
+    "page": 29,
+    "name": "Serenity Sky Villas",
+    "address": "259 Điện Biên Phủ, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 85.0,
+        "area_max": 85.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 171.0,
+        "area_max": 209.0,
+        "rent_min": 79.0,
+        "rent_max": 95.0,
+        "price_min": 28.0,
+        "price_max": 32.0
+      },
+      {
+        "type": "4PN",
+        "area_min": 205.0,
+        "area_max": 482.0,
+        "rent_min": 115.0,
+        "rent_max": 230.0,
+        "price_min": 34.0,
+        "price_max": 108.0
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 410.0,
+        "area_max": 625.0,
+        "price_min": 72.0,
+        "price_max": 150.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 91,
+    "stt": 9,
+    "page": 29,
+    "name": "Screc Tower",
+    "address": "Trường Sa, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 70.0,
+        "area_max": 92.0,
+        "rent_min": 11.5,
+        "rent_max": 14.8,
+        "price_min": 4.8,
+        "price_max": 5.7
+      },
+      {
+        "type": "3PN",
+        "area_min": 81.0,
+        "area_max": 101.0,
+        "rent_min": 11.7,
+        "rent_max": 16.0,
+        "price_min": 5.2,
+        "price_max": 6.7
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 92,
+    "stt": 10,
+    "page": 29,
+    "name": "C.T Plaza Minh Châu",
+    "address": "369 Lê Văn Sỹ, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 73.8,
+        "area_max": 81.9,
+        "price_min": 4.1,
+        "price_max": 4.1
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.85,
+        "area_max": 104.25,
+        "price_min": 4.9,
+        "price_max": 4.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 93,
+    "stt": 11,
+    "page": 29,
+    "name": "Cao ốc Nguyễn Phúc Nguyên",
+    "address": "167 Nguyễn Phúc Nguyên, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 91.0,
+        "area_max": 101.0,
+        "rent_min": 15.0,
+        "rent_max": 18.0,
+        "price_min": 5.1,
+        "price_max": 6.3
+      },
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 120.0,
+        "rent_min": 17.0,
+        "rent_max": 21.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 94,
+    "stt": 12,
+    "page": 29,
+    "name": "Cao ốc Sông Đà Tower",
+    "address": "14B Kỳ Đồng, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 120.0,
+        "rent_min": 14.0,
+        "rent_max": 16.0,
+        "price_min": 5.2,
+        "price_max": 7.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 95,
+    "stt": 13,
+    "page": 29,
+    "name": "Kỳ Đồng Tower",
+    "address": "đường Kỳ Đồng, Q.3",
+    "district": "Quận 3",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 51.0,
+        "area_max": 69.0,
+        "price_min": 3.1,
+        "price_max": 4.1
+      },
+      {
+        "type": "3PN",
+        "area_min": 75.0,
+        "area_max": 100.0,
+        "rent_min": 15.0,
+        "rent_max": 16.0,
+        "price_min": 4.5,
+        "price_max": 6.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 96,
+    "stt": 14,
+    "page": 29,
+    "name": "The Marq",
+    "address": "29B Nguyễn Đình Chiểu, Q.1",
+    "district": "Quận 1",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 72.0,
+        "area_max": 85.0,
+        "rent_min": 34.0,
+        "rent_max": 53.0,
+        "price_min": 13.8,
+        "price_max": 18.5
+      },
+      {
+        "type": "3PN",
+        "area_min": 110.0,
+        "area_max": 129.0,
+        "rent_min": 55.0,
+        "rent_max": 85.0,
+        "price_min": 21.0,
+        "price_max": 29.0
+      },
+      {
+        "type": "4PN",
+        "area_min": 144.0,
+        "area_max": 146.0,
+        "rent_min": 85.0,
+        "rent_max": 120.0,
+        "price_min": 32.0,
+        "price_max": 35.0
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 234.0,
+        "area_max": 234.0,
+        "price_min": 88.0,
+        "price_max": 95.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 4,
+    "district_estimated": false
+  },
+  {
+    "seq": 97,
+    "stt": 1,
+    "page": 49,
+    "name": "The Gold View",
+    "address": "346 Bến Vân Đồn, Q.4",
+    "district": "Quận 4",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 94.0,
+        "rent_min": 16.5,
+        "rent_max": 20.0,
+        "price_min": 5.9,
+        "price_max": 8.6
+      },
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 133.0,
+        "rent_min": 20.0,
+        "rent_max": 28.0,
+        "price_min": 10.0,
+        "price_max": 14.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": false
+  },
+  {
+    "seq": 98,
+    "stt": 2,
+    "page": 49,
+    "name": "Saigon Royal Residence",
+    "address": "34–35 Bến Vân Đồn, Q.4",
+    "district": "Quận 4",
+    "count": 414,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 53.0,
+        "area_max": 88.0,
+        "rent_min": 16.0,
+        "rent_max": 30.0,
+        "price_min": 6.65,
+        "price_max": 12.76
+      },
+      {
+        "type": "3PN",
+        "area_min": 105.0,
+        "area_max": 176.0,
+        "rent_min": 31.0,
+        "rent_max": 60.0,
+        "price_min": 19.7,
+        "price_max": 29.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": false
+  },
+  {
+    "seq": 99,
+    "stt": 3,
+    "page": 49,
+    "name": "Masteri Millennium",
+    "address": "132 Bến Vân Đồn, Q.4",
+    "district": "Quận 4",
+    "count": 650,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 48.0,
+        "area_max": 55.0,
+        "rent_min": 12.0,
+        "rent_max": 19.0,
+        "price_min": 5.3,
+        "price_max": 6.0
+      },
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 74.0,
+        "rent_min": 18.0,
+        "rent_max": 24.0,
+        "price_min": 7.5,
+        "price_max": 8.7
+      },
+      {
+        "type": "3PN",
+        "area_min": 105.0,
+        "area_max": 107.0,
+        "rent_min": 28.0,
+        "rent_max": 34.0,
+        "price_min": 12.8,
+        "price_max": 12.8
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": false
+  },
+  {
+    "seq": 100,
+    "stt": 4,
+    "page": 49,
+    "name": "The Tresor",
+    "address": "39 Bến Vân Đồn, Q.4",
+    "district": "Quận 4",
+    "count": null,
+    "rooms": [
+      {
+        "type": "Studio",
+        "area_min": 32.0,
+        "area_max": 35.0,
+        "rent_min": 11.0,
+        "rent_max": 14.0,
+        "price_min": 3.35,
+        "price_max": 4.0
+      },
+      {
+        "type": "1PN",
+        "area_min": 48.0,
+        "area_max": 59.0,
+        "rent_min": 15.0,
+        "rent_max": 19.0,
+        "price_min": 5.0,
+        "price_max": 5.5
+      },
+      {
+        "type": "2PN",
+        "area_min": 59.0,
+        "area_max": 85.0,
+        "rent_min": 17.0,
+        "rent_max": 23.0,
+        "price_min": 6.9,
+        "price_max": 8.5
+      },
+      {
+        "type": "3PN",
+        "area_min": 87.0,
+        "area_max": 114.0,
+        "rent_min": 24.0,
+        "rent_max": 29.0,
+        "price_min": 10.0,
+        "price_max": 11.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": false
+  },
+  {
+    "seq": 101,
+    "stt": 5,
+    "page": 49,
+    "name": "Riva Park",
+    "address": "504 Nguyễn Tất Thành, Q.4",
+    "district": "Quận 4",
+    "count": 320,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 80.0,
+        "area_max": 95.0,
+        "rent_min": 13.0,
+        "rent_max": 18.0,
+        "price_min": 5.1,
+        "price_max": 8.3
+      },
+      {
+        "type": "3PN",
+        "area_min": 99.0,
+        "area_max": 113.0,
+        "rent_min": 18.0,
+        "rent_max": 20.0,
+        "price_min": 6.4,
+        "price_max": 9.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": false
+  },
+  {
+    "seq": 102,
+    "stt": 6,
+    "page": 49,
+    "name": "Grand Riverside",
+    "address": "278–283 Bến Vân Đồn, Q.4",
+    "district": "Quận 4",
+    "count": 240,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 70.0,
+        "area_max": 90.0,
+        "rent_min": 16.0,
+        "rent_max": 19.0,
+        "price_min": 4.3,
+        "price_max": 7.5
+      },
+      {
+        "type": "3PN",
+        "area_min": 84.0,
+        "area_max": 110.0,
+        "rent_min": 18.0,
+        "rent_max": 22.0,
+        "price_min": 5.1,
+        "price_max": 9.2
+      },
+      {
+        "type": "4PN",
+        "area_min": 120.0,
+        "area_max": 139.0,
+        "rent_min": 28.0,
+        "rent_max": 28.0,
+        "price_min": 7.3,
+        "price_max": 11.6
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": false
+  },
+  {
+    "seq": 103,
+    "stt": 7,
+    "page": 49,
+    "name": "Contrexim – Copac Square",
+    "address": "12 Tôn Đản, Q.4",
+    "district": "Quận 4",
+    "count": 288,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 117.0,
+        "rent_min": 17.0,
+        "rent_max": 23.0,
+        "price_min": 8.5,
+        "price_max": 8.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": false
+  },
+  {
+    "seq": 104,
+    "stt": 8,
+    "page": 49,
+    "name": "Galaxy 9",
+    "address": "",
+    "district": "Quận 4",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": true
+  },
+  {
+    "seq": 105,
+    "stt": 9,
+    "page": 49,
+    "name": "Nguyễn Khoái, Q.4",
+    "address": "56 Bến Vân Đồn, Q.4",
+    "district": "Quận 4",
+    "count": 500,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 75.0,
+        "rent_min": 14.0,
+        "rent_max": 16.5,
+        "price_min": 5.8,
+        "price_max": 6.3
+      },
+      {
+        "type": "3PN",
+        "area_min": 104.0,
+        "area_max": 133.0,
+        "rent_min": 20.0,
+        "rent_max": 24.0,
+        "price_min": 8.0,
+        "price_max": 8.5
+      },
+      {
+        "type": "2PN",
+        "area_min": 71.0,
+        "area_max": 79.0,
+        "rent_min": 17.0,
+        "rent_max": 20.0,
+        "price_min": 7.5,
+        "price_max": 8.2
+      },
+      {
+        "type": "3PN",
+        "area_min": 79.0,
+        "area_max": 112.0,
+        "rent_min": 18.0,
+        "rent_max": 28.0,
+        "price_min": 8.0,
+        "price_max": 10.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": false
+  },
+  {
+    "seq": 106,
+    "stt": 10,
+    "page": 49,
+    "name": "De La Sol",
+    "address": "",
+    "district": "Quận 4",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": true
+  },
+  {
+    "seq": 107,
+    "stt": 1,
+    "page": 49,
+    "name": "Tôn Thất Thuyết, Q.4",
+    "address": "151–155 Bến Vân Đồn, Q.4",
+    "district": "Quận 4",
+    "count": 870,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 60.0,
+        "area_max": 68.0,
+        "rent_min": 17.0,
+        "rent_max": 23.0,
+        "price_min": 7.8,
+        "price_max": 8.5
+      },
+      {
+        "type": "2PN",
+        "area_min": 70.0,
+        "area_max": 85.0,
+        "rent_min": 20.0,
+        "rent_max": 33.0,
+        "price_min": 8.5,
+        "price_max": 11.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 103.0,
+        "area_max": 111.0,
+        "rent_min": 30.0,
+        "rent_max": 40.0,
+        "price_min": 13.0,
+        "price_max": 16.0
+      },
+      {
+        "type": "2PN",
+        "area_min": 56.0,
+        "area_max": 75.0,
+        "rent_min": 18.0,
+        "rent_max": 25.0,
+        "price_min": 7.3,
+        "price_max": 7.8
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 110.0,
+        "rent_min": 30.0,
+        "rent_max": 35.0,
+        "price_min": 9.9,
+        "price_max": 11.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 5,
+    "district_estimated": false
+  },
+  {
+    "seq": 108,
+    "stt": 1,
+    "page": 49,
+    "name": "Tôn Thất Thuyết, Q.4",
+    "address": "360A Bến Vân Đồn, Q.4",
+    "district": "Quận 4",
+    "count": 635,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 68.0,
+        "rent_min": 9.5,
+        "rent_max": 15.0,
+        "price_min": 3.5,
+        "price_max": 4.1
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 100.0,
+        "rent_min": 14.0,
+        "rent_max": 14.0,
+        "price_min": 5.0,
+        "price_max": 7.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 118.0,
+        "rent_min": 16.0,
+        "rent_max": 20.0,
+        "price_min": 6.8,
+        "price_max": 6.8
+      },
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 86.0,
+        "rent_min": 11.0,
+        "rent_max": 15.0,
+        "price_min": 3.6,
+        "price_max": 6.4
+      },
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 109.0,
+        "rent_min": 15.0,
+        "rent_max": 20.0,
+        "price_min": 4.8,
+        "price_max": 8.1
+      },
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 80.0,
+        "rent_min": 11.0,
+        "rent_max": 15.0,
+        "price_min": 2.7,
+        "price_max": 5.7
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 123.0,
+        "rent_min": 14.0,
+        "rent_max": 18.0,
+        "price_min": 4.0,
+        "price_max": 8.8
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 99.0,
+        "rent_min": 14.0,
+        "rent_max": 16.5,
+        "price_min": 7.0,
+        "price_max": 7.0
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 100.0,
+        "area_max": 100.0
+      },
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 75.0,
+        "rent_min": 10.5,
+        "rent_max": 12.0,
+        "price_min": 4.4,
+        "price_max": 5.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 6,
+    "district_estimated": false
+  },
+  {
+    "seq": 109,
+    "stt": 2,
+    "page": 50,
+    "name": "Vĩnh Hội / 98 Khánh Hội, Q.4",
+    "address": "360C Bến Vân Đồn, Q.4",
+    "district": "Quận 4",
+    "count": 171,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 97.0,
+        "rent_min": 20.0,
+        "rent_max": 22.0,
+        "price_min": 7.0,
+        "price_max": 9.4
+      },
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 104.0,
+        "rent_min": 14.0,
+        "rent_max": 17.0,
+        "price_min": 5.8,
+        "price_max": 6.0
+      },
+      {
+        "type": "2PN",
+        "area_min": 72.0,
+        "area_max": 87.0,
+        "price_min": 16.7,
+        "price_max": 31.3
+      },
+      {
+        "type": "3PN",
+        "area_min": 97.0,
+        "area_max": 147.0,
+        "price_min": 27.0,
+        "price_max": 27.0
+      },
+      {
+        "type": "4PN",
+        "area_min": 134.0,
+        "area_max": 134.0
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 515.0,
+        "area_max": 787.0
+      },
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 80.0,
+        "rent_min": 5.0,
+        "rent_max": 13.0,
+        "price_min": 1.6,
+        "price_max": 2.2
+      },
+      {
+        "type": "1–3PN",
+        "area_min": 45.0,
+        "area_max": 110.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 6,
+    "district_estimated": false
+  },
+  {
+    "seq": 110,
+    "stt": 1,
+    "page": 68,
+    "name": "The Everrich Infinity",
+    "address": "290 An Dương Vương, Q.5",
+    "district": "Quận 5",
+    "count": null,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 35.0,
+        "area_max": 55.0,
+        "rent_min": 10.0,
+        "rent_max": 15.0,
+        "price_min": 3.3,
+        "price_max": 4.61
+      },
+      {
+        "type": "2PN",
+        "area_min": 67.0,
+        "area_max": 86.0,
+        "rent_min": 18.0,
+        "rent_max": 22.0,
+        "price_min": 7.5,
+        "price_max": 8.55
+      },
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 155.0,
+        "rent_min": 28.0,
+        "rent_max": 35.0,
+        "price_min": 10.45,
+        "price_max": 14.1
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 111,
+    "stt": 2,
+    "page": 68,
+    "name": "Hùng Vương Plaza",
+    "address": "126 Hồng Bàng, Q.5",
+    "district": "Quận 5",
+    "count": 276,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 117.0,
+        "area_max": 132.0,
+        "rent_min": 18.0,
+        "rent_max": 24.0,
+        "price_min": 6.0,
+        "price_max": 9.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 112,
+    "stt": 3,
+    "page": 68,
+    "name": "Tản Đà Court",
+    "address": "86 Tản Đà, Q.5",
+    "district": "Quận 5",
+    "count": 245,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 96.0,
+        "area_max": 120.0,
+        "rent_min": 18.0,
+        "rent_max": 20.0,
+        "price_min": 5.8,
+        "price_max": 6.25
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 219.0,
+        "area_max": 219.0,
+        "price_min": 27.0,
+        "price_max": 27.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 113,
+    "stt": 4,
+    "page": 68,
+    "name": "155 Nguyễn Chí Thanh, Q.5",
+    "address": "",
+    "district": "Quận 5",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 7,
+    "district_estimated": true
+  },
+  {
+    "seq": 114,
+    "stt": 5,
+    "page": 68,
+    "name": "Ngọc Khánh Tower",
+    "address": "21–23 Nguyễn Biểu, Q.5",
+    "district": "Quận 5",
+    "count": 132,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 115,
+    "stt": 6,
+    "page": 68,
+    "name": "Chung cư Sao Mai",
+    "address": "153–161 Lương Nhữ Học, Q.5",
+    "district": "Quận 5",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 116,
+    "stt": 7,
+    "page": 68,
+    "name": "Lakai",
+    "address": "98 Nguyễn Tri Phương / góc Nguyễn Trãi, Q.5",
+    "district": "Quận 5",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 117,
+    "stt": 8,
+    "page": 68,
+    "name": "Phúc Thịnh",
+    "address": "341 Cao Đạt, Q.5",
+    "district": "Quận 5",
+    "count": 376,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 100.0,
+        "rent_min": 12.0,
+        "rent_max": 14.0,
+        "price_min": 4.3,
+        "price_max": 6.0
+      },
+      {
+        "type": "Penthouse 4PN",
+        "area_min": 300.0,
+        "area_max": 300.0,
+        "rent_min": 35.0,
+        "rent_max": 35.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 118,
+    "stt": 9,
+    "page": 68,
+    "name": "Golden Sail / Chung cư 109 Nguyễn Biểu",
+    "address": "109 Nguyễn Biểu, Q.5",
+    "district": "Quận 5",
+    "count": 313,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 119,
+    "stt": 10,
+    "page": 68,
+    "name": "Stella Residence / Kiều by KITA",
+    "address": "927 triệuần Hưng Đạo, Q.5",
+    "district": "Quận 5",
+    "count": 82,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 128.0,
+        "area_max": 155.0,
+        "price_min": 15.8,
+        "price_max": 26.34
+      },
+      {
+        "type": "Duplex",
+        "area_min": 188.0,
+        "area_max": 250.0
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 348.0,
+        "area_max": 353.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 120,
+    "stt": 11,
+    "page": 68,
+    "name": "Tam Đức Plaza",
+    "address": "926 Võ Văn Kiệt, Q.5",
+    "district": "Quận 5",
+    "count": 320,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 94.0,
+        "area_max": 211.8
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 112.0,
+        "area_max": 178.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 121,
+    "stt": 12,
+    "page": 68,
+    "name": "The Garden Mall / Thuận Kiều Plaza",
+    "address": "190 Hồng Bàng, Q.5",
+    "district": "Quận 5",
+    "count": 648,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 122,
+    "stt": 13,
+    "page": 68,
+    "name": "Chung cư Phan Văn Trị",
+    "address": "Phan Văn Trị, Q.5",
+    "district": "Quận 5",
+    "count": null,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 52.0,
+        "area_max": 55.0,
+        "rent_min": 8.0,
+        "rent_max": 11.0,
+        "price_min": 3.05,
+        "price_max": 3.2
+      },
+      {
+        "type": "2PN",
+        "area_min": 54.0,
+        "area_max": 70.0,
+        "rent_min": 9.0,
+        "rent_max": 12.0,
+        "price_min": 3.1,
+        "price_max": 3.85
+      },
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 85.0,
+        "rent_min": 12.0,
+        "rent_max": 13.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 7,
+    "district_estimated": false
+  },
+  {
+    "seq": 123,
+    "stt": 14,
+    "page": 68,
+    "name": "Chung cư Ngô Quyền – khu Ngô Quyền, Q.5",
+    "address": "",
+    "district": "Quận 5",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 59.0,
+        "area_max": 68.0,
+        "rent_min": 9.0,
+        "rent_max": 13.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 7,
+    "district_estimated": true
+  },
+  {
+    "seq": 124,
+    "stt": 1,
+    "page": 69,
+    "name": "Remax Plaza",
+    "address": "116–118 Bãi Sậy, Q.6",
+    "district": "Quận 6",
+    "count": 192,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 120.0,
+        "rent_min": 9.5,
+        "rent_max": 16.0,
+        "price_min": 3.9,
+        "price_max": 4.2
+      },
+      {
+        "type": "4PN",
+        "area_min": 150.0,
+        "area_max": 210.0,
+        "rent_min": 10.0,
+        "rent_max": 20.0,
+        "price_min": 7.95,
+        "price_max": 8.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 8,
+    "district_estimated": false
+  },
+  {
+    "seq": 125,
+    "stt": 2,
+    "page": 69,
+    "name": "The Western Capital",
+    "address": "116 Lý Chiêu Hoàng, Q.6",
+    "district": "Quận 6",
+    "count": 1233,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 77.0,
+        "rent_min": 8.0,
+        "rent_max": 13.1,
+        "price_min": 2.5,
+        "price_max": 3.4
+      },
+      {
+        "type": "3PN",
+        "area_min": 88.0,
+        "area_max": 97.0,
+        "rent_min": 13.5,
+        "rent_max": 16.6,
+        "price_min": 3.56,
+        "price_max": 4.37
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": false
+  },
+  {
+    "seq": 126,
+    "stt": 3,
+    "page": 69,
+    "name": "Saigon Asiana",
+    "address": "336/20 Nguyễn Văn Luông, Q.6",
+    "district": "Quận 6",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 71.0,
+        "rent_min": 10.0,
+        "rent_max": 12.0,
+        "price_min": 3.5,
+        "price_max": 4.34
+      },
+      {
+        "type": "3PN",
+        "area_min": 79.0,
+        "area_max": 92.0,
+        "rent_min": 12.0,
+        "rent_max": 14.5,
+        "price_min": 4.9,
+        "price_max": 5.3
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": false
+  },
+  {
+    "seq": 127,
+    "stt": 4,
+    "page": 69,
+    "name": "Asiana Capella",
+    "address": "184 triệuần Văn Kiểu, Q.6",
+    "district": "Quận 6",
+    "count": 391,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 64.0,
+        "area_max": 75.0,
+        "rent_min": 10.0,
+        "rent_max": 13.0,
+        "price_min": 3.41,
+        "price_max": 4.12
+      },
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 83.0,
+        "rent_min": 12.0,
+        "rent_max": 14.0,
+        "price_min": 4.93,
+        "price_max": 5.14
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": false
+  },
+  {
+    "seq": 128,
+    "stt": 5,
+    "page": 69,
+    "name": "Summer Square",
+    "address": "243 Tân Hòa Đông, Q.6",
+    "district": "Quận 6",
+    "count": 256,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 63.0,
+        "area_max": 70.0,
+        "rent_min": 8.0,
+        "rent_max": 10.5,
+        "price_min": 3.1,
+        "price_max": 3.45
+      },
+      {
+        "type": "3PN",
+        "area_min": 75.0,
+        "area_max": 78.0,
+        "rent_min": 10.0,
+        "rent_max": 10.0,
+        "price_min": 3.8,
+        "price_max": 4.3
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": false
+  },
+  {
+    "seq": 129,
+    "stt": 6,
+    "page": 69,
+    "name": "Starlight Riverside",
+    "address": "241/42 Nguyễn Văn Luông, Q.6",
+    "district": "Quận 6",
+    "count": 1450,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 67.0,
+        "area_max": 76.0,
+        "rent_min": 9.0,
+        "rent_max": 13.0,
+        "price_min": 2.93,
+        "price_max": 3.09
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": false
+  },
+  {
+    "seq": 130,
+    "stt": 7,
+    "page": 69,
+    "name": "Viva Riverside",
+    "address": "1472 Võ Văn Kiệt, Q.6",
+    "district": "Quận 6",
+    "count": 567,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 95.0,
+        "rent_min": 11.5,
+        "rent_max": 14.0,
+        "price_min": 3.59,
+        "price_max": 5.55
+      },
+      {
+        "type": "3PN",
+        "area_min": 98.0,
+        "area_max": 105.0,
+        "rent_min": 14.0,
+        "rent_max": 15.0,
+        "price_min": 4.83,
+        "price_max": 5.46
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": false
+  },
+  {
+    "seq": 131,
+    "stt": 8,
+    "page": 69,
+    "name": "Lucky Palace",
+    "address": "50 Phan Văn Khỏe, Q.6",
+    "district": "Quận 6",
+    "count": 356,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 84.0,
+        "area_max": 97.0,
+        "rent_min": 13.0,
+        "rent_max": 18.0,
+        "price_min": 5.0,
+        "price_max": 5.76
+      },
+      {
+        "type": "3PN",
+        "area_min": 87.0,
+        "area_max": 133.0,
+        "rent_min": 14.0,
+        "rent_max": 20.0,
+        "price_min": 5.58,
+        "price_max": 7.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": false
+  },
+  {
+    "seq": 132,
+    "stt": 9,
+    "page": 69,
+    "name": "Him Lam Chợ Lớn – Hậu Giang, Q.6 1.488 căn",
+    "address": "",
+    "district": "Quận 6",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 97.0,
+        "area_max": 108.0,
+        "rent_min": 11.0,
+        "rent_max": 15.0,
+        "price_min": 4.9,
+        "price_max": 5.8
+      },
+      {
+        "type": "3PN",
+        "area_min": 96.0,
+        "area_max": 108.0,
+        "rent_min": 10.5,
+        "rent_max": 14.5,
+        "price_min": 5.35,
+        "price_max": 5.8
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": true
+  },
+  {
+    "seq": 133,
+    "stt": 10,
+    "page": 69,
+    "name": "An Phú Apartment – 961 Hậu Giang, Q.6",
+    "address": "",
+    "district": "Quận 6",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 84.0,
+        "area_max": 101.0,
+        "rent_min": 9.35,
+        "rent_max": 12.0,
+        "price_min": 3.8,
+        "price_max": 4.2
+      },
+      {
+        "type": "3PN",
+        "area_min": 115.0,
+        "area_max": 130.0,
+        "rent_min": 10.0,
+        "rent_max": 15.8,
+        "price_min": 5.0,
+        "price_max": 6.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": true
+  },
+  {
+    "seq": 134,
+    "stt": 11,
+    "page": 69,
+    "name": "Blue Sapphire Bình Phú – 29 Bình Phú, Q.6",
+    "address": "",
+    "district": "Quận 6",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 123.0,
+        "rent_min": 9.0,
+        "rent_max": 12.0,
+        "price_min": 3.5,
+        "price_max": 5.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": true
+  },
+  {
+    "seq": 135,
+    "stt": 12,
+    "page": 69,
+    "name": "Tân Thịnh Lợi – D37A KDC Phú Lâm / Bà Hom, Q.6221 căn",
+    "address": "",
+    "district": "Quận 6",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 75.0,
+        "area_max": 80.0,
+        "rent_min": 7.0,
+        "rent_max": 8.0,
+        "price_min": 2.7,
+        "price_max": 2.7
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 8,
+    "district_estimated": true
+  },
+  {
+    "seq": 136,
+    "stt": 1,
+    "page": 70,
+    "name": "Chung cư 675 Nguyễn Kiệm",
+    "address": "675 Nguyễn Kiệm, Phú Nhuận",
+    "district": "Phú Nhuận",
+    "count": null,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 20.0,
+        "area_max": 20.0,
+        "rent_min": 6.0,
+        "rent_max": 6.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 9,
+    "district_estimated": false
+  },
+  {
+    "seq": 137,
+    "stt": 2,
+    "page": 70,
+    "name": "Orchard Garden",
+    "address": "128 Hồng Hà, Phú Nhuận",
+    "district": "Phú Nhuận",
+    "count": 181,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 55.0,
+        "area_max": 75.0,
+        "rent_min": 16.0,
+        "rent_max": 20.0,
+        "price_min": 6.8,
+        "price_max": 7.1
+      },
+      {
+        "type": "3PN",
+        "area_min": 96.0,
+        "area_max": 100.0,
+        "rent_min": 20.0,
+        "rent_max": 20.0,
+        "price_min": 7.28,
+        "price_max": 9.76
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 9,
+    "district_estimated": false
+  },
+  {
+    "seq": 138,
+    "stt": 3,
+    "page": 70,
+    "name": "Garden Gate",
+    "address": "8 Hoàng Minh Giám, Phú Nhuận",
+    "district": "Phú Nhuận",
+    "count": 272,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 74.0,
+        "area_max": 87.0,
+        "rent_min": 15.0,
+        "rent_max": 19.0,
+        "price_min": 6.52,
+        "price_max": 7.93
+      },
+      {
+        "type": "3PN",
+        "area_min": 101.0,
+        "area_max": 118.0,
+        "rent_min": 20.0,
+        "rent_max": 23.0,
+        "price_min": 7.38,
+        "price_max": 10.78
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 9,
+    "district_estimated": false
+  },
+  {
+    "seq": 139,
+    "stt": 4,
+    "page": 70,
+    "name": "Orchard Parkview",
+    "address": "130–132 Hồng Hà, Phú Nhuận",
+    "district": "Phú Nhuận",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 53.0,
+        "area_max": 88.0,
+        "rent_min": 15.0,
+        "rent_max": 20.0,
+        "price_min": 6.5,
+        "price_max": 9.63
+      },
+      {
+        "type": "3PN",
+        "area_min": 83.0,
+        "area_max": 109.0,
+        "rent_min": 18.0,
+        "rent_max": 24.0,
+        "price_min": 7.02,
+        "price_max": 9.29
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 9,
+    "district_estimated": false
+  },
+  {
+    "seq": 140,
+    "stt": 5,
+    "page": 70,
+    "name": "Golden Mansion",
+    "address": "119 Phổ Quang, Phú Nhuận",
+    "district": "Phú Nhuận",
+    "count": 709,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 50.0,
+        "area_max": 75.0,
+        "rent_min": 14.5,
+        "rent_max": 18.0,
+        "price_min": 4.5,
+        "price_max": 6.1
+      },
+      {
+        "type": "3PN",
+        "area_min": 85.5,
+        "area_max": 109.0,
+        "rent_min": 19.0,
+        "rent_max": 26.5,
+        "price_min": 7.0,
+        "price_max": 8.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 9,
+    "district_estimated": false
+  },
+  {
+    "seq": 141,
+    "stt": 6,
+    "page": 70,
+    "name": "Botanic Towers",
+    "address": "312 Nguyễn Thượng Hiền, Phú Nhuận",
+    "district": "Phú Nhuận",
+    "count": 268,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 110.0,
+        "area_max": 150.0,
+        "rent_min": 17.0,
+        "rent_max": 21.0,
+        "price_min": 7.32,
+        "price_max": 7.5
+      },
+      {
+        "type": "4PN",
+        "area_min": 170.0,
+        "area_max": 223.0,
+        "rent_min": 22.0,
+        "rent_max": 28.0,
+        "price_min": 8.0,
+        "price_max": 16.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 9,
+    "district_estimated": false
+  },
+  {
+    "seq": 142,
+    "stt": 7,
+    "page": 70,
+    "name": "Newton Residence",
+    "address": "38 triệuương Quốc Dung, Phú Nhuận",
+    "district": "Phú Nhuận",
+    "count": 161,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 70.0,
+        "area_max": 76.0,
+        "rent_min": 16.5,
+        "rent_max": 22.0,
+        "price_min": 6.0,
+        "price_max": 7.1
+      },
+      {
+        "type": "3PN",
+        "area_min": 95.0,
+        "area_max": 100.0,
+        "rent_min": 20.0,
+        "rent_max": 26.0,
+        "price_min": 6.8,
+        "price_max": 8.78
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 9,
+    "district_estimated": false
+  },
+  {
+    "seq": 143,
+    "stt": 8,
+    "page": 70,
+    "name": "Kingston Residence",
+    "address": "",
+    "district": "Phú Nhuận",
+    "count": 285,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 85.0,
+        "rent_min": 16.0,
+        "rent_max": 22.0,
+        "price_min": 6.87,
+        "price_max": 7.67
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 125.0,
+        "rent_min": 22.0,
+        "rent_max": 29.0,
+        "price_min": 8.44,
+        "price_max": 14.6
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 9,
+    "district_estimated": true
+  },
+  {
+    "seq": 144,
+    "stt": 9,
+    "page": 70,
+    "name": "The Prince Residence",
+    "address": "7–19–21 Nguyễn Văn Trỗi, Phú Nhuận",
+    "district": "Phú Nhuận",
+    "count": 277,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 85.0,
+        "rent_min": 17.0,
+        "rent_max": 21.0,
+        "price_min": 6.44,
+        "price_max": 7.7
+      },
+      {
+        "type": "3PN",
+        "area_min": 95.0,
+        "area_max": 140.0,
+        "rent_min": 20.0,
+        "rent_max": 28.0,
+        "price_min": 8.6,
+        "price_max": 15.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 9,
+    "district_estimated": false
+  },
+  {
+    "seq": 145,
+    "stt": 10,
+    "page": 70,
+    "name": "Satra – Eximland",
+    "address": "163 Phan Đăng Lưu, Phú Nhuận",
+    "district": "Phú Nhuận",
+    "count": 120,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 110.0,
+        "area_max": 140.0,
+        "rent_min": 17.0,
+        "rent_max": 20.0,
+        "price_min": 7.0,
+        "price_max": 10.5
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 170.0,
+        "area_max": 220.0,
+        "rent_min": 25.0,
+        "rent_max": 25.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 9,
+    "district_estimated": false
+  },
+  {
+    "seq": 146,
+    "stt": 1,
+    "page": 71,
+    "name": "Resco An Hội 3",
+    "address": "Đường 57, khu Phạm Văn Chiêu, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 288,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 72.4,
+        "area_max": 76.6,
+        "rent_min": 6.6,
+        "rent_max": 9.0,
+        "price_min": 1.92,
+        "price_max": 2.29
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 147,
+    "stt": 2,
+    "page": 71,
+    "name": "M-One Gia Định",
+    "address": "12 Nguyễn Bỉnh Khiêm, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 160,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 80.0,
+        "rent_min": 13.0,
+        "rent_max": 14.0,
+        "price_min": 5.0,
+        "price_max": 5.5
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 90.0,
+        "rent_min": 16.0,
+        "rent_max": 16.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 148,
+    "stt": 3,
+    "page": 71,
+    "name": "Osimi Tower",
+    "address": "Lê Đức Thọ / khu Dương Quảng Hàm, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 384,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 53.0,
+        "area_max": 76.0,
+        "rent_min": 10.0,
+        "rent_max": 10.5,
+        "price_min": 1.75,
+        "price_max": 3.69
+      },
+      {
+        "type": "3PN",
+        "area_min": 75.0,
+        "area_max": 75.0,
+        "rent_min": 12.0,
+        "rent_max": 12.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 149,
+    "stt": 4,
+    "page": 71,
+    "name": "Gia Phát Apartment",
+    "address": "435 Lê Đức Thọ, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 84,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 75.0,
+        "rent_min": 9.0,
+        "rent_max": 11.0,
+        "price_min": 3.5,
+        "price_max": 4.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 150,
+    "stt": 5,
+    "page": 71,
+    "name": "Samland Airport",
+    "address": "86 Nguyên Hồng, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 65,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 89.0,
+        "area_max": 89.0,
+        "rent_min": 16.5,
+        "rent_max": 16.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 151,
+    "stt": 6,
+    "page": 71,
+    "name": "Chung cư 26 Nguyễn Thượng Hiền",
+    "address": "26 Nguyễn Thượng Hiền, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 264,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 50.0,
+        "area_max": 63.3,
+        "rent_min": 7.5,
+        "rent_max": 11.0,
+        "price_min": 2.0,
+        "price_max": 2.81
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 152,
+    "stt": 7,
+    "page": 71,
+    "name": "Z751 Hà Đô",
+    "address": "Phan Văn Trị, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 203,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 105.0,
+        "rent_min": 14.0,
+        "rent_max": 14.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 153,
+    "stt": 8,
+    "page": 71,
+    "name": "8X Thái An",
+    "address": "Phan Huy Ích, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 200,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 54.0,
+        "area_max": 64.0,
+        "rent_min": 5.5,
+        "rent_max": 7.5,
+        "price_min": 1.7,
+        "price_max": 2.6
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 154,
+    "stt": 9,
+    "page": 71,
+    "name": "Dream Home Luxury",
+    "address": "Đường số 59, P.14 cũ, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 540,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 75.0,
+        "area_max": 92.0,
+        "rent_min": 9.5,
+        "rent_max": 10.0,
+        "price_min": 2.65,
+        "price_max": 2.85
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 155,
+    "stt": 10,
+    "page": 71,
+    "name": "Hà Đô Green View",
+    "address": "Nguyễn Văn Công, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 408,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 123.0,
+        "rent_min": 14.5,
+        "rent_max": 15.5,
+        "price_min": 6.12,
+        "price_max": 7.21
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 156,
+    "stt": 11,
+    "page": 71,
+    "name": "Phú Gia Hưng Apartment",
+    "address": "Lê Đức Thọ, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 234,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 58.6,
+        "area_max": 75.0,
+        "price_min": 3.19,
+        "price_max": 3.6
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 157,
+    "stt": 12,
+    "page": 71,
+    "name": "Khang Gia Gò Vấp",
+    "address": "Đường số 45, P.14 cũ, Gò Vấp",
+    "district": "Gò Vấp",
+    "count": 1052,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 58.5,
+        "area_max": 84.0,
+        "rent_min": 7.0,
+        "rent_max": 8.0,
+        "price_min": 2.8,
+        "price_max": 3.29
+      },
+      {
+        "type": "3PN",
+        "area_min": 85.0,
+        "area_max": 123.0,
+        "rent_min": 9.0,
+        "rent_max": 10.5,
+        "price_min": 2.53,
+        "price_max": 2.53
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 10,
+    "district_estimated": false
+  },
+  {
+    "seq": 158,
+    "stt": 1,
+    "page": 72,
+    "name": "Sun Village Apartment",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 105.0,
+        "area_max": 110.0,
+        "rent_min": 16.0,
+        "rent_max": 20.0,
+        "price_min": 7.0,
+        "price_max": 7.0
+      },
+      {
+        "type": "Căn lớn",
+        "area_min": 185.0,
+        "area_max": 185.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "hồ bơi",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 159,
+    "stt": 2,
+    "page": 72,
+    "name": "Saigon Pentaview",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 160,
+    "stt": 3,
+    "page": 72,
+    "name": "Ascent Plaza",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 70.0,
+        "area_max": 90.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 110.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 161,
+    "stt": 4,
+    "page": 72,
+    "name": "Chung cư Cửu Long",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 95.0,
+        "area_max": 95.0,
+        "rent_min": 12.0,
+        "rent_max": 15.0,
+        "price_min": 4.5,
+        "price_max": 4.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 162,
+    "stt": 5,
+    "page": 72,
+    "name": "Central Home Saigon",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 163,
+    "stt": 6,
+    "page": 72,
+    "name": "Sunwah Pearl",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 87.0,
+        "area_max": 112.0,
+        "rent_min": 28.0,
+        "rent_max": 40.0,
+        "price_min": 14.3,
+        "price_max": 28.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 122.0,
+        "area_max": 133.0,
+        "rent_min": 35.0,
+        "rent_max": 50.0,
+        "price_min": 16.55,
+        "price_max": 34.33
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "hồ bơi",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 164,
+    "stt": 7,
+    "page": 72,
+    "name": "Riverside 90",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 85.0,
+        "rent_min": 12.0,
+        "rent_max": 17.0,
+        "price_min": 3.89,
+        "price_max": 5.8
+      },
+      {
+        "type": "3PN",
+        "rent_min": 17.0,
+        "rent_max": 22.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 165,
+    "stt": 8,
+    "page": 72,
+    "name": "The Manor",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 70.0,
+        "area_max": 100.0,
+        "rent_min": 15.2,
+        "rent_max": 25.0,
+        "price_min": 7.0,
+        "price_max": 11.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 150.0,
+        "rent_min": 19.3,
+        "rent_max": 35.4,
+        "price_min": 10.0,
+        "price_max": 17.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 166,
+    "stt": 9,
+    "page": 72,
+    "name": "Vinhomes Central Park",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 68.0,
+        "area_max": 90.0,
+        "rent_min": 19.0,
+        "rent_max": 30.0,
+        "price_min": 3.95,
+        "price_max": 3.95
+      },
+      {
+        "type": "3PN",
+        "area_min": 94.0,
+        "area_max": 135.0,
+        "rent_min": 29.0,
+        "rent_max": 50.0,
+        "price_min": 6.8,
+        "price_max": 6.8
+      },
+      {
+        "type": "4PN",
+        "area_min": 140.0,
+        "area_max": 187.0,
+        "rent_min": 48.0,
+        "rent_max": 80.0,
+        "price_min": 9.8,
+        "price_max": 9.8
+      },
+      {
+        "type": "Penthouse",
+        "area_min": 200.0,
+        "area_max": 405.0,
+        "rent_min": 100.0,
+        "rent_max": 100.0,
+        "price_min": 20.0,
+        "price_max": 20.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 167,
+    "stt": 10,
+    "page": 72,
+    "name": "Cantavil Hoàn Cầu",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 120.0,
+        "area_max": 154.0,
+        "rent_min": 23.0,
+        "rent_max": 27.0,
+        "price_min": 9.0,
+        "price_max": 14.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 168,
+    "stt": 11,
+    "page": 72,
+    "name": "Saigon Pearl",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 84.0,
+        "area_max": 95.0,
+        "rent_min": 22.0,
+        "rent_max": 22.0,
+        "price_min": 5.5,
+        "price_max": 7.5
+      },
+      {
+        "type": "3PN",
+        "area_min": 99.0,
+        "area_max": 160.0,
+        "rent_min": 30.0,
+        "rent_max": 30.0,
+        "price_min": 8.5,
+        "price_max": 12.5
+      },
+      {
+        "type": "4PN",
+        "area_min": 143.0,
+        "area_max": 205.0,
+        "rent_min": 50.0,
+        "rent_max": 50.0,
+        "price_min": 14.5,
+        "price_max": 24.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 169,
+    "stt": 12,
+    "page": 72,
+    "name": "Wilton Tower",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 75.0,
+        "rent_min": 14.0,
+        "rent_max": 21.3,
+        "price_min": 4.0,
+        "price_max": 7.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 100.0,
+        "rent_min": 20.3,
+        "rent_max": 23.0,
+        "price_min": 6.0,
+        "price_max": 10.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 170,
+    "stt": 13,
+    "page": 72,
+    "name": "GreenField 686",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 85.0,
+        "area_max": 110.0,
+        "rent_min": 13.0,
+        "rent_max": 16.0,
+        "price_min": 5.0,
+        "price_max": 7.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 171,
+    "stt": 14,
+    "page": 72,
+    "name": "Chung cư Phú Đạt",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 82.0,
+        "area_max": 106.0,
+        "rent_min": 11.5,
+        "rent_max": 15.5,
+        "price_min": 4.5,
+        "price_max": 6.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 172,
+    "stt": 15,
+    "page": 72,
+    "name": "Park View Residence",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 67.0,
+        "area_max": 93.0,
+        "rent_min": 22.0,
+        "rent_max": 28.0,
+        "price_min": 5.8,
+        "price_max": 8.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 120.0,
+        "area_max": 145.0,
+        "rent_min": 30.0,
+        "rent_max": 40.0,
+        "price_min": 9.0,
+        "price_max": 12.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 173,
+    "stt": 16,
+    "page": 72,
+    "name": "Pearl Plaza",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 87.0,
+        "area_max": 105.0,
+        "rent_min": 20.0,
+        "rent_max": 26.0,
+        "price_min": 8.5,
+        "price_max": 10.38
+      },
+      {
+        "type": "3PN",
+        "area_min": 120.0,
+        "area_max": 120.0,
+        "rent_min": 30.0,
+        "rent_max": 50.0,
+        "price_min": 12.1,
+        "price_max": 23.21
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 174,
+    "stt": 17,
+    "page": 72,
+    "name": "Saigonland Apartment",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 85.0,
+        "area_max": 89.0,
+        "rent_min": 15.0,
+        "rent_max": 15.0,
+        "price_min": 5.6,
+        "price_max": 6.2
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 175,
+    "stt": 18,
+    "page": 73,
+    "name": "La Bonita",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 176,
+    "stt": 19,
+    "page": 73,
+    "name": "SamLand Riverside",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 60.0,
+        "area_max": 75.0
+      },
+      {
+        "type": "3PN",
+        "area_min": 91.0,
+        "area_max": 91.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 177,
+    "stt": 20,
+    "page": 73,
+    "name": "SamLand Riverview",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 178,
+    "stt": 21,
+    "page": 73,
+    "name": "Soho Riverview",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 100.0,
+        "rent_min": 12.0,
+        "rent_max": 15.0,
+        "price_min": 4.0,
+        "price_max": 6.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 179,
+    "stt": 22,
+    "page": 73,
+    "name": "The Morning Star Plaza",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 120.0,
+        "rent_min": 15.0,
+        "rent_max": 15.9,
+        "price_min": 5.55,
+        "price_max": 6.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 180,
+    "stt": 23,
+    "page": 73,
+    "name": "SaigonRes Plaza",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 82.0,
+        "area_max": 85.0,
+        "rent_min": 16.0,
+        "rent_max": 17.0,
+        "price_min": 5.2,
+        "price_max": 5.2
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 181,
+    "stt": 24,
+    "page": 73,
+    "name": "Richmond City",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 65.6,
+        "area_max": 75.0,
+        "rent_min": 12.0,
+        "rent_max": 15.0,
+        "price_min": 4.47,
+        "price_max": 5.22
+      },
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 86.0,
+        "rent_min": 15.0,
+        "rent_max": 18.0,
+        "price_min": 6.13,
+        "price_max": 6.58
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 182,
+    "stt": 25,
+    "page": 73,
+    "name": "The Hyco4 Tower",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 90.0,
+        "rent_min": 12.0,
+        "rent_max": 15.0,
+        "price_min": 4.29,
+        "price_max": 6.64
+      },
+      {
+        "type": "3PN",
+        "rent_min": 15.0,
+        "rent_max": 18.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe",
+      "văn phòng"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 183,
+    "stt": 26,
+    "page": 73,
+    "name": "B1 triệuường Sa – Trường Sa 352",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 50.0,
+        "area_max": 70.0,
+        "rent_min": 11.0,
+        "rent_max": 15.5,
+        "price_min": 3.85,
+        "price_max": 5.01
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 184,
+    "stt": 27,
+    "page": 73,
+    "name": "SGC Nguyễn Cửu Vân",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 90.0,
+        "rent_min": 18.0,
+        "rent_max": 18.0,
+        "price_min": 6.5,
+        "price_max": 7.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 185,
+    "stt": 28,
+    "page": 73,
+    "name": "Chung cư Mỹ Đức",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 110.0,
+        "rent_min": 13.0,
+        "rent_max": 17.0,
+        "price_min": 5.5,
+        "price_max": 7.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 186,
+    "stt": 29,
+    "page": 73,
+    "name": "City Garden",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 104.0,
+        "area_max": 117.0,
+        "rent_min": 35.0,
+        "rent_max": 45.0,
+        "price_min": 10.5,
+        "price_max": 15.38
+      },
+      {
+        "type": "3PN",
+        "area_min": 137.0,
+        "area_max": 160.0,
+        "rent_min": 55.0,
+        "rent_max": 73.0,
+        "price_min": 16.38,
+        "price_max": 19.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 187,
+    "stt": 30,
+    "page": 73,
+    "name": "Chung cư Miếu Nổi",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 80.0,
+        "rent_min": 14.0,
+        "rent_max": 17.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 188,
+    "stt": 31,
+    "page": 73,
+    "name": "Chung cư Mỹ Phước",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "2PN",
+        "area_min": 65.0,
+        "area_max": 85.0,
+        "rent_min": 11.0,
+        "rent_max": 14.0,
+        "price_min": 2.96,
+        "price_max": 4.53
+      },
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 100.0,
+        "rent_min": 15.0,
+        "rent_max": 18.0,
+        "price_min": 6.19,
+        "price_max": 6.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 189,
+    "stt": 32,
+    "page": 73,
+    "name": "Chung cư 1050 Chu Văn An",
+    "address": "",
+    "district": "",
+    "count": 1050,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 80.0,
+        "area_max": 90.0,
+        "rent_min": 11.0,
+        "rent_max": 13.0,
+        "price_min": 4.0,
+        "price_max": 5.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 190,
+    "stt": 33,
+    "page": 73,
+    "name": "Đất Phương Nam",
+    "address": "",
+    "district": "",
+    "count": 350,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 120.0,
+        "area_max": 141.0,
+        "rent_min": 15.0,
+        "rent_max": 18.0,
+        "price_min": 6.9,
+        "price_max": 6.9
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 191,
+    "stt": 34,
+    "page": 73,
+    "name": "Chung cư Phạm Viết Chánh",
+    "address": "",
+    "district": "",
+    "count": null,
+    "rooms": [
+      {
+        "type": "1PN",
+        "area_min": 56.0,
+        "area_max": 56.0,
+        "rent_min": 10.0,
+        "rent_max": 12.0,
+        "price_min": 3.65,
+        "price_max": 3.65
+      },
+      {
+        "type": "2PN",
+        "area_min": 66.0,
+        "area_max": 70.0,
+        "rent_min": 12.0,
+        "rent_max": 15.0,
+        "price_min": 3.9,
+        "price_max": 3.9
+      },
+      {
+        "type": "3PN",
+        "area_min": 100.0,
+        "area_max": 100.0,
+        "rent_min": 15.0,
+        "rent_max": 18.0,
+        "price_min": 8.5,
+        "price_max": 8.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 192,
+    "stt": 35,
+    "page": 73,
+    "name": "Chung cư Nguyễn Ngọc Phương",
+    "address": "",
+    "district": "",
+    "count": 170,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 100.0,
+        "rent_min": 16.0,
+        "rent_max": 18.0,
+        "price_min": 7.72,
+        "price_max": 8.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 193,
+    "stt": 36,
+    "page": 73,
+    "name": "Tecco Central Home",
+    "address": "",
+    "district": "",
+    "count": 105,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 90.0,
+        "area_max": 107.0,
+        "rent_min": 16.0,
+        "rent_max": 19.0,
+        "price_min": 5.5,
+        "price_max": 7.0
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  },
+  {
+    "seq": 194,
+    "stt": 37,
+    "page": 73,
+    "name": "Thanh Đa View",
+    "address": "",
+    "district": "",
+    "count": 132,
+    "rooms": [
+      {
+        "type": "3PN",
+        "area_min": 130.0,
+        "area_max": 150.0,
+        "rent_min": 22.0,
+        "rent_max": 28.0,
+        "price_min": 7.0,
+        "price_max": 8.5
+      }
+    ],
+    "amenities": [
+      "an ninh 24/7",
+      "gym",
+      "hầm xe",
+      "sân để xe"
+    ],
+    "group": 11,
+    "district_estimated": false
+  }
+]

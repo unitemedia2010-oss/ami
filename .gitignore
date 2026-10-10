@@ -1,0 +1,57 @@
+# =============================================================================
+#  .gitignore — KHÔNG BAO GIỜ commit bí mật hay dữ liệu cào
+#
+#  Bài học từ lần chuẩn bị đầu tiên: thư mục này có 171 MB dữ liệu bất
+#  động sản cào từ trang khác. Git KHÔNG giới hạn kích thước repo, nhưng
+#  push 171 MB lên GitHub rất chậm và làm mọi lần clone về sau nặng nề.
+#  Dữ liệu đó được sinh lại được bằng script, không cần lưu trong git.
+# =============================================================================
+
+# ---- bí mật --------------------------------------------------------------
+.env
+.env.local
+.env*.local
+.dev.vars
+*.pem
+*.key
+
+# ---- build ---------------------------------------------------------------
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+
+# ---- dữ liệu bất động sản cào từ nguồn khác ----------------------------
+# KHÔNG đưa lên Git: dữ liệu của bên thứ ba, dung lượng lớn, có thể kéo
+# dài hạn về sau.
+*.json
+!package.json
+!package-lock.json
+!tools/projects.json
+# Dữ liệu tĩnh mà trang GitHub Pages đọc — BẮT BUỘC phải commit.
+# Không có nó thì trang deploy ra trắng trơn (xem tools/export_static.mjs).
+!web/public/data/
+!web/public/data/*.json
+*.csv
+*.xlsx
+*.xls
+raw/
+logs/
+*.log
+
+# ---- dự án khác đang nằm chung thư mục ---------------------------------
+JD_UNITEGROUP/
+
+# ---- file nhạy cảm từng lưu nhầm ---------------------------------------
+.token
+cookies.txt
+*-cookies.txt
+*-crawled*
+scrape-full.log
+
+# ---- hệ điều hành / IDE -------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
