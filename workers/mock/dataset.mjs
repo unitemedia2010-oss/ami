@@ -13,12 +13,22 @@
  *    Toạ độ thật lấy từ Google Maps, nhập trong trang quản trị.
  * ============================================================================= */
 
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SRC = join(HERE, '../../tools/projects.json');
+
+/**
+ * Toạ độ thật do tools/geocode.mjs sinh ra.
+ * Thiếu file nghĩa là chưa chạy geocode — khi đó mọi dự án rơi về tâm quận
+ * và mọi marker mang cờ lat_approximate, giao diện hiển thị cảnh báo.
+ */
+const COORD_FILE = join(HERE, '../../tools/projects-coords.json');
+const COORDS = existsSync(COORD_FILE)
+  ? JSON.parse(readFileSync(COORD_FILE, 'utf8'))
+  : {};
 
 /* ------------------------------------------------------------------ tiện ích */
 export const slugify = (s) =>
@@ -109,10 +119,17 @@ export function buildDataset() {
     if (bySlug.has(slug)) continue;
     bySlug.add(slug);
 
+    const coord = COORDS[p.name.trim()] || null;
+
     const hue = hueOf(p.name);
+
+    /* Toạ độ: ưu tiên vị trí thật đã định vị từ Nominatim.
+       Chỉ khi không tìm được mới rơi về tâm quận — và khi đó BẮT BUỘC
+       giữ cờ lat_approximate để giao diện nói thật với người xem. */
+    const th = coord?.ok ? coord : null;
     const geo = DISTRICT_GEO[p.district];
-    const lat = geo ? +(geo[0] + between(-0.012, 0.012)).toFixed(6) : null;
-    const lng = geo ? +(geo[1] + between(-0.012, 0.012)).toFixed(6) : null;
+    const lat = th ? th.lat : geo ? +(geo[0] + between(-0.012, 0.012)).toFixed(6) : null;
+    const lng = th ? th.lng : geo ? +(geo[1] + between(-0.012, 0.012)).toFixed(6) : null;
 
     const project = {
       id: `prj-${++hid}`,
@@ -127,7 +144,12 @@ export function buildDataset() {
       hue,                                   // client tự vẽ ảnh từ hue + tên
       lat,
       lng,
-      lat_approximate: lat != null,
+      /** false = đã định vị thật; true = mới đặt ở tâm quận cho có */
+      lat_approximate: th == null,
+      /** 'ten+quan' | 'dia-chi' | 'ten' | null — nguồn đã dùng để định vị */
+      geo_source: th?.nguon ?? null,
+      /** điểm khớp 0–200; dưới 55 đã bị loại nên mọi ca nhận đều khá */
+      geo_score: th?.diem ?? null,
       is_published: true,
       is_verified: !p.district_estimated,
     };
@@ -186,6 +208,7 @@ export function buildDataset() {
           project_lat: lat,
           project_lng: lng,
           project_lat_approximate: project.lat_approximate,
+          project_geo_source: project.geo_source,
           tower_name: `Toà ${String.fromCharCode(65 + Math.floor(rnd() * 8))}${1 + Math.floor(rnd() * 9)}`,
           ward_id: null,
           ward_name: null,
@@ -216,6 +239,8 @@ export function buildDataset() {
       id: x.id, name: x.name, lat: x.lat, lng: x.lng,
       address: x.address, district_name: x.district_name,
       approximate: x.lat_approximate, listings: count.get(x.id) || 0,
+      /** nguồn định vị để hiển thị "đã đối chiếu OSM" hay "tâm quận" */
+      geo_source: x.geo_source,
     }));
 
   return { districts, projects, listings, mapProjects };

@@ -13,6 +13,8 @@ export default function MapPage() {
   const [district, setDistrict] = useState('');
   const [q, setQ] = useState('');
   const [onlyWithListings, setOnlyWithListings] = useState(false);
+  /** mặc định CHỈ hiện dự án đã định vị thật — marker tâm quận gây hiểu nhầm */
+  const [onlyVerified, setOnlyVerified] = useState(true);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState('');
   const [picked, setPicked] = useState<MapProject | null>(null);
@@ -25,10 +27,13 @@ export default function MapPage() {
       .finally(() => setLoading(false));
   }, []);
 
+  const soDaXacMinh = all.filter((p) => !p.approximate).length;
+
   // lọc ở client cho tức thì, không gọi lại API mỗi lần gõ
   const rows = useMemo(() => {
     const kw = q.trim().toLowerCase();
     return all.filter((p) => {
+      if (onlyVerified && p.approximate) return false;
       if (onlyWithListings && p.listings === 0) return false;
       if (district && p.district_name !== units.find((d) => String(d.id) === district)?.name_new) {
         return false;
@@ -37,7 +42,7 @@ export default function MapPage() {
         && !(p.address || '').toLowerCase().includes(kw)) return false;
       return true;
     });
-  }, [all, q, district, onlyWithListings, units]);
+  }, [all, q, district, onlyWithListings, onlyVerified, units]);
 
   const points: MapPoint[] = rows.map((p) => ({
     id: p.id,
@@ -57,10 +62,19 @@ export default function MapPage() {
         sub="Xem các dự án chung cư theo vị trí trên bản đồ TP.HCM"
       />
 
-      {err && <div className="mb-5"><Note tone="danger" title="Không tải được bản đồ">{err}</Note></div>}
+      <div className="mb-5 space-y-2">
+        {err && <Note tone="danger" title="Không tải được bản đồ">{err}</Note>}
+        {!err && all.length > 0 && (
+          <p className="text-[13px] text-coal-500">
+            <b className="text-flame-700">{soDaXacMinh}</b> / {all.length} dự án đã được định vị
+            đúng vị trí thật (đối chiếu OpenStreetMap). Phần còn lại mới đặt tạm ở
+            tâm quận nên không hiện mặc định — bỏ chọn ô trên để xem.
+          </p>
+        )}
+      </div>
 
       {/* -------------------------------------------------------------- lọc */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
         <div>
           <label className="field-label" htmlFor="mp-q">Tìm dự án</label>
           <input id="mp-q" className="field" value={q}
@@ -78,6 +92,15 @@ export default function MapPage() {
         </div>
 
         <label className="flex items-end gap-2.5 pb-3 cursor-pointer select-none">
+          <input type="checkbox" checked={onlyVerified}
+                 onChange={(e) => setOnlyVerified(e.target.checked)}
+                 className="w-4 h-4 accent-amber-500" />
+          <span className="text-[13px] font-semibold text-coal-700">
+            Chỉ hiện vị trí đã định vị
+          </span>
+        </label>
+
+        <label className="flex items-end gap-2.5 pb-3 cursor-pointer select-none">
           <input type="checkbox" checked={onlyWithListings}
                  onChange={(e) => setOnlyWithListings(e.target.checked)}
                  className="w-4 h-4 accent-amber-500" />
@@ -90,9 +113,9 @@ export default function MapPage() {
           <p className="text-[13px] text-coal-500">
             <b className="text-flame-700">{rows.length}</b> dự án
           </p>
-          {(q || district || onlyWithListings) && (
+          {(q || district || onlyWithListings || !onlyVerified) && (
             <button
-              onClick={() => { setQ(''); setDistrict(''); setOnlyWithListings(false); }}
+              onClick={() => { setQ(''); setDistrict(''); setOnlyWithListings(false); setOnlyVerified(true); }}
               className="ml-auto text-[12.5px] font-bold text-flame-600 hover:underline"
             >
               Xoá lọc
