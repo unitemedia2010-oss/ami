@@ -25,14 +25,22 @@ dist/
 # ---- dữ liệu bất động sản cào từ nguồn khác ----------------------------
 # KHÔNG đưa lên Git: dữ liệu của bên thứ ba, dung lượng lớn, có thể kéo
 # dài hạn về sau.
-*.json
-!package.json
-!package-lock.json
-!tools/projects.json
-# Dữ liệu tĩnh mà trang GitHub Pages đọc — BẮT BUỘC phải commit.
-# Không có nó thì trang deploy ra trắng trơn (xem tools/export_static.mjs).
-!web/public/data/
-!web/public/data/*.json
+#
+# ⚠ KHÔNG dùng `*.json` để chặn. Lần trước đã dùng, và nó nuốt luôn
+#   web/tsconfig.json — file khai báo alias `@/`. Bản clone từ GitHub build
+#   fail sau 7 giây với hàng loạt:
+#       Module not found: Can't resolve '@/components/ui'
+#   Mà trên máy vẫn build bình thường vì file có sẵn. Nếu chặn theo mẫu
+#   rộng, mọi file cấu hình .json sau này cũng sẽ biến mất lặng lẽ.
+#   Chặn ĐÚNG TỪNG FILE là an toàn hơn nhiều.
+/all-enriched.json
+/all-listings.json
+/all-merged.json
+/pass-gia-asc.json
+/pass-gia-desc.json
+/thu-thiem.json
+/thu-thiem-can-ho.json
+/thu-thiem.csv
 *.csv
 *.xlsx
 *.xls

@@ -52,12 +52,18 @@ jobs:
         run: npm run build
 
       - name: Kiểm tra bản build
-        # Phòng ngừa: dữ liệu tĩnh bị .gitignore loài mất, hoặc tiền tố
-        # /ami rơi khỏi bundle → deploy ra trang trắng mà không có lỗi build.
+        # Phòng ngừa những lỗi KHÔNG báo lỗi build mà chỉ lộ ra khi deploy:
+        #   • dữ liệu tĩnh bị .gitignore loài mất → trang trắng
+        #   • thiếu file cấu hình .json → "Can't resolve '@/components/ui'"
+        #   • quên tiền tố /ami → HTML mở được nhưng mọi ảnh 404
+        #   • lộ cột PII
         run: |
           set -e
-          if [ ! -f web/out/data/listings.json ]; then
-            echo "::error::Thiếu web/public/data/listings.json — chạy: node tools/export_static.mjs"
+          for f in web/tsconfig.json web/package-lock.json web/public/data/listings.json; do
+            [ -f "$f" ] || { echo "::error::Thiếu $f — kiểm tra .gitignore"; exit 1; }
+          done
+          if ! grep -q 'paths' web/tsconfig.json; then
+            echo "::error::web/tsconfig.json thiếu khai báo alias @/"
             exit 1
           fi
           if ! grep -q '/ami/_next' web/out/index.html; then
@@ -68,7 +74,7 @@ jobs:
             echo "::error::Cột PII (address_line) lọt vào bản build — DỪNG lại"
             exit 1
           fi
-          echo "OK: dữ liệu tĩnh, tiền tố /ami, không lộ cột PII"
+          echo "OK: cấu hình, dữ liệu tĩnh, tiền tố /ami, không lộ cột PII"
 
       - uses: actions/upload-pages-artifact@v3
         with:
