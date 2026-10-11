@@ -64,9 +64,18 @@ jobs:
         #   Bản đầu tiên quét toàn bộ → deploy đỏ oan, phải sửa lại.
         run: |
           set -e
-          for f in web/tsconfig.json web/package-lock.json web/public/data/listings.json; do
+          # ⚠ Đổi danh sách file ở đây phải khớp với tools/build_27k.mjs.
+          #   Dữ liệu đã chia nhỏ theo quận: 1 file gộp nặng 2,4 MB nén,
+          #   chia 23 file thì mỗi lần chỉ tải file của khu vực đang xem.
+          for f in web/tsconfig.json web/package-lock.json \
+                   web/public/data/index.json web/public/data/districts.json; do
             [ -f "$f" ] || { echo "::error::Thiếu $f — kiểm tra .gitignore"; exit 1; }
           done
+          n=$(ls web/public/data/d/*.json 2>/dev/null | wc -l)
+          if [ "$n" -lt 20 ]; then
+            echo "::error::Chỉ có $n file dữ liệu theo quận (cần ≥20) — .gitignore có chặn không?"
+            exit 1
+          fi
           if ! grep -q 'paths' web/tsconfig.json; then
             echo "::error::web/tsconfig.json thiếu khai báo alias @/"
             exit 1
@@ -76,15 +85,15 @@ jobs:
             exit 1
           fi
           if grep -rn "address_line" web/out/_next/static/chunks/app \
-             --include="*.js" --exclude-dir=admin; then
+                       --include="*.js" --exclude-dir=admin; then
             echo "::error::Cột PII address_line lọt vào mã trang CÔNG KHAI — DỪNG lại"
             exit 1
           fi
-          if grep -l "address_line" web/public/data/*.json; then
+          if grep -l "address_line" web/public/data/index.json web/public/data/d/*.json 2>/dev/null; then
             echo "::error::Dữ liệu tĩnh ship ra công khai chứa address_line — DỪNG lại"
             exit 1
           fi
-          echo "OK: cấu hình, dữ liệu tĩnh, tiền tố /ami, không lộ cột PII"
+          echo "OK: cấu hình, $n file dữ liệu theo quận, tiền tố /ami, không lộ cột PII"
 
       - name: Soát giao diện
         # Ba lỗi đã xảy ra thật, đều KHÔNG làm build hỏng:
