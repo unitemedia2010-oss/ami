@@ -1,93 +1,24 @@
 /**
  * =============================================================================
- *  API tĩnh — đọc dữ liệu từ file JSON trong /public/data
+ *  ĐỌC DỮ LIỆU TỪ CÁC FILE JSON TĨNH
  *
  *  Dùng khi biến NEXT_PUBLIC_API_URL rỗng (mặc định khi deploy GitHub Pages).
  *  Khi nào có Supabase/Worker, chỉ cần đặt NEXT_PUBLIC_API_URL — module này
  *  không được gọi tới nữa. KHÔNG phải sửa component nào.
  *
- *  File JSON đã rút gọn tên field cho nhẹ (ref, project_hue, project_approx…).
- *  Hàm hydrate() đổi lại về đúng tên mà component dùng, để phía component
- *  không cần biết mình đang chạy ở chế độ nào.
- * ============================================================================= */
-
-import type { ListingCard, ListingPage } from './api';
+ *  ⚠ VÌ SAO CHIA NHỎ THAY VÌ MỘT FILE LỚN
+ *    27.659 tin gộp lại thành một file JSON: 15 MB thô, 2,4 MB nén. Mỗi lần
+ *    mở trang tìm kiếm phải tải hết 2,4 MB — mất vài giây trên mạng di động.
+ *    Chia theo quận thì mỗi lần chỉ tải file của khu vực đang xem:
+ *      • có lọc theo quận  → 1 file, ~20–220 KB nén (nhanh gấp 10–100 lần)
+ *      • không lọc quận    → tải cả 23 file, tương đương cách cũ
+ *    Đánh đổi có ý thức, đổi lấy trải nghiệm nhanh ở trang quan trọng nhất.
+ * ========================================================================== */
 
 /* Dữ liệu nằm trong thư mục /public/data. Khi deploy lên project site của
    GitHub (…github.io/ami/) thì đường dẫn phải có tiền tố /ami — cùng biến
    mà next.config.mjs dùng cho basePath. Đặt rỗng khi chạy local. */
 const BASE = `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/data`;
-
-let cache: Promise<Dataset> | null = null;
-
-interface RawListing {
-  id: string; slug: string; ref: string; type: 'sell' | 'rent';
-  title: string; price: number; negotiable: boolean;
-  area: number | null; bedrooms: number | null; bathrooms: number | null;
-  floors: number | null; floor_number: number | null;
-  direction: string | null; furniture: string | null; features: string[];
-  project_id: string; project_name: string; project_slug: string;
-  project_hue: number; project_lat: number | null; project_lng: number | null;
-  project_approx: boolean; tower_name: string;
-  district_id: number | null; district_name: string | null;
-  is_sponsored: boolean; view_count: number; view_count_7d: number;
-  published_at: string;
-}
-
-interface Dataset {
-  districts: any[];
-  projects: any[];
-  listings: ListingCard[];
-  mapProjects: any[];
-}
-
-/** Bỏ dấu để so khớp không phân biệt dấu, giống hàm cùng loại ở Worker */
-const fold = (s?: string | null) =>
-  (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase().trim();
-
-/** Đổi tên field ngắn về tên đầy đủ mà component dùng */
-function hydrate(r: RawListing): ListingCard {
-  return {
-    id: r.id,
-    slug: r.slug,
-    reference_code: r.ref,
-    type: r.type,
-    title: r.title,
-    price: r.price,
-    price_unit: 'triệu',
-    negotiable: r.negotiable,
-    area: r.area,
-    bedrooms: r.bedrooms,
-    bathrooms: r.bathrooms,
-    floors: r.floors,
-    floor_number: r.floor_number,
-    direction: r.direction,
-    furniture: r.furniture,
-    features: r.features,
-    images: [],                      // client tự vẽ ảnh từ hue + tên dự án
-    project_id: r.project_id,
-    project_name: r.project_name,
-    project_slug: r.project_slug,
-    project_hue: r.project_hue,
-    project_lat: r.project_lat,
-    project_lng: r.project_lng,
-    project_lat_approximate: r.project_approx,
-    project_amenities: null,
-    tower_name: r.tower_name,
-    ward_id: null,
-    ward_name: null,
-    district_id: r.district_id,
-    district_name: r.district_name,
-    street_id: null,
-    agent_id: null,
-    is_sponsored: r.is_sponsored,
-    view_count: r.view_count,
-    view_count_7d: r.view_count_7d,
-    published_at: r.published_at,
-    created_at: r.published_at,
-  };
-}
 
 async function getJson<T>(name: string): Promise<T> {
   /* `default` chứ không phải `force-cache`.
@@ -101,65 +32,127 @@ async function getJson<T>(name: string): Promise<T> {
   return res.json();
 }
 
-/** Tải một lần rồi cache — mọi trang dùng chung */
-function load(): Promise<Dataset> {
-  if (!cache) {
-    cache = Promise.all([
-      getJson<any[]>('districts.json'),
-      getJson<any[]>('projects.json'),
-      getJson<RawListing[]>('listings.json'),
-      getJson<any[]>('map.json'),
-    ]).then(([districts, projects, raw, mapProjects]) => ({
-      districts, projects, mapProjects,
-      listings: raw.map(hydrate),
-    }));
-  }
-  return cache;
+/* ------------------------------------------------------------------ kiểu dữ liệu */
+interface RawListing {
+  id: string;
+  slug: string;
+  type: 'sell' | 'rent';
+  title: string;
+  price: number;              // LUÔN tính bằng TRIỆU — xem lib/api.ts
+  area: number | null;
+  bedrooms: number | null;
+  district_id: number;
+  district_slug: string;
+  district_name: string;
+  ward_name: string | null;
+  street_name: string | null;
+  project_name: string | null;
+  category: string;
+  category_raw: string | null;
+  image: string | null;
+  published_at: string | null;
 }
 
-/* =============================================================================
- *  API giả lập — cùng chữ ký với bản gọi qua Worker
- * ========================================================================== */
+interface Index {
+  total: number;
+  counts: Record<string, number>;
+  featured: RawListing[];
+}
 
+/* --------------------------------------------------------------------- cache */
+let indexP: Promise<Index> | null = null;
+const loadIndex = (): Promise<Index> => (indexP ??= getJson<Index>('index.json'));
+
+const shardP = new Map<string, Promise<RawListing[]>>();
+const loadShard = (slug: string): Promise<RawListing[]> => {
+  if (!shardP.has(slug)) shardP.set(slug, getJson<RawListing[]>(`d/${slug}.json`));
+  return shardP.get(slug)!;
+};
+
+/** Bỏ dấu để so khớp không phân biệt dấu, giống hàm cùng loại ở Worker */
+const fold = (s?: string | null) =>
+  (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase().trim();
+
+/* =============================================================================
+ *  Bộ lọc
+ * ========================================================================== */
 type Filters = {
   type?: string; district?: number; ward?: number; project?: string;
   min?: number; max?: number; bedrooms?: number; q?: string;
+  category?: string;
   sort?: 'newest' | 'price_asc' | 'price_desc' | 'popular';
   page?: number; per_page?: number;
 };
 
-const SORTS: Record<string, (a: ListingCard, b: ListingCard) => number> = {
-  newest: (a, b) => (b.published_at ?? '').localeCompare(a.published_at ?? ''),
+const SORTS: Record<string, (a: RawListing, b: RawListing) => number> = {
+  newest: (a, b) => (b.published_at || '').localeCompare(a.published_at || ''),
   price_asc: (a, b) => a.price - b.price,
   price_desc: (a, b) => b.price - a.price,
-  popular: (a, b) => (b.view_count_7d ?? 0) - (a.view_count_7d ?? 0),
+  popular: (a, b) => (b.price >= 1000 ? 0 : 1) - (a.price >= 1000 ? 0 : 1),
 };
 
-export const staticApi = {
-  async listings(f: Filters): Promise<ListingPage> {
-    const ds = await load();
-    let rows = ds.listings;
+/**
+ * Chuỗi tìm kiếm có khớp quận nào không.
+ * Ưu tiên nhận diện QUẬN (tên mới + tên cũ/viết tắt) trước khi tìm tự do.
+ * Nhờ vậy "td1" ra Quận 1, "go vap" ra Gò Vấp.
+ *
+ * ⚠ PHẢI ưu tiên khớp CHÍNH XÁC, không dùng `includes` ngay.
+ *    Đã xảy ra: "td1" trả về 5.483 tin thay vì 1.191 vì "td1" là chuỗi
+ *    con của "td10", "td11", "td12". Tương tự "quận 1" sẽ nuốt cả Quận 10,
+ *    11, 12 — tức gần 5.500 tin sai quận. Lỗi này chỉ lộ ra khi dữ liệu có
+ *    đủ 23 quận; bộ 9 quận cũ không có "Quận 1x" nên không thấy.
+ */
+function districtsInQuery(districts: any[], q: string) {
+  const key = fold(q);
+  if (!key) return [];
 
-    // ƯU TIÊN nhận diện QUẬN (tên cũ / viết tắt) trước khi tìm theo tên
-    if (f.q?.trim()) {
-      const key = fold(f.q);
-      const hits = ds.districts.filter(
-        (d) => fold(d.name_new).includes(key)
-          || (d.aliases || []).some((a: string) => fold(a).includes(key)));
-      if (hits.length) {
-        const ids = new Set(hits.map((d) => d.id));
-        rows = rows.filter((l) => l.district_id != null && ids.has(l.district_id));
-      } else {
-        rows = rows.filter((l) =>
-          fold(l.title).includes(key)
-          || fold(l.project_name).includes(key)
-          || fold(l.district_name).includes(key));
-      }
+  // 1. khớp chính xác tên hoặc bí danh — chỉ một quận, đáng tin tuyệt đối
+  const exact = districts.filter(
+    (d) => fold(d.name_new) === key
+      || (d.aliases || []).some((a: string) => fold(a) === key));
+  if (exact.length) return exact;
+
+  // 2. không khớp chính xác thì mới thử khớp một phần tên
+  //    ("thu duc" khi gõ "đức" vẫn ra, nhưng gõ "quận 1" thì đã chặn ở bước 1)
+  return districts.filter((d) => fold(d.name_new).includes(key));
+}
+
+export const staticApi = {
+  /* ------------------------------------------------------------------ danh sách */
+  async listings(f: Filters) {
+    const [index, units] = await Promise.all([loadIndex(), this.adminUnits()]);
+    const districts = units.districts;
+
+    /* xác định cần tải file nào */
+    let slugs: string[] = [];
+    let qDistrict: any[] = [];
+
+    if (f.district) {
+      const d = districts.find((x) => x.id === f.district);
+      slugs = d ? [d.slug] : [];
+    } else if (f.q?.trim()) {
+      qDistrict = districtsInQuery(districts, f.q.trim());
+      if (qDistrict.length) slugs = qDistrict.map((d) => d.slug);
+    }
+    if (!slugs.length) slugs = Object.keys(index.counts);
+
+    const groups = await Promise.all(slugs.map((s) => loadShard(s)));
+    let rows = groups.flat();
+
+    /* tìm tự do khi chuỗi KHÔNG phải tên quận */
+    if (f.q?.trim() && !qDistrict.length) {
+      const key = fold(f.q.trim());
+      rows = rows.filter((l) =>
+        fold(l.title).includes(key)
+        || fold(l.project_name).includes(key)
+        || fold(l.ward_name).includes(key)
+        || fold(l.street_name).includes(key));
     }
 
     if (f.type) rows = rows.filter((l) => l.type === f.type);
-    if (f.project) rows = rows.filter((l) => l.project_id === f.project);
-    if (f.district) rows = rows.filter((l) => l.district_id === f.district);
+    if (f.category) rows = rows.filter((l) => l.category === f.category);
+    if (f.project) rows = rows.filter((l) => fold(l.project_name).includes(fold(f.project)));
     if (f.bedrooms) rows = rows.filter((l) => (l.bedrooms ?? 0) >= f.bedrooms!);
     if (f.min != null) rows = rows.filter((l) => l.price >= f.min!);
     if (f.max != null) rows = rows.filter((l) => l.price <= f.max!);
@@ -171,44 +164,61 @@ export const staticApi = {
 
     return {
       total: rows.length, page, per_page,
-      data: rows.slice((page - 1) * per_page, page * per_page),
+      data: rows.slice((page - 1) * per_page, page * per_page).map(baiViet),
     };
   },
 
-  async detail(slug: string) {
-    const ds = await load();
-    const data = ds.listings.find((l) => l.slug === slug);
+  /* ------------------------------------------------------------- trang chủ */
+  async featured(n = 8) {
+    const index = await loadIndex();
+    return { data: index.featured.slice(0, n) };
+  },
+
+  async byType(type: 'sell' | 'rent', n = 8) {
+    const index = await loadIndex();
+    return { data: index.featured.filter((x) => x.type === type).slice(0, n) };
+  },
+
+  /* ------------------------------------------------------------------ chi tiết */
+  /**
+   * `district` là slug quận. Bắt buộc phải có: 27.659 tin thì bảng tra
+   * slug→quận nặng ~380 KB, không đáng tải chỉ để mở một tin. Các link
+   * trong ứng dụng đều tự mang theo quận nên người dùng không phải làm gì.
+   */
+  async detail(slug: string, district: string) {
+    const rows = await loadShard(district);
+    const data = rows.find((l) => l.slug === slug);
     if (!data) throw new Error('Không tìm thấy tin');
-    return { data, can_reveal: false };   // không có backend nên không xem SĐT được
+    return { data: baiViet(data), can_reveal: false };
   },
 
+  /* ------------------------------------------------------- đơn vị hành chính */
   async adminUnits() {
-    const ds = await load();
-    return { districts: ds.districts, wards: [] };
+    return { districts: await getJson<any[]>('districts.json'), wards: [] };
   },
 
+  /* ------------------------------------------------------------------ dự án */
   async projects(q?: string) {
-    const ds = await load();
-    let rows = ds.projects;
-    if (q) rows = rows.filter((p) => fold(p.name).includes(fold(q)));
+    const p = await getJson<any[]>('projects.json');
+    let rows = p;
+    if (q) rows = rows.filter((x) => fold(x.name).includes(fold(q)));
     return { data: rows.slice(0, 60) };
   },
 
+  /* ------------------------------------------------------------ tìm đơn vị */
   async searchUnits(q: string) {
-    const ds = await load();
-    const key = fold(q);
-    if (!key) return { data: [] };
+    const districts = await getJson<any[]>('districts.json');
+    const hits = districtsInQuery(districts, q);
     return {
-      data: ds.districts
-        .filter((d) => fold(d.name_new).includes(key)
-          || (d.aliases || []).some((a: string) => fold(a).includes(key)))
-        .map((d) => ({ kind: 'district', id: d.id, name: d.name_new, slug: d.slug, district_id: null })),
+      data: hits.map((d) => ({
+        kind: 'district', id: d.id, name: d.name_new, slug: d.slug, district_id: null,
+      })),
     };
   },
 
+  /* ---------------------------------------------------------------- bản đồ */
   async mapProjects() {
-    const ds = await load();
-    return { data: ds.mapProjects };
+    return await getJson<{ data: any[] }>('map.json');
   },
 
   /** Bản tĩnh không có backend → báo rõ thay vì im lặng */
@@ -223,3 +233,52 @@ export const staticApi = {
     throw new Error('Bản xem thử chưa lưu được yêu cầu. Sẽ hoạt động khi nối Supabase.');
   },
 };
+
+/* ---------------------------------------------------------------- đổi tên field */
+/**
+ * File JSON dùng tên rút gọn cho tiện mã. Hàm này đổi sang đúng tên mà
+ * component dùng, để phía component không cần biết mình đang chạy ở chế độ nào.
+ * Quan trọng: `price` giữ nguyên giá trị, KHÔNG nhân thêm — vẫn là TRIỆU.
+ */
+function baiViet(r: RawListing) {
+  return {
+    id: r.id,
+    slug: r.slug,
+    type: r.type,
+    title: r.title,
+    price: r.price,
+    price_unit: 'triệu' as const,
+    negotiable: false,
+    area: r.area,
+    bedrooms: r.bedrooms,
+    bathrooms: null,
+    floors: null,
+    floor_number: null,
+    direction: null,
+    furniture: null,
+    features: null,
+    images: r.image ? [r.image] : null,
+    project_id: null,
+    project_name: r.project_name,
+    project_slug: null,
+    project_lat: null,
+    project_lng: null,
+    project_lat_approximate: null,
+    project_amenities: null,
+    /** dùng để mở đúng file dữ liệu khi bấm vào tin */
+    district_slug: r.district_slug,
+    ward_name: r.ward_name,
+    street_name: r.street_name,
+    category: r.category,
+    district_id: r.district_id,
+    district_name: r.district_name,
+    tower_name: null,
+    street_id: null,
+    agent_id: null,
+    is_sponsored: false,
+    view_count: 0,
+    view_count_7d: 0,
+    published_at: r.published_at,
+    created_at: r.published_at || '',
+  };
+}

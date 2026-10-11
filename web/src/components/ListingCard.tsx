@@ -18,6 +18,8 @@ export interface WatchItem {
   id: string;
   slug: string;
   title: string;
+  /** slug quận — cần để tải đúng file dữ liệu khi mở lại trang /yeu-thich */
+  d?: string;
   addedAt?: number;
 }
 
@@ -45,8 +47,8 @@ export function getWatchlist(): WatchItem[] {
 }
 
 export function WatchButton({
-  id, slug, title, className = '',
-}: { id: string; slug: string; title: string; className?: string }) {
+  id, slug, title, district, className = '',
+}: { id: string; slug: string; title: string; district?: string | null; className?: string }) {
   const [on, setOn] = useState(false);
 
   useEffect(() => { setOn(read().some((x) => x.id === id)); }, [id]);
@@ -59,7 +61,7 @@ export function WatchButton({
       onClick={(e) => {
         e.preventDefault();          // tránh bấm nhầm làm mở trang chi tiết
         e.stopPropagation();
-        setOn(toggleWatch({ id, slug, title }));
+        setOn(toggleWatch({ id, slug, title, d: district ?? undefined }));
       }}
       className={`btn-icon backdrop-blur ${className} ${
         on
@@ -92,7 +94,10 @@ export default function ListingCard({ l }: { l: C }) {
   if (l.floor_number != null) specs.push(['lucide:layers', `T${l.floor_number}`]);
 
   return (
-    <Link href={`/chi-tiet?slug=${encodeURIComponent(l.slug)}`} className="card block group">
+    <Link
+      href={`/chi-tiet?d=${l.district_slug ?? ''}&slug=${encodeURIComponent(l.slug)}`}
+      className="card block group"
+    >
       {/* ----------------------------------------------------------------- ảnh */}
       <div className="relative h-48 bg-cream-200 overflow-hidden">
         {img ? (
@@ -115,7 +120,8 @@ export default function ListingCard({ l }: { l: C }) {
         <div aria-hidden
              className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/55 to-transparent" />
 
-        <WatchButton id={l.id} slug={l.slug} title={l.title} className="absolute top-3 right-3" />
+        <WatchButton id={l.id} slug={l.slug} title={l.title} district={l.district_slug}
+                       className="absolute top-3 right-3" />
 
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
           {l.is_sponsored && (

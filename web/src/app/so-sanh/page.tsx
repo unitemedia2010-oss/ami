@@ -14,6 +14,8 @@ function CompareInner() {
   const sp = useSearchParams();
   const router = useRouter();
 
+  /* Mỗi mục trong tham số `ids` có dạng "slug|quận" — cần cả hai vì dữ liệu
+     được chia theo quận, biết slug thôi không tải được tin. */
   const ids = (sp.get('ids') || '').split(',').filter(Boolean).slice(0, MAX);
   const [items, setItems] = useState<C[]>([]);
   const [loading, setLoading] = useState(false);
@@ -22,14 +24,19 @@ function CompareInner() {
     if (ids.length === 0) { setItems([]); return; }
     setLoading(true);
     Promise.all(
-      ids.map((slug) => api.detail(decodeURIComponent(slug)).then((r) => r.data).catch(() => null)),
+      ids.map((raw) => {
+        const [slug, dist] = raw.split('|');
+        return dist
+          ? api.detail(decodeURIComponent(slug), dist).then((r) => r.data).catch(() => null)
+          : Promise.resolve(null);
+      }),
     )
       .then((list) => setItems(list.filter(Boolean) as C[]))
       .finally(() => setLoading(false));
   }, [sp.toString()]);
 
-  const remove = (slug: string) => {
-    const next = ids.filter((s) => s !== slug);
+  const remove = (raw: string) => {
+    const next = ids.filter((s) => s !== raw);
     router.push(next.length ? `/so-sanh?ids=${encodeURIComponent(next.join(','))}` : '/so-sanh');
   };
 
@@ -96,7 +103,7 @@ function CompareInner() {
                             title={l.title}
                             className="absolute top-0 right-0 !bg-cream-200 hover:!bg-cream-200"
                           />
-                          <Link href={`/chi-tiet?slug=${encodeURIComponent(l.slug)}`}
+                          <Link href={`/chi-tiet?d=${l.district_slug ?? ''}&slug=${encodeURIComponent(l.slug)}`}
                                 className="block pr-9">
                             {l.images?.[0] ? (
                               // eslint-disable-next-line @next/next/no-img-element
@@ -114,7 +121,7 @@ function CompareInner() {
                             </span>
                           </Link>
                           <button
-                            onClick={() => remove(l.slug)}
+                            onClick={() => remove(l.district_slug ? `${l.slug}|${l.district_slug}` : l.slug)}
                             className="mt-2 text-[11px] text-red-600 hover:underline
                                        flex items-center gap-1"
                           >
@@ -218,22 +225,23 @@ function ComparePicks() {
   const router = useRouter();
 
   useEffect(() => {
-    api.listings({ sort: 'popular', per_page: 8 })
-      .then((r) => setList(r.data))
+    api.featured(8)
+      .then((r) => setList(r.data as C[]))
       .catch(() => setList([]));
   }, []);
 
-  const toggle = (slug: string) => {
-    const next = picked.includes(slug)
-      ? picked.filter((x) => x !== slug)
-      : [...picked, slug].slice(0, MAX);
-    setPicked(next);
+  /* "slug|quận" — xem giải thích ở đầu file */
+  const toggle = (l: C) => {
+    const key = `${l.slug}|${l.district_slug ?? ''}`;
+    setPicked((p) => (p.includes(key) ? p.filter((x) => x !== key) : [...p, key].slice(0, MAX)));
   };
 
   return (
     <>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-6">
-        {list.slice(0, 8).map((l) => (
+        {list.slice(0, 8).map((l) => {
+          const key = `${l.slug}|${l.district_slug ?? ''}`;
+          return (
           <div key={l.id} className="card">
             <div className="relative h-32 bg-cream-200">
               {l.images?.[0] ? (
@@ -251,19 +259,20 @@ function ComparePicks() {
                 {fmtPrice(l.price, l.price_unit, l.type)}
               </p>
               <button
-                onClick={() => toggle(l.slug)}
-                disabled={!picked.includes(l.slug) && picked.length >= MAX}
+                onClick={() => toggle(l)}
+                disabled={!picked.includes(key) && picked.length >= MAX}
                 className={`w-full py-1.5 rounded-lg text-[12px] font-bold transition-colors ${
-                  picked.includes(l.slug)
+                  picked.includes(key)
                     ? 'bg-amber-500 text-white'
                     : 'bg-flame-50 text-flame-600 hover:bg-flame-600 hover:text-white'
                 } disabled:opacity-40 disabled:cursor-not-allowed`}
               >
-                {picked.includes(l.slug) ? '✓ Đã chọn' : '+ So sánh'}
+                {picked.includes(key) ? '✓ Đã chọn' : '+ So sánh'}
               </button>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       <button

@@ -155,17 +155,21 @@ function RevealBox({ listing, slug }: { listing: C; slug: string }) {
 function DetailInner() {
   const sp = useSearchParams();
   const slug = sp.get('slug') || '';
+  /* slug quận. Dữ liệu được chia theo quận nên phải biết để tải đúng file.
+     Mọi link trong ứng dụng đều tự kèm tham số này — người dùng không thấy. */
+  const dist = sp.get('d') || '';
   const [l, setL] = useState<C | null>(null);
   const [err, setErr] = useState('');
   const [imgIdx, setImgIdx] = useState(0);
 
   useEffect(() => {
     if (!slug) { setErr('Thiếu mã tin'); return; }
+    if (!dist) { setErr('Thiếu mã khu vực của tin'); return; }
     setImgIdx(0);
-    api.detail(slug)
+    api.detail(slug, dist)
       .then((r) => setL(r.data))
       .catch((e) => setErr(e.message || 'Không tìm thấy tin'));
-  }, [slug]);
+  }, [slug, dist]);
 
   if (err) {
     return (

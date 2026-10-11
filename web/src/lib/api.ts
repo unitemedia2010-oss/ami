@@ -52,7 +52,10 @@ export interface ListingCard {
   ward_name?: string | null;
   ward_slug?: string | null;
   district_name?: string | null;
+  /** slug quận — bắt buộc khi mở /chi-tiet vì dữ liệu tĩnh chia theo quận */
   district_slug?: string | null;
+  street_name?: string | null;
+  category?: string | null;
   project_name?: string | null;
   project_slug?: string | null;
   /** số màu 0–360 để vẽ ảnh đại diện khi không có ảnh thật */
@@ -112,6 +115,8 @@ export interface Filters {
   max?: number;
   bedrooms?: number;
   q?: string;
+  /** hạng mục nhà: chung-cu | nha-pho | mat-bang | dat | … (xem build_27k.mjs) */
+  category?: string;
   sort?: 'newest' | 'price_asc' | 'price_desc' | 'popular';
   page?: number;
   per_page?: number;
@@ -144,6 +149,7 @@ export function buildQuery(f: Filters): string {
   if (f.max != null) p.set('max', String(f.max));
   if (f.bedrooms) p.set('bedrooms', String(f.bedrooms));
   if (f.q) p.set('q', f.q);
+  if (f.category) p.set('cat', f.category);
   if (f.sort) p.set('sort', f.sort);
   p.set('page', String(f.page ?? 1));
   p.set('per_page', String(f.per_page ?? 24));
@@ -160,7 +166,14 @@ export function buildQuery(f: Filters): string {
 const remote = {
   listings: (f: Filters) => call<ListingPage>(`/api/listings?${buildQuery(f)}`),
 
-  detail: (slug: string) =>
+  /**
+   * Mở một tin đăng.
+   *
+   * `district` chỉ cần cho bản dữ liệu tĩnh (chia theo quận nên phải biết
+   * để tải đúng file). Khi đã nối Worker/Supabase thì tham số này bị bỏ qua —
+   * API thật tra theo slug.
+   */
+  detail: (slug: string, district?: string) =>
     call<{ data: ListingCard; can_reveal: boolean }>(
       `/api/listings/${encodeURIComponent(slug)}`),
 
@@ -171,6 +184,12 @@ const remote = {
 
   searchUnits: (q: string) =>
     call<{ data: any[] }>(`/api/search-units?q=${encodeURIComponent(q)}`),
+
+  /** Tin nổi bật cho trang chủ — không quét toàn bộ danh sách */
+  featured: (n = 8) => call<{ data: ListingCard[] }>(`/api/featured?limit=${n}`),
+
+  byType: (type: ListingType, n = 8) =>
+    call<{ data: ListingCard[] }>(`/api/featured?type=${type}&limit=${n}`),
 
   /** Các dự án có toạ độ để vẽ lên bản đồ */
   mapProjects: () => call<{ data: MapProject[] }>('/api/map/projects'),

@@ -4,10 +4,10 @@ const COLS = [
   {
     title: 'Mua bán',
     links: [
-      ['Căn hộ chung cư', '/tim-kiem/?type=sell'],
-      ['Chung cư mini', '/tim-kiem/?q=mini'],
-      ['Nhà phố', '/tim-kiem/?q=nhà phố'],
-      ['Đất nền', '/tim-kiem/?q=đất'],
+      ['Căn hộ chung cư', '/tim-kiem/?cat=chung-cu'],
+      ['Nhà phố, nhà hẻm', '/tim-kiem/?cat=nha-pho'],
+      ['Mặt bằng kinh doanh', '/tim-kiem/?cat=mat-bang'],
+      ['Đất nền', '/tim-kiem/?cat=dat'],
       ['Tin đăng mới', '/tim-kiem/?sort=newest'],
     ],
   },

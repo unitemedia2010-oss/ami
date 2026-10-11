@@ -36,8 +36,11 @@ const nextConfig = {
   // Giới hạn số tiến trình song song khi build.
   // GitHub Actions có 2 vCPU / 7GB RAM — mặc định Next.js spawn nhiều worker
   // và có thể chạm trần RAM. Số nhỏ = build chậm hơn nhưng không bị OOM.
+  //
+  // Máy 8 GB mà đang chạy nhiều ứng dụng khác có thể chỉ còn ~800 MB trống —
+  // khi đó kể cả 2 CPU cũng vẫn vỡ. Đặt NEXT_BUILD_CPUS=1 khi gặp tình trạng đó.
   experimental: {
-    cpus: 2,
+    cpus: Number(process.env.NEXT_BUILD_CPUS || 2),
   },
 };
 

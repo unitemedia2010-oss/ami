@@ -9,6 +9,7 @@ import {
 import ListingCard, { ListingCardSkeleton } from '@/components/ListingCard';
 import Pagination from '@/components/Pagination';
 import { Note } from '@/components/ui';
+import { CATEGORIES } from '@/lib/categories';
 
 const SORTS: [NonNullable<Filters['sort']>, string][] = [
   ['newest', 'Mới nhất'],
@@ -44,6 +45,7 @@ function SearchPageInner() {
     district: sp.get('district') ? Number(sp.get('district')) : undefined,
     ward: sp.get('ward') ? Number(sp.get('ward')) : undefined,
     q: sp.get('q') || undefined,
+    category: sp.get('cat') || undefined,
     min: sp.get('min') ? Number(sp.get('min')) : undefined,
     max: sp.get('max') ? Number(sp.get('max')) : undefined,
     bedrooms: sp.get('bedrooms') ? Number(sp.get('bedrooms')) : undefined,
@@ -95,6 +97,7 @@ function SearchPageInner() {
     if (f.district) q.set('district', String(f.district));
     if (f.ward) q.set('ward', String(f.ward));
     if (f.q) q.set('q', f.q);
+    if (f.category) q.set('cat', f.category);
     if (f.min != null) q.set('min', String(f.min));
     if (f.max != null) q.set('max', String(f.max));
     if (f.bedrooms) q.set('bedrooms', String(f.bedrooms));
@@ -171,6 +174,35 @@ function SearchPageInner() {
         )}
       </div>
 
+      {/* Loại nhà — bắt buộc vì dữ liệu gồm căn hộ, nhà phố, đất, mặt bằng.
+          Không có ô này thì 89% tin là nhà hẻm trộn vào kết quả tìm căn hộ. */}
+      <div>
+        <h3 className="label-xs mb-3">Loại nhà</h3>
+        <div className="space-y-1">
+          {CATEGORIES.map((c) => (
+            <label key={c.slug}
+                   className="flex items-center gap-2.5 cursor-pointer select-none py-1">
+              <input
+                type="radio" name="cat" checked={f.category === c.slug}
+                onChange={() => set({ category: c.slug, page: undefined })}
+                className="w-4 h-4 accent-amber-500"
+              />
+              <iconify-icon icon={c.icon} className="text-cream-300 text-base shrink-0" />
+              <span className="text-[13px] text-coal-700">{c.name}</span>
+            </label>
+          ))}
+          <label className="flex items-center gap-2.5 cursor-pointer select-none py-1">
+            <input
+              type="radio" name="cat" checked={!f.category}
+              onChange={() => set({ category: undefined, page: undefined })}
+              className="w-4 h-4 accent-amber-500"
+            />
+            <iconify-icon icon="lucide:layers" className="text-cream-300 text-base shrink-0" />
+            <span className="text-[13px] text-coal-700">Tất cả loại</span>
+          </label>
+        </div>
+      </div>
+
       <div>
         <h3 className="label-xs mb-3">
           Khoảng giá {f.type === 'rent' ? '(triệu/tháng)' : ''}
@@ -236,7 +268,20 @@ function SearchPageInner() {
       </h1>
       <p className="text-coal-500 text-sm mt-2 mb-6">
         {loading && !data ? (
-          'Đang tải…'
+          /* Không lọc quận thì phải tải cả 23 file dữ liệu (2,2 MB nén).
+             Nói rõ để người dùng biết đang chờ gì thay vì tưởng treo —
+             chọn thêm một quận là xong ngay, chỉ tải ~60–220 KB. */
+          <>
+            <span className="inline-flex items-center gap-2">
+              <iconify-icon icon="lucide:loader-2" className="animate-spin" />
+              Đang tải dữ liệu toàn thành…
+            </span>
+            {!f.district && (
+              <span className="block mt-1 text-[12.5px] text-coal-400">
+                Chọn thêm một quận/huyện bên trái sẽ ra kết quả nhanh hơn nhiều.
+              </span>
+            )}
+          </>
         ) : (
           <>Có <b className="text-flame-600">{data?.total.toLocaleString('vi-VN') ?? 0}</b> tin phù hợp</>
         )}

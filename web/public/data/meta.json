@@ -1,1 +1,9 @@
-{"generated_at":"2026-10-11T10:27:33.394Z","source":"Danh sách chung cư HCM - AMI.pdf","counts":{"districts":9,"projects":193,"listings":812,"mapped":154},"warning":"Dữ liệu mẫu để xem giao diện. Giá là số NGẪU NHIÊN trong khoảng có thật trong PDF, toạ độ là TÂM QUẬN chứ không phải vị trí thật của dự án."}
+{
+ "generated_at": "2026-10-11T10:49:38.704Z",
+ "source": "all-listings.json — 27.737 tin",
+ "counts": {
+  "districts": 23,
+  "listings": 27659
+ },
+ "warning": "Dữ liệu thu thập từ trang khác. 22 quận/huyện theo hệ thống TRƯỚC sáp nhập 2025, chưa đối chiếu Nghị quyết 1685/NQ-UBTVQH15."
+}

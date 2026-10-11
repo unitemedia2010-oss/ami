@@ -22,9 +22,14 @@ export default function WatchlistPage() {
       setLoading(true);
       Promise.all(
         list.map((w) =>
-          api.detail(w.slug)
-            .then((r) => r.data)
-            .catch(() => null),
+          // w.d là slug quận do lúc bấm nút yêu thích đã lưu kèm. Tin lưu
+          // từ phiên cũ (trước khi có dữ liệu chia theo quận) sẽ không có
+          // w.d — bỏ qua thay vì báo lỗi.
+          w.d
+            ? api.detail(w.slug, w.d)
+                .then((r) => r.data)
+                .catch(() => null)
+            : Promise.resolve(null),
         ),
       )
         // tin đã bị gỡ hoặc hết hạn → bỏ khỏi danh sách, đừng hiển thị ô rỗng
@@ -66,7 +71,8 @@ export default function WatchlistPage() {
   };
 
   const compare = () => {
-    const slugs = items.map((l) => l.slug);
+    /* "slug|quận" — xem giải thích ở đầu trang /so-sanh */
+    const slugs = items.map((l) => `${l.slug}|${l.district_slug ?? ''}`);
     if (slugs.length >= 2) {
       location.href = `/so-sanh?ids=${encodeURIComponent(slugs.join(','))}`;
     }
@@ -142,7 +148,7 @@ export default function WatchlistPage() {
           <div className="listing-grid">
             {items.map((l) => (
               <div key={l.id} className="card group relative">
-                <Link href={`/chi-tiet?slug=${encodeURIComponent(l.slug)}`}>
+                <Link href={`/chi-tiet?d=${l.district_slug ?? ''}&slug=${encodeURIComponent(l.slug)}`}>
                   <div className="relative h-48 bg-cream-200 overflow-hidden">
                     {l.images?.[0] ? (
                       // eslint-disable-next-line @next/next/no-img-element

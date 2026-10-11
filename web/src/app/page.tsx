@@ -7,13 +7,19 @@ import ListingCard, { ListingCardSkeleton, ProjectCard, type Project } from '@/c
 import { SectionHeader, StatCard, Note } from '@/components/ui';
 import MapView from '@/components/MapView';
 
+/* Phím tắt dùng đúng hạng mục đã gom trong tools/build_27k.mjs.
+   Trước đây dùng `?q=chung cư` — tức tìm trong TIÊU ĐỀ tin, nên những tin
+   chung cư có tiêu đề kiểu "4m x 11m (88 m²), căn góc..." sẽ không bao giờ
+   ra. Dùng tham số `cat` lọc theo trường `category` mới đúng. */
 const SHORTCUTS = [
-  { t: 'Căn hộ chung cư', href: '/tim-kiem/?q=chung cư', i: 'lucide:building-2' },
-  { t: 'Chung cư mini',    href: '/tim-kiem/?q=mini',      i: 'lucide:home' },
-  { t: '1 – 2 phòng',      href: '/tim-kiem/?bedrooms=1',  i: 'lucide:bed-double' },
-  { t: '3 phòng trở lên',  href: '/tim-kiem/?bedrooms=3',  i: 'lucide:bed-double' },
-  { t: 'Nhà phố',          href: '/tim-kiem/?q=nhà phố',  i: 'lucide:house' },
-  { t: 'Đất nền',          href: '/tim-kiem/?q=đất',      i: 'lucide:land-plot' },
+  { t: 'Căn hộ chung cư', href: '/tim-kiem/?cat=chung-cu', i: 'lucide:building-2' },
+  { t: 'Nhà phố, nhà hẻm', href: '/tim-kiem/?cat=nha-pho', i: 'lucide:house' },
+  { t: 'Mặt bằng KD', href: '/tim-kiem/?cat=mat-bang', i: 'lucide:store' },
+  { t: 'Đất nền',        href: '/tim-kiem/?cat=dat',      i: 'lucide:land-plot' },
+  { t: 'Shophouse',     href: '/tim-kiem/?cat=shophouse', i: 'lucide:shopping-bag' },
+  { t: '2 phòng',       href: '/tim-kiem/?bedrooms=2',  i: 'lucide:bed-double' },
+  { t: '3 phòng trở lên', href: '/tim-kiem/?bedrooms=3', i: 'lucide:bed-double' },
+  { t: 'Dưới 1 tỷ',    href: '/tim-kiem/?max=1000',    i: 'lucide:wallet' },
 ];
 
 export default function HomePage() {
@@ -24,15 +30,18 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    /* Trang chủ chỉ đọc index.json (30 KB) chứ không quét 27.659 tin.
+       `api.listings` không lọc theo quận thì phải tải cả 23 file — mất vài
+       giây chỉ để hiện 24 thẻ. Tin nổi bật đã được chọn sẵn lúc sinh dữ liệu. */
     Promise.all([
-      api.listings({ sort: 'popular', per_page: 8 }).catch(() => null),
-      api.listings({ sort: 'newest', per_page: 8 }).catch(() => null),
-      api.listings({ type: 'rent', per_page: 8 }).catch(() => null),
+      api.featured(8).catch(() => null),
+      api.featured(8).catch(() => null),
+      api.byType('rent', 8).catch(() => null),
       api.projects().catch(() => null),
     ]).then(([h, n, r, p]) => {
-      if (h) setHot(h.data);
-      if (n) setNewest(n.data);
-      if (r) setRent(r.data);
+      if (h) setHot(h.data as C[]);
+      if (n) setNewest(n.data as C[]);
+      if (r) setRent(r.data as C[]);
       if (p) setProjects((p.data || []).slice(0, 8) as Project[]);
       setLoading(false);
     });
