@@ -233,18 +233,6 @@ writeFileSync(join(OUT, 'index.json'), JSON.stringify({
 
 writeFileSync(join(OUT, 'districts.json'), JSON.stringify(DISTRICTS), 'utf8');
 
-/* map.json: mỗi quận một điểm, kèm số tin */
-const mapPoints = DISTRICTS
-  .filter((d) => counts[d.slug])
-  .map((d) => ({
-    id: d.id, slug: d.slug, name: d.name_new, kind: 'district',
-    lat: CENTER[d.slug][0], lng: CENTER[d.slug][1],
-    district_name: d.name_new, listings: counts[d.slug],
-    approximate: false,          // tâm quận là vị trí hành chính, chính xác
-    geo_source: 'tam-quan',
-  }));
-writeFileSync(join(OUT, 'map.json'), JSON.stringify({ total: mapPoints.length, data: mapPoints }), 'utf8');
-
 writeFileSync(join(OUT, 'meta.json'), JSON.stringify({
   generated_at: new Date().toISOString(),
   source: 'all-listings.json — 27.737 tin',
@@ -262,4 +250,105 @@ console.log(`\ntheo quận (${Object.keys(counts).length} quận có tin):`);
 for (const [slug, n] of Object.entries(counts).sort((a, b) => b[1] - a[1])) {
   console.log(`  ${String(n).padStart(5)}  ${bySlug.get(slug).name_new}`);
 }
-console.log(`\nghi ra web/public/data/: index.json, districts.json, map.json, d/*.json (${Object.keys(counts).length} file)`);
+/* =============================================================================
+ *  4. LÀM GIÀU DỰ ÁN
+ *
+ *  projects.json sinh từ file PDF — PDF không có ảnh nào, nên mọi thẻ dự án
+ *  trên /du-an đều phải vẽ bằng SVG. Nhưng dataset 27k có ảnh thật và 3.039
+ *  tin ghi tên dự án ở trường `duAn` → suy ra 1.181 dự án, 1.160 có ảnh.
+ *
+ *  Gắn ảnh vào dự án cũ theo tên (khớp chính xác rồi mới khớp gần đúng),
+ *  rồi bổ sung các dự án lớn từ 27k vào danh sách. Đây là ảnh minh hoạ của
+ *  chính căn hộ trong tin đăng, không phải ảnh dự án chính thức.
+ * ========================================================================== */
+const PROJECT_FILE = join(OUT, 'projects.json');
+if (existsSync(PROJECT_FILE)) {
+  const projects = JSON.parse(readFileSync(PROJECT_FILE, 'utf8'));
+
+  /* gom ảnh + quận theo tên dự án, từ chính dữ liệu vừa sinh */
+  const anh = new Map();       // tên đã bỏ dấu → URL ảnh
+  const tenHienThi = new Map(); // tên đã bỏ dấu → tên gốc có dấu
+  const quanCua = new Map();   // tên đã bỏ dấu → [số lượng theo quận]
+  const soTinDA = new Map();
+  for (const list of theoSlug.values()) {
+    for (const x of list) {
+      const da = (x.project_name || '').trim();
+      if (!da) continue;
+      const k = fold(da);
+      soTinDA.set(k, (soTinDA.get(k) || 0) + 1);
+      if (!tenHienThi.has(k)) tenHienThi.set(k, da);
+      if (x.image && !anh.has(k)) anh.set(k, x.image);
+      if (!quanCua.has(k)) quanCua.set(k, new Map());
+      const m = quanCua.get(k);
+      m.set(x.district_slug, (m.get(x.district_slug) || 0) + 1);
+    }
+  }
+
+  let gAnhChinhXac = 0, gAnhGanDung = 0;
+  for (const p of projects) {
+    const k = fold(p.name);
+    if (anh.has(k)) { p.hero_image = anh.get(k); gAnhChinhXac++; continue; }
+    // khớp gần đúng: một tên là tiền tố/suffix của tên kia
+    for (const t of anh.keys()) {
+      if (t.includes(k) || k.includes(t)) { p.hero_image = anh.get(t); gAnhGanDung++; break; }
+    }
+  }
+
+  /* bổ sung dự án lớn từ 27k — chỉ lấy dự án có từ 3 tin trở lên để tránh rác */
+  const coTrongPDF = new Set(projects.map((p) => fold(p.name)));
+  let them = 0;
+  for (const [ten, n] of soTinDA) {
+    if (n < 3 || coTrongPDF.has(ten)) continue;
+    const quanSlug = [...(quanCua.get(ten).entries())].sort((a, b) => b[1] - a[1])[0][0];
+    const d = bySlug.get(quanSlug);
+    if (!d) continue;
+    const tenGoc = tenHienThi.get(ten);      // giữ nguyên dấu, không dùng key đã fold
+    projects.push({
+      id: `prj-x${++them}`,
+      slug: `du-an-${tenGoc.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase().slice(0, 50)}`,
+      name: tenGoc,
+      address: '',
+      district_id: d.id,
+      district_name: d.name_new,
+      apartment_count: n,                    // số tin đăng trong dự án
+      building_count: null,
+      amenities: null,
+      hue: 8 + (ten.length * 7) % 34,
+      hero_image: anh.get(ten) || null,
+      lat: CENTER[quanSlug][0],
+      lng: CENTER[quanSlug][1],
+      lat_approximate: true,                 // chỉ có tâm quận, chưa định vị riêng
+      geo_source: 'tam-quan',
+      is_published: true,
+      is_verified: false,
+      /** dự án suy ra từ tin đăng, không phải danh mục dự án chính thức */
+      from_listings: true,
+    });
+  }
+
+  writeFileSync(PROJECT_FILE, JSON.stringify(projects), 'utf8');
+
+  /* map.json — sinh SAU khi làm giàu để có đủ cả dự án mới.
+     Dự án định vị được thì approximate = false; còn lại đặt tạm ở tâm quận
+     và vẫn mang cờ approximate = true để giao diện nói thật. */
+  const mapPoints = projects
+    .filter((p) => p.lat != null)
+    .map((p) => ({
+      id: p.id, name: p.name, lat: p.lat, lng: p.lng,
+      address: p.address || null, district_name: p.district_name || null,
+      approximate: p.lat_approximate === true,
+      listings: p.apartment_count || 0,
+      geo_source: p.geo_source ?? null,
+    }));
+  writeFileSync(join(OUT, 'map.json'),
+    JSON.stringify({ total: mapPoints.length, data: mapPoints }), 'utf8');
+
+  console.log(`\n=== dự án ===`);
+  console.log(`  gắn ảnh khớp chính xác : ${gAnhChinhXac}`);
+  console.log(`  gắn ảnh khớp gần đúng : ${gAnhGanDung}`);
+  console.log(`  bổ sung từ tin đăng     : ${them}`);
+  console.log(`  tổng dự án             : ${projects.length}`);
+  console.log(`  còn phải vẽ SVG        : ${projects.filter((p) => !p.hero_image).length}`);
+}
+
+console.log(`\nghi ra web/public/data/: index.json, districts.json, map.json, projects.json, d/*.json (${Object.keys(counts).length} file)`);
