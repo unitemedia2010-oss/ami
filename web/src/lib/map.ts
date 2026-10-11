@@ -36,6 +36,10 @@ export interface MapPoint {
   price?: string | null;
   /** true = toạ độ chỉ là tâm quận, không phải vị trí thật */
   approximate?: boolean;
+  /** đang nằm trong giỏ so sánh → vẽ toả sáng, ưu tiên hiển thị */
+  comparing?: boolean;
+  /** thứ tự trong giỏ (1..5), dùng để đánh số trên marker */
+  cmpIndex?: number;
 }
 
 /** Nạp Leaflet một lần, dùng chung cho mọi bản đồ trong trang */
@@ -90,6 +94,27 @@ export const DOT_ICON = (active = false) =>
 <circle cx="13" cy="13" r="4" fill="#fff"/>
 </svg>`)}`;
 
+/**
+ * Marker của tin đang so sánh — toả sáng và có số thứ tự.
+ *
+ * Vì sao vẽ khác hẳn: người dùng bỏ 5 tin vào giỏ rồi mở bản đồ để xem chúng
+ * nằm ở đâu. Nếu vẽ y hệt marker dự án thì không phân biệt được cái nào là
+ * cái họ đang chọn — mà đó mới là thứ cần nhìn.
+ */
+export const COMPARE_ICON = (n: number) =>
+  `data:image/svg+xml;charset=utf-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="38" height="46" viewBox="0 0 38 46">
+<defs>
+<filter id="s" x="-60%" y="-60%" width="220%" height="220%">
+<feGaussianBlur stdDeviation="3.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter></defs>
+<g filter="url(#s)">
+<path d="M19 2C9.7 2 2 9.7 2 19c0 12.4 17 27 17 27s17-14.6 17-27C36 9.7 28.3 2 19 2z"
+  fill="#0F172A" stroke="#38BDF8" stroke-width="3"/>
+<circle cx="19" cy="19" r="7.5" fill="#38BDF8"/>
+<text x="19" y="23" font-family="Segoe UI,sans-serif" font-size="10.5" font-weight="800"
+ fill="#0F172A" text-anchor="middle">${n}</text>
+</g></svg>`)}`;
+
 /** Tạo bản đồ đã cấu hình xong */
 export function createMap(el: HTMLElement, points: MapPoint[], opts: {
   center?: [number, number];
@@ -121,14 +146,27 @@ export function createMap(el: HTMLElement, points: MapPoint[], opts: {
   const group: any[] = [];
 
   for (const p of points) {
-    const icon = L.icon({
-      iconUrl: DOT_ICON(),
-      iconSize: [26, 26],
-      iconAnchor: [13, 13],
-      popupAnchor: [0, -14],
-    });
+    const icon = p.comparing
+      ? L.icon({
+          iconUrl: COMPARE_ICON(p.cmpIndex || 1),
+          iconSize: [38, 46],
+          iconAnchor: [19, 46],
+          popupAnchor: [0, -44],
+          /* zIndex cao để marker so sánh luôn nằm trên các marker khác. */
+          className: 'cmp-pin',
+        })
+      : L.icon({
+          iconUrl: DOT_ICON(),
+          iconSize: [26, 26],
+          iconAnchor: [13, 13],
+          popupAnchor: [0, -14],
+        });
 
-    const marker = L.marker([p.lat, p.lng], { icon, title: p.name }).addTo(map);
+    const marker = L.marker([p.lat, p.lng], {
+      icon,
+      title: p.name,
+      zIndexOffset: p.comparing ? 1000 : 0,
+    }).addTo(map);
 
     const priceRow = p.price
       ? `<div style="font-weight:800;color:#E11D48;font-size:13px;margin-top:4px">${p.price}</div>`
@@ -137,6 +175,11 @@ export function createMap(el: HTMLElement, points: MapPoint[], opts: {
       ? `<div style="font-size:11px;color:#B45309;background:#FEF3C7;border-radius:6px;
                   padding:3px 6px;margin-top:6px;display:inline-block">
            Vị trí ước lượng theo quận</div>`
+      : '';
+    const cmpRow = p.comparing
+      ? `<div style="font-size:11px;color:#075985;background:#BAE6FD;border-radius:6px;
+                  padding:3px 6px;margin-top:6px;display:inline-block;font-weight:700">
+           Đang so sánh · #${p.cmpIndex || 1}</div>`
       : '';
     const linkRow = p.href
       ? `<a href="${p.href}" style="display:inline-block;margin-top:8px;font-size:12px;
@@ -147,7 +190,7 @@ export function createMap(el: HTMLElement, points: MapPoint[], opts: {
       `<div style="min-width:180px">
          <div style="font-weight:800;font-size:14px;color:#292524;line-height:1.3">${p.name}</div>
          ${p.address ? `<div style="font-size:11.5px;color:#78716C;margin-top:2px">${p.address}</div>` : ''}
-         ${priceRow}${approxRow}${linkRow}
+         ${priceRow}${cmpRow}${approxRow}${linkRow}
        </div>`,
     );
 

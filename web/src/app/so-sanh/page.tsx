@@ -7,8 +7,12 @@ import { api, type ListingCard as C, fmtPrice, fmtArea } from '@/lib/api';
 import { coverImage } from '@/lib/cover';
 import { WatchButton } from '@/components/ListingCard';
 import { Note, SectionHeader, BarChart } from '@/components/ui';
+import { COMPARE_MAX } from '@/lib/compare';
 
-const MAX = 4;
+/* Giới hạn lấy từ compare.ts để giỏ và trang so sánh không lệch nhau.
+   Trước đây hằng số nằm riêng ở đây là 4 trong khi giỏ cho 5 — người dùng
+   chọn 5 tin rồi bấm "So sánh" thì tin thứ 5 bị cắt im lặng. */
+const MAX = COMPARE_MAX;
 
 function CompareInner() {
   const sp = useSearchParams();
@@ -238,7 +242,7 @@ function ComparePicks() {
 
   return (
     <>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 mb-6">
         {list.slice(0, 8).map((l) => {
           const key = `${l.slug}|${l.district_slug ?? ''}`;
           return (

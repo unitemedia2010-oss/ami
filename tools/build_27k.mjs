@@ -80,6 +80,15 @@ const CENTER = {
   'hoc-mon': [10.9300, 106.5800], 'nha-be': [10.6900, 106.7400],
 };
 
+/* Gắn tâm quận vào chính DISTRICTS để districts.json có toạ độ.
+   Bản đồ cần biết tâm quận để đánh dấu vị trí của các tin đang so sánh —
+   một tin đăng không có toạ độ riêng, chỉ biết nó thuộc quận nào.
+   ⚠ Đây là tâm hành chính, KHÔNG phải vị trí tin đăng. Giao diện phải ghi rõ. */
+for (const d of DISTRICTS) {
+  const c = CENTER[d.slug];
+  if (c) { d.lat = c[0]; d.lng = c[1]; }
+}
+
 /* =============================================================================
  *  2. CHUẨN HOÁ
  * ========================================================================== */
@@ -233,6 +242,86 @@ writeFileSync(join(OUT, 'index.json'), JSON.stringify({
 
 writeFileSync(join(OUT, 'districts.json'), JSON.stringify(DISTRICTS), 'utf8');
 
+/* ---------------------------------------------------------------------------
+ * Sinh web/src/data/districts.ts từ chính DISTRICTS ở trên.
+ *
+ * Vì sao phải sinh thay vì viết tay: file .ts khai báo slug cho generateStaticParams
+ * của trang /quan/[slug]. Trước đây viết tay nên lệch với districts.json — có
+ * 6 slug không tồn tại trong dữ liệu (sinh ra trang rỗng) và thiếu 4 slug có
+ * thật (quan-2, quan-9, binh-thanh, nha-be → 404). Sinh từ một nguồn thì hai
+ * file không thể lệch nữa.
+ * ---------------------------------------------------------------------- */
+const DISTRICT_TS = join(HERE, '../web/src/data/districts.ts');
+writeFileSync(DISTRICT_TS, `/**
+ * ⚠ FILE NÀY ĐƯỢC SINH TỰ ĐỘNG — đừng sửa tay.
+ *
+ *   Nguồn duy nhất: tools/build_27k.mjs (mảng DISTRICTS).
+ *   Chạy \`node tools/build_27k.mjs\` để cập nhật.
+ *
+ *   Sinh tự động vì trang /quan/[slug] khai báo generateStaticParams từ đây.
+ *   Nếu viết tay và lệch với public/data/districts.json thì sẽ có slug
+ *   sinh ra trang rỗng và thiếu slug thật (404 vĩnh viễn trên static export).
+ *
+ *   \`verified: false\` = chưa đối chiếu trực tiếp với Nghị quyết 1685/NQ-UBTVQH15.
+ */
+
+export interface DistrictSeed {
+  code: string;
+  slug: string;
+  name_new: string;
+  name_old: string | null;
+  region: 'noi-thanh' | 'moi' | 'ngoai-thanh';
+  verified: boolean;
+}
+
+export const DISTRICTS: DistrictSeed[] = ${JSON.stringify(
+  DISTRICTS.map((d) => ({
+    code: d.code,
+    slug: d.slug,
+    name_new: d.name_new,
+    name_old: d.name_old,
+    region: d.type === 'quận' ? 'noi-thanh' : 'ngoai-thanh',
+    verified: d.verified,
+  })),
+  null,
+  2,
+)};
+
+export const REGION_LABEL: Record<DistrictSeed['region'], string> = {
+  'noi-thanh': 'Nội thành',
+  'moi': 'Đơn vị mới sau sáp nhập',
+  'ngoai-thanh': 'Ngoại thành',
+};
+
+/** Mô tả chuẩn cho SEO — đổi theo từng quận sau khi đã xác minh */
+export const DISTRICT_BLURB: Record<string, string> = {
+  'quan-1':
+    'Trung tâm kinh tế của TP.HCM, tập trung các tòa văn phòng, chung cư cao cấp và cửa hàng. Phù hợp người đi làm văn phòng và muốn ở ngay trung tâm.',
+  'quan-2':
+    'Khu vực ven sông và cửa ngõ phía Đông của TP.HCM, tập trung chung cư cao cấp như Thủ Thiêm, An Phú, Vinhomes. Nơi có nhiều dự án căn hộ mới nhất thành phố.',
+  'thu-duc':
+    'Khu vực phía Đông, gom Quận 2, Quận 9 và Quận Thủ Đức trước đây — khu tập trung dự án chung cư lớn nhất TP.HCM như Vinhomes, The Prive, Masteri Thảo Điền.',
+  'quan-7':
+    'Khu đô thị mới, tập trung trung tâm thương mại, trường ĐH Quốc Gia và nhiều khu chung cư cao cấp ven sông.',
+  'binh-thanh':
+    'Quận nội thành ven sông, tập trung cao ốc văn phòng, trung tâm thương mại và nhiều dự án căn hộ ven sông.',
+  'go-vap':
+    'Quận nội thành phía Bắc, tập trung dân cư đông đúc, nhiều dự án căn hộ giá tầm trung và nhiều trường học.',
+  'tan-phu':
+    'Quận nội thành phía Tây Nam, tập trung nghề may, có khu dân cư đông và nhiều dự án căn hộ giá vừa.',
+  'quan-8':
+    'Quận ven sông phía Tây Nam, nhiều khu dân cư và dự án căn hộ vừa và giá rẻ, kết nối thuận tiện với Quận 7.',
+  'quan-12':
+    'Quận nội thành phía Tây, tập trung dân cư đông, nhiều dự án căn hộ và đất nền giá vừa phải.',
+  'tan-binh':
+    'Quận trung tâm phía Tây, tập trung văn phòng, sân bay và nhiều chung cư cao cấp ven sông.',
+  'phu-nhuan':
+    'Quận nội thành nhỏ gọn, nhiều công viên, trường học uy tín và các dự án căn hộ giá tầm trung.',
+};
+
+export const findBySlug = (slug: string) => DISTRICTS.find((d) => d.slug === slug);
+`, 'utf8');
+
 writeFileSync(join(OUT, 'meta.json'), JSON.stringify({
   generated_at: new Date().toISOString(),
   source: 'all-listings.json — 27.737 tin',
@@ -265,6 +354,35 @@ const PROJECT_FILE = join(OUT, 'projects.json');
 if (existsSync(PROJECT_FILE)) {
   const projects = JSON.parse(readFileSync(PROJECT_FILE, 'utf8'));
 
+  /* ------------------------------------------------------------ toạ độ thật
+     tools/geocode.mjs đã dò tên từng dự án trên OpenStreetMap rồi ghi kết quả
+     vào projects-coords.json (khoá = tên dự án). Ở đây chỉ việc rải toạ độ đó
+     về dự án tương ứng; dự án nào không có thì mới rơi về tâm quận.
+     ⚠ Phải chạy SAU khi đã bổ sung dự án từ 27k, nếu không 248 dự án mới sẽ
+       không có tên trong bảng toạ độ. */
+  const COORD_FILE = join(HERE, 'projects-coords.json');
+  const coords = existsSync(COORD_FILE)
+    ? JSON.parse(readFileSync(COORD_FILE, 'utf8'))
+    : {};
+
+  const ganToaDo = (p) => {
+    const c = coords[p.name];
+    if (c && c.ok) {
+      p.lat = c.lat;
+      p.lng = c.lng;
+      p.lat_approximate = false;
+      p.geo_source = c.nguon || 'osm';
+      return true;
+    }
+    /* bySlug khoá theo slug, còn p.district_id là số — dùng bảng tra ngược. */
+    const quanSlug = DISTRICTS.find((d) => d.id === p.district_id)?.slug;
+    const c2 = CENTER[quanSlug];
+    if (c2) { p.lat = c2[0]; p.lng = c2[1]; }
+    p.lat_approximate = true;
+    p.geo_source = 'tam-quan';
+    return false;
+  };
+
   /* gom ảnh + quận theo tên dự án, từ chính dữ liệu vừa sinh */
   const anh = new Map();       // tên đã bỏ dấu → URL ảnh
   const tenHienThi = new Map(); // tên đã bỏ dấu → tên gốc có dấu
@@ -284,14 +402,17 @@ if (existsSync(PROJECT_FILE)) {
     }
   }
 
-  let gAnhChinhXac = 0, gAnhGanDung = 0;
+  let gAnhChinhXac = 0, gAnhGanDung = 0, gToaDoThat = 0;
   for (const p of projects) {
     const k = fold(p.name);
-    if (anh.has(k)) { p.hero_image = anh.get(k); gAnhChinhXac++; continue; }
-    // khớp gần đúng: một tên là tiền tố/suffix của tên kia
-    for (const t of anh.keys()) {
-      if (t.includes(k) || k.includes(t)) { p.hero_image = anh.get(t); gAnhGanDung++; break; }
+    if (anh.has(k)) { p.hero_image = anh.get(k); gAnhChinhXac++; }
+    else {
+      // khớp gần đúng: một tên là tiền tố/suffix của tên kia
+      for (const t of anh.keys()) {
+        if (t.includes(k) || k.includes(t)) { p.hero_image = anh.get(t); gAnhGanDung++; break; }
+      }
     }
+    if (ganToaDo(p)) gToaDoThat++;
   }
 
   /* bổ sung dự án lớn từ 27k — chỉ lấy dự án có từ 3 tin trở lên để tránh rác */
@@ -303,7 +424,7 @@ if (existsSync(PROJECT_FILE)) {
     const d = bySlug.get(quanSlug);
     if (!d) continue;
     const tenGoc = tenHienThi.get(ten);      // giữ nguyên dấu, không dùng key đã fold
-    projects.push({
+    const p = {
       id: `prj-x${++them}`,
       slug: `du-an-${tenGoc.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase().slice(0, 50)}`,
       name: tenGoc,
@@ -317,13 +438,15 @@ if (existsSync(PROJECT_FILE)) {
       hero_image: anh.get(ten) || null,
       lat: CENTER[quanSlug][0],
       lng: CENTER[quanSlug][1],
-      lat_approximate: true,                 // chỉ có tâm quận, chưa định vị riêng
+      lat_approximate: true,
       geo_source: 'tam-quan',
       is_published: true,
       is_verified: false,
       /** dự án suy ra từ tin đăng, không phải danh mục dự án chính thức */
       from_listings: true,
-    });
+    };
+    if (ganToaDo(p)) gToaDoThat++;
+    projects.push(p);
   }
 
   writeFileSync(PROJECT_FILE, JSON.stringify(projects), 'utf8');
@@ -348,6 +471,7 @@ if (existsSync(PROJECT_FILE)) {
   console.log(`  gắn ảnh khớp gần đúng : ${gAnhGanDung}`);
   console.log(`  bổ sung từ tin đăng     : ${them}`);
   console.log(`  tổng dự án             : ${projects.length}`);
+  console.log(`  có toạ độ thật (OSM)   : ${gToaDoThat} / ${projects.length}`);
   console.log(`  còn phải vẽ SVG        : ${projects.filter((p) => !p.hero_image).length}`);
 }
 

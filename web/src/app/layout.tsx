@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
+import CompareDock from '@/components/CompareTray';
 
 /* =============================================================================
  *  Plus Jakarta Sans — nạp qua next/font để:
@@ -86,6 +87,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        {/* Giỏ so sánh phải ở ngoài <main>: người dùng chọn tin ở trang tìm
+            kiếm, xem chi tiết một tin rồi mới so sánh — đặt trong từng trang
+            sẽ hụt mất các bước đó. */}
+        <CompareDock />
       </body>
     </html>
   );

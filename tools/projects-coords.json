@@ -1,4 +1,13 @@
 {
+ "590": {
+  "ok": true,
+  "lat": 10.786358,
+  "lng": 106.666342,
+  "nguon": "ten+quan",
+  "diem": 134.9,
+  "cachQuanKm": 2.08,
+  "osmt": "Siêu Thị Điện Máy Nội Thất Chợ Lớn, 590, Đường Cách Mạng Tháng Tám, Khu phố 10, Phường Nhiêu Lộc, Thành phố Hồ Chí Minh, 72422, Việt Nam"
+ },
  "Republic Plaza": {
   "ok": true,
   "lat": 10.802033,
@@ -1183,5 +1192,1700 @@
  },
  "Thanh Đa View": {
   "ok": false
+ },
+ "Vinhomes Golden River Ba Son": {
+  "ok": true,
+  "lat": 10.785388,
+  "lng": 106.710626,
+  "nguon": "ten+quan",
+  "diem": 175.6,
+  "cachQuanKm": 1.42,
+  "osmt": "Vinhomes Golden River Ba Son, Phường Sài Gòn, Thành phố Hồ Chí Minh, 71016, Việt Nam"
+ },
+ "Vinhomes Golden River BaSon": {
+  "ok": false
+ },
+ "Stown Tham Lương": {
+  "ok": false
+ },
+ "Horizon": {
+  "ok": true,
+  "lat": 10.792234,
+  "lng": 106.687549,
+  "nguon": "ten+quan",
+  "diem": 174.8,
+  "cachQuanKm": 2.24,
+  "osmt": "Chung Cư Horizon, Hẻm 214/19 Nguyễn Văn Nguyễn, Khu phố 2, Phường Tân Định, Thành phố Hồ Chí Minh, 72200, Việt Nam"
+ },
+ "Thảo Điền Green": {
+  "ok": true,
+  "lat": 10.817076,
+  "lng": 106.731549,
+  "nguon": "ten+quan",
+  "diem": 172.1,
+  "cachQuanKm": 4.94,
+  "osmt": "Thao Dien Green, 192, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "Masteri An Phú": {
+  "ok": true,
+  "lat": 10.803665,
+  "lng": 106.747227,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Masteri An Phú, 191, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "Paris Hoàng Kim": {
+  "ok": false
+ },
+ "Lexington Residence": {
+  "ok": false
+ },
+ "Diamond Island": {
+  "ok": false
+ },
+ "Victoria Village": {
+  "ok": false
+ },
+ "Feliz En Vista": {
+  "ok": true,
+  "lat": 10.777816,
+  "lng": 106.75571,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Feliz En Vista, Phường Cát Lái, Thành phố Hồ Chí Minh, 71115, Việt Nam"
+ },
+ "De Capella": {
+  "ok": true,
+  "lat": 10.787345,
+  "lng": 106.73496,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư De Capella, 116, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "Cantavil An Phú": {
+  "ok": false
+ },
+ "Citi Esto": {
+  "ok": true,
+  "lat": 10.770857,
+  "lng": 106.786263,
+  "nguon": "ten",
+  "diem": 125,
+  "cachQuanKm": null,
+  "osmt": "Chung Cư Citi Esto, Đường Số 70 - CL, Khu phố 20, Phường Cát Lái, Thành phố Hồ Chí Minh, 71115, Việt Nam"
+ },
+ "The Sun Avenue": {
+  "ok": true,
+  "lat": 10.784174,
+  "lng": 106.746177,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "The Sun Avenue, Đường D2 / Đường số 51, Khu phố 14, Phường Bình Trưng, Thành phố Hồ Chí Minh, 71322, Việt Nam"
+ },
+ "Thảo Điền Pearl": {
+  "ok": true,
+  "lat": 10.801663,
+  "lng": 106.733283,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung Cư Thảo Điền Pearl, 12, Quốc Hương, Khu phố 5, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "Waterina Suites": {
+  "ok": true,
+  "lat": 10.778551,
+  "lng": 106.754222,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung Cư Waterina Suites, Đường 52 - TML, Khu phố 14, Phường Cát Lái, Thành phố Hồ Chí Minh, 71115, Việt Nam"
+ },
+ "Masteri Thảo Điền": {
+  "ok": true,
+  "lat": 10.802649,
+  "lng": 106.742399,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Masteri Thảo Điền, 159, Đường Võ Nguyên Giáp, Khu phố 4, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "New City Thủ Thiêm": {
+  "ok": true,
+  "lat": 10.781304,
+  "lng": 106.735645,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "New City Thủ Thiêm, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "The CBD Premium Home": {
+  "ok": false
+ },
+ "PetroVietnam Landmark": {
+  "ok": true,
+  "lat": 10.796958,
+  "lng": 106.750454,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "PetroVietnam Landmark, Phường Bình Trưng, Thành phố Hồ Chí Minh, 71322, Việt Nam"
+ },
+ "Thủ Thiêm Green House": {
+  "ok": true,
+  "lat": 10.755531,
+  "lng": 106.761952,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Thủ Thiêm Green House, Phường Cát Lái, Thành phố Hồ Chí Minh, 71115, Việt Nam"
+ },
+ "One Verandah Mapletree": {
+  "ok": false
+ },
+ "The Global City": {
+  "ok": false
+ },
+ "Citi Alto": {
+  "ok": false
+ },
+ "Homyland Riverside": {
+  "ok": true,
+  "lat": 10.789632,
+  "lng": 106.7688,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Homyland Riverside, Phường Bình Trưng, Thành phố Hồ Chí Minh, 71322, Việt Nam"
+ },
+ "Thu Thiem Zeit River": {
+  "ok": false
+ },
+ "Centana Thủ Thiêm": {
+  "ok": true,
+  "lat": 10.79088,
+  "lng": 106.752501,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Căn Hộ Centana Thủ Thiêm, Phường Bình Trưng, Thành phố Hồ Chí Minh, 71322, Việt Nam"
+ },
+ "Bộ Công An": {
+  "ok": false
+ },
+ "Lumiere Riverside": {
+  "ok": true,
+  "lat": 10.804035,
+  "lng": 106.748843,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Lumière Riverside, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "Vista Verde": {
+  "ok": true,
+  "lat": 10.776708,
+  "lng": 106.756627,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Vista Verde, 2, Phường Cát Lái, Thành phố Hồ Chí Minh, 71115, Việt Nam"
+ },
+ "Citi Soho": {
+  "ok": true,
+  "lat": 10.770181,
+  "lng": 106.7868,
+  "nguon": "ten",
+  "diem": 125,
+  "cachQuanKm": null,
+  "osmt": "Căn hộ Citi Soho, Phường Cát Lái, Thành phố Hồ Chí Minh, 71115, Việt Nam"
+ },
+ "Empire City Thủ Thiêm": {
+  "ok": false
+ },
+ "Palm Heights": {
+  "ok": false
+ },
+ "D’Lusso": {
+  "ok": false
+ },
+ "C2": {
+  "ok": true,
+  "lat": 10.869241,
+  "lng": 106.799561,
+  "nguon": "ten",
+  "diem": 90,
+  "cachQuanKm": null,
+  "osmt": "C2, Hàn Thuyên, Khu đô thị Đại học Quốc gia Thành phố Hồ Chí Minh, Phường Linh Xuân, Thành phố Hồ Chí Minh, 71309, Việt Nam"
+ },
+ "Khánh Hội 1": {
+  "ok": false
+ },
+ "Vĩnh Hội": {
+  "ok": true,
+  "lat": 10.754381,
+  "lng": 106.698756,
+  "nguon": "ten+quan",
+  "diem": 135,
+  "cachQuanKm": 1.98,
+  "osmt": "Trung Tâm Ngoại Ngữ Quốc Tế Mỹ - Việt Nam, 21B, Tôn Thất Thuyết, Phường Vĩnh Hội, Thành phố Hồ Chí Minh, 72821, Việt Nam"
+ },
+ "Vạn Đô": {
+  "ok": true,
+  "lat": 10.755729,
+  "lng": 106.691171,
+  "nguon": "ten+quan",
+  "diem": 135.6,
+  "cachQuanKm": 1.43,
+  "osmt": "Cao ốc Vạn Đô, 348, Đường Bến Vân Đồn, Phường Vĩnh Hội, Thành phố Hồ Chí Minh, 72821, Việt Nam"
+ },
+ "Khánh Hội 2": {
+  "ok": true,
+  "lat": 10.763277,
+  "lng": 106.70162,
+  "nguon": "ten+quan",
+  "diem": 85.3,
+  "cachQuanKm": 1.69,
+  "osmt": "Trường Tiểu học Nguyễn Văn Trỗi, 2, Vĩnh Khánh, Khu phố 2, Phường Khánh Hội, Thành phố Hồ Chí Minh, 72822, Việt Nam"
+ },
+ "Tôn Thất Thuyết": {
+  "ok": true,
+  "lat": 10.754381,
+  "lng": 106.698756,
+  "nguon": "ten+quan",
+  "diem": 175,
+  "cachQuanKm": 1.98,
+  "osmt": "Trung Tâm Ngoại Ngữ Quốc Tế Mỹ - Việt Nam, 21B, Tôn Thất Thuyết, Phường Vĩnh Hội, Thành phố Hồ Chí Minh, 72821, Việt Nam"
+ },
+ "Hùng Vương": {
+  "ok": true,
+  "lat": 10.754467,
+  "lng": 106.664722,
+  "nguon": "ten+quan",
+  "diem": 175.2,
+  "cachQuanKm": 1.8,
+  "osmt": "Chung cư Hùng Vương, Phường Chợ Lớn, Thành phố Hồ Chí Minh, 72723, Việt Nam"
+ },
+ "109 Nguyễn Biểu": {
+  "ok": false
+ },
+ "Ngô Quyền": {
+  "ok": false
+ },
+ "Sư Vạn Hạnh": {
+  "ok": true,
+  "lat": 10.759757,
+  "lng": 106.674006,
+  "nguon": "ten+quan",
+  "diem": 136.4,
+  "cachQuanKm": 0.63,
+  "osmt": "Chung cư Sư Vạn Hạnh, Phường An Đông, Thành phố Hồ Chí Minh, 72721, Việt Nam"
+ },
+ "Phan Văn Trị": {
+  "ok": true,
+  "lat": 10.758094,
+  "lng": 106.684173,
+  "nguon": "ten+quan",
+  "diem": 136.3,
+  "cachQuanKm": 0.69,
+  "osmt": "Chung Cư Phan Văn Trị, Phan Văn Trị, Khu phố 9, Phường Chợ Quán, Thành phố Hồ Chí Minh, 72722, Việt Nam"
+ },
+ "Vinhomes Grand Park": {
+  "ok": true,
+  "lat": 10.839579,
+  "lng": 106.842117,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Vinhomes Grand Park, Phường Long Bình, Thành phố Hồ Chí Minh, 71217, Việt Nam"
+ },
+ "Him Lam Chợ Lớn": {
+  "ok": false
+ },
+ "D-Homme": {
+  "ok": false
+ },
+ "Blue Sapphire Bình Phú": {
+  "ok": true,
+  "lat": 10.739881,
+  "lng": 106.628852,
+  "nguon": "ten+quan",
+  "diem": 172.6,
+  "cachQuanKm": 4.43,
+  "osmt": "Blue Sapphire Bình Phú, Bình Phú, Khu phố 8, Phường Bình Phú, Thành phố Hồ Chí Minh, 71910, Việt Nam"
+ },
+ "An Phú Apartment": {
+  "ok": false
+ },
+ "The Peak - Midtown Phú Mỹ Hưng": {
+  "ok": true,
+  "lat": 10.725234,
+  "lng": 106.728998,
+  "nguon": "ten+quan",
+  "diem": 134.6,
+  "cachQuanKm": 2.4,
+  "osmt": "Chung cư Midtown - The Peak, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Happy Valley": {
+  "ok": true,
+  "lat": 10.730639,
+  "lng": 106.71299,
+  "nguon": "ten+quan",
+  "diem": 176,
+  "cachQuanKm": 1.04,
+  "osmt": "Happy Valley Residence, Phường Tân Hưng, Nhà Bè, Thành phố Hồ Chí Minh, 72912, Việt Nam"
+ },
+ "The View Riviera Point": {
+  "ok": false
+ },
+ "The Era Town": {
+  "ok": true,
+  "lat": 10.69978,
+  "lng": 106.730649,
+  "nguon": "ten+quan",
+  "diem": 132.1,
+  "cachQuanKm": 4.87,
+  "osmt": "Chung cư The Era Town - Khu B, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Hưng Vượng 3": {
+  "ok": true,
+  "lat": 10.730609,
+  "lng": 106.709501,
+  "nguon": "ten+quan",
+  "diem": 85.9,
+  "cachQuanKm": 1.11,
+  "osmt": "Hưng Vượng 2, Phường Tân Hưng, Nhà Bè, Thành phố Hồ Chí Minh, 72912, Việt Nam"
+ },
+ "Green View": {
+  "ok": true,
+  "lat": 10.721901,
+  "lng": 106.726574,
+  "nguon": "ten+quan",
+  "diem": 174.5,
+  "cachQuanKm": 2.5,
+  "osmt": "Chung cư Green View Phú Mỹ Hưng, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Sunrise City": {
+  "ok": true,
+  "lat": 10.741474,
+  "lng": 106.700536,
+  "nguon": "ten+quan",
+  "diem": 175.6,
+  "cachQuanKm": 1.37,
+  "osmt": "Sunrise City - Central Towers, Phường Tân Hưng, Thành phố Hồ Chí Minh, 72912, Việt Nam"
+ },
+ "Cosmo City": {
+  "ok": true,
+  "lat": 10.737216,
+  "lng": 106.725509,
+  "nguon": "ten+quan",
+  "diem": 175.6,
+  "cachQuanKm": 1.4,
+  "osmt": "Chung cư Cosmo City, 99, Phường Tân Mỹ, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Sky Garden 3": {
+  "ok": true,
+  "lat": 10.733629,
+  "lng": 106.705804,
+  "nguon": "ten+quan",
+  "diem": 175.9,
+  "cachQuanKm": 1.06,
+  "osmt": "Sky Garden 3, Phường Tân Hưng, Thành phố Hồ Chí Minh, 72912, Việt Nam"
+ },
+ "Belleza": {
+  "ok": true,
+  "lat": 10.707098,
+  "lng": 106.727053,
+  "nguon": "ten+quan",
+  "diem": 173,
+  "cachQuanKm": 3.97,
+  "osmt": "Chung cư Belleza, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Sunshine Sky City": {
+  "ok": false
+ },
+ "Luxcity": {
+  "ok": false
+ },
+ "Hưng Vượng 1": {
+  "ok": true,
+  "lat": 10.730609,
+  "lng": 106.709501,
+  "nguon": "ten+quan",
+  "diem": 85.9,
+  "cachQuanKm": 1.11,
+  "osmt": "Hưng Vượng 2, Phường Tân Hưng, Nhà Bè, Thành phố Hồ Chí Minh, 72912, Việt Nam"
+ },
+ "Tân Mỹ": {
+  "ok": true,
+  "lat": 10.726834,
+  "lng": 106.720584,
+  "nguon": "ten+quan",
+  "diem": 135.3,
+  "cachQuanKm": 1.68,
+  "osmt": "Trường Đại học Fulbright Việt Nam, 105, Đường Tôn Dật Tiên, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Ascent Lakeside": {
+  "ok": false
+ },
+ "Docklands Sài Gòn": {
+  "ok": true,
+  "lat": 10.735253,
+  "lng": 106.726902,
+  "nguon": "ten+quan",
+  "diem": 85.4,
+  "cachQuanKm": 1.61,
+  "osmt": "Chung cư Docklands Saigon, Phường Tân Mỹ, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Phú Mỹ An": {
+  "ok": false
+ },
+ "Phú Mỹ": {
+  "ok": true,
+  "lat": 10.741106,
+  "lng": 106.721343,
+  "nguon": "ten+quan",
+  "diem": 136.1,
+  "cachQuanKm": 0.92,
+  "osmt": "Cửa Hàng BMW Phũ Mỹ Hưng, 314, Nguyễn Văn Linh, Khu phố 50, Phường Tân Thuận, Thành phố Hồ Chí Minh, 72917, Việt Nam"
+ },
+ "Hoàng Anh Thanh Bình": {
+  "ok": false
+ },
+ "Hưng Phúc": {
+  "ok": true,
+  "lat": 10.71844,
+  "lng": 106.727718,
+  "nguon": "ten+quan",
+  "diem": 134.1,
+  "cachQuanKm": 2.89,
+  "osmt": "Chung cư Hưng Phúc - Tòa A, Mỹ Phú 2C, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Mỹ Đức": {
+  "ok": true,
+  "lat": 10.7981,
+  "lng": 106.712985,
+  "nguon": "ten+quan",
+  "diem": 133.8,
+  "cachQuanKm": 3.19,
+  "osmt": "Chung Cư Mỹ Đức, 222, Đường Xô Viết Nghệ Tĩnh, Khu phố 9, Phường Thạnh Mỹ Tây, Thành phố Hồ Chí Minh, 72331, Việt Nam"
+ },
+ "Scenic Valley 1": {
+  "ok": true,
+  "lat": 10.731532,
+  "lng": 106.718176,
+  "nguon": "ten+quan",
+  "diem": 85.9,
+  "cachQuanKm": 1.1,
+  "osmt": "Scenic Valley 2, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Riverside Residence": {
+  "ok": true,
+  "lat": 10.719523,
+  "lng": 106.726452,
+  "nguon": "ten+quan",
+  "diem": 174.3,
+  "cachQuanKm": 2.71,
+  "osmt": "Riverside Residence, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Saigon Riverside Complex": {
+  "ok": true,
+  "lat": 10.722372,
+  "lng": 106.742198,
+  "nguon": "ten+quan",
+  "diem": 173.3,
+  "cachQuanKm": 3.74,
+  "osmt": "Chung cư Q7 SaiGon Riverside Complex, 04, Phường Phú Thuận, Nhà Bè, Thành phố Hồ Chí Minh, 72907, Việt Nam"
+ },
+ "Belleza Apartment": {
+  "ok": false
+ },
+ "Hưng Phúc Premier": {
+  "ok": true,
+  "lat": 10.716162,
+  "lng": 106.729116,
+  "nguon": "ten+quan",
+  "diem": 173.8,
+  "cachQuanKm": 3.18,
+  "osmt": "Chung cư Hưng Phúc Premier, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Q7 Saigon Riverside": {
+  "ok": true,
+  "lat": 10.722372,
+  "lng": 106.742198,
+  "nguon": "ten+quan",
+  "diem": 173.3,
+  "cachQuanKm": 3.74,
+  "osmt": "Chung cư Q7 SaiGon Riverside Complex, 04, Phường Phú Thuận, Nhà Bè, Thành phố Hồ Chí Minh, 72907, Việt Nam"
+ },
+ "Sunrise City View": {
+  "ok": false
+ },
+ "Saigon Riverside": {
+  "ok": true,
+  "lat": 10.722372,
+  "lng": 106.742198,
+  "nguon": "ten+quan",
+  "diem": 173.3,
+  "cachQuanKm": 3.74,
+  "osmt": "Chung cư Q7 SaiGon Riverside Complex, 04, Phường Phú Thuận, Nhà Bè, Thành phố Hồ Chí Minh, 72907, Việt Nam"
+ },
+ "Hưng Vượng 2": {
+  "ok": true,
+  "lat": 10.730609,
+  "lng": 106.709501,
+  "nguon": "ten+quan",
+  "diem": 175.9,
+  "cachQuanKm": 1.11,
+  "osmt": "Hưng Vượng 2, Phường Tân Hưng, Nhà Bè, Thành phố Hồ Chí Minh, 72912, Việt Nam"
+ },
+ "The Infiniti Riviera Point": {
+  "ok": false
+ },
+ "Midtown Phú Mỹ Hưng": {
+  "ok": false
+ },
+ "The Bridgeview": {
+  "ok": false
+ },
+ "LuxGarden": {
+  "ok": true,
+  "lat": 10.738116,
+  "lng": 106.741601,
+  "nguon": "ten+quan",
+  "diem": 173.9,
+  "cachQuanKm": 3.13,
+  "osmt": "Chung cư LuxGarden, 370, Phường Phú Thuận, Thành phố Hồ Chí Minh, 72907, Việt Nam"
+ },
+ "Mỹ Phước": {
+  "ok": true,
+  "lat": 10.799803,
+  "lng": 106.701991,
+  "nguon": "ten+quan",
+  "diem": 174.8,
+  "cachQuanKm": 2.15,
+  "osmt": "Chung cư Mỹ Phước, Hẻm 280/29, Hẻm 146/59 Đường Vũ Tùng, Khu phố 39, Phường Gia Định, Thành phố Hồ Chí Minh, 72330, Việt Nam"
+ },
+ "Riviera Point": {
+  "ok": true,
+  "lat": 10.732077,
+  "lng": 106.729177,
+  "nguon": "ten+quan",
+  "diem": 175,
+  "cachQuanKm": 1.97,
+  "osmt": "Riviera Point, Phường Tân Mỹ, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Riverside": {
+  "ok": true,
+  "lat": 10.743803,
+  "lng": 106.695135,
+  "nguon": "ten+quan",
+  "diem": 175,
+  "cachQuanKm": 2,
+  "osmt": "Chung cư Him Lam Riverside, Phường Tân Hưng, Thành phố Hồ Chí Minh, 72912, Việt Nam"
+ },
+ "Green Valley": {
+  "ok": true,
+  "lat": 10.733529,
+  "lng": 106.715917,
+  "nguon": "ten+quan",
+  "diem": 176.2,
+  "cachQuanKm": 0.79,
+  "osmt": "Chung cư Green Valley, Phường Tân Mỹ, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Ehome 5-The Bridgeview": {
+  "ok": false
+ },
+ "Scenic Valley": {
+  "ok": true,
+  "lat": 10.731532,
+  "lng": 106.718176,
+  "nguon": "ten+quan",
+  "diem": 175.9,
+  "cachQuanKm": 1.1,
+  "osmt": "Scenic Valley 2, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "Scenic Valley 2": {
+  "ok": true,
+  "lat": 10.731532,
+  "lng": 106.718176,
+  "nguon": "ten+quan",
+  "diem": 175.9,
+  "cachQuanKm": 1.1,
+  "osmt": "Scenic Valley 2, Phường Tân Mỹ, Nhà Bè, Thành phố Hồ Chí Minh, 72916, Việt Nam"
+ },
+ "La Casa": {
+  "ok": true,
+  "lat": 10.715079,
+  "lng": 106.74119,
+  "nguon": "ten+quan",
+  "diem": 132.9,
+  "cachQuanKm": 4.14,
+  "osmt": "Khu phức hợp La Casa, 89, Phường Phú Thuận, Nhà Bè, Thành phố Hồ Chí Minh, 72907, Việt Nam"
+ },
+ "Mỹ Phúc": {
+  "ok": true,
+  "lat": 10.723354,
+  "lng": 106.709778,
+  "nguon": "ten+quan",
+  "diem": 133.2,
+  "cachQuanKm": 3.79,
+  "osmt": "Mỹ Phúc, Phường Tân Hưng, Nhà Bè, Thành phố Hồ Chí Minh, 72912, Việt Nam"
+ },
+ "Dream home Palace": {
+  "ok": false
+ },
+ "Giai Việt": {
+  "ok": true,
+  "lat": 10.736822,
+  "lng": 106.667973,
+  "nguon": "ten+quan",
+  "diem": 135.9,
+  "cachQuanKm": 1.1,
+  "osmt": "Chung cư Giai Việt, 854, Phường Chánh Hưng, Thành phố Hồ Chí Minh, 73023, Việt Nam"
+ },
+ "Diamond Riverside": {
+  "ok": true,
+  "lat": 10.73019,
+  "lng": 106.624818,
+  "nguon": "ten+quan",
+  "diem": 171.1,
+  "cachQuanKm": 5.86,
+  "osmt": "Diamond Riverside Apartment, 1646A, Phường Bình Phú, Thành phố Hồ Chí Minh, 73122, Việt Nam"
+ },
+ "Topaz Elite": {
+  "ok": true,
+  "lat": 10.739544,
+  "lng": 106.678715,
+  "nguon": "ten+quan",
+  "diem": 176.7,
+  "cachQuanKm": 0.29,
+  "osmt": "Chung cư Topaz Elite, 37, Phường Chánh Hưng, Thành phố Hồ Chí Minh, 70000, Việt Nam"
+ },
+ "The Pegasuite": {
+  "ok": true,
+  "lat": 10.734416,
+  "lng": 106.653533,
+  "nguon": "ten+quan",
+  "diem": 174.3,
+  "cachQuanKm": 2.69,
+  "osmt": "Căn hộ The Pegasuite One, 1002, Tạ Quang Bửu, Khu phố 11, Phường Bình Đông, Thành phố Hồ Chí Minh, 72400, Việt Nam"
+ },
+ "Central Premium": {
+  "ok": true,
+  "lat": 10.736597,
+  "lng": 106.669003,
+  "nguon": "ten+quan",
+  "diem": 176,
+  "cachQuanKm": 0.98,
+  "osmt": "Chung cư Central Premium Plaza, 856, Phường Chánh Hưng, Thành phố Hồ Chí Minh, 73023, Việt Nam"
+ },
+ "Cao ốc Bình Đông Xanh": {
+  "ok": false
+ },
+ "KDC Phú Lợi": {
+  "ok": false
+ },
+ "Topaz City": {
+  "ok": true,
+  "lat": 10.738314,
+  "lng": 106.679875,
+  "nguon": "ten+quan",
+  "diem": 176.7,
+  "cachQuanKm": 0.25,
+  "osmt": "Chung cư Topaz City, Phường Chánh Hưng, Thành phố Hồ Chí Minh, 73023, Việt Nam"
+ },
+ "Ngọc Phương Nam": {
+  "ok": true,
+  "lat": 10.743523,
+  "lng": 106.685118,
+  "nguon": "ten+quan",
+  "diem": 175.9,
+  "cachQuanKm": 1.06,
+  "osmt": "Chung cư Ngọc Phương Nam, 277bis, Âu Dương Lân, Khu phố 26, Phường Chánh Hưng, Thành phố Hồ Chí Minh, 73023, Việt Nam"
+ },
+ "Đồng Diều": {
+  "ok": true,
+  "lat": 10.737815,
+  "lng": 106.673617,
+  "nguon": "ten+quan",
+  "diem": 136.5,
+  "cachQuanKm": 0.49,
+  "osmt": "Chung cư Investco Đồng Diều (Lô C), 29, Đường 783 Tạ Quang Bửu, Khu phố 44, Phường Chánh Hưng, Xã Bình Hưng, Thành phố Hồ Chí Minh, 71813, Việt Nam"
+ },
+ "Ehome 3": {
+  "ok": true,
+  "lat": 10.713823,
+  "lng": 106.610442,
+  "nguon": "ten+quan",
+  "diem": 171.4,
+  "cachQuanKm": 5.6,
+  "osmt": "Chung cư Ehome 3, Phường An Lạc, Tân Túc, Thành phố Hồ Chí Minh, 71906, Việt Nam"
+ },
+ "MT Eastmark City": {
+  "ok": false
+ },
+ "Sky 9": {
+  "ok": true,
+  "lat": 10.804588,
+  "lng": 106.790743,
+  "nguon": "ten",
+  "diem": 125,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Sky 9, Phường Long Trường, Thành phố Hồ Chí Minh, 71213, Việt Nam"
+ },
+ "The Origami – Vinhomes Grand Park": {
+  "ok": false
+ },
+ "The Beverly Solari - Vinhomes Grand Park": {
+  "ok": false
+ },
+ "The Eastern": {
+  "ok": false
+ },
+ "Masteri Centre Point": {
+  "ok": false
+ },
+ "The Origami - Vinhomes Grand Park": {
+  "ok": false
+ },
+ "Saigon Gateway": {
+  "ok": true,
+  "lat": 10.843614,
+  "lng": 106.772114,
+  "nguon": "ten+quan",
+  "diem": 171,
+  "cachQuanKm": 5.98,
+  "osmt": "Chung cư Saigon Gateway, Song Hành Võ Nguyên Giáp, Khu phố 48, Phường Tăng Nhơn Phú, Thành phố Hồ Chí Minh, 71320, Việt Nam"
+ },
+ "Lumière Boulevard": {
+  "ok": true,
+  "lat": 10.839432,
+  "lng": 106.839509,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Lumière Boulevard, Phường Long Bình, Thành phố Hồ Chí Minh, 71217, Việt Nam"
+ },
+ "Ehome 2": {
+  "ok": true,
+  "lat": 10.810568,
+  "lng": 106.786431,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Ehome 2, Phường Phước Long, Thành phố Hồ Chí Minh, 71321, Việt Nam"
+ },
+ "Fuji Residence": {
+  "ok": true,
+  "lat": 10.813914,
+  "lng": 106.784572,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Dự án biệt thự & căn hộ FUJI RESIDENCE, Phường Phước Long, Thành phố Hồ Chí Minh, 71321, Việt Nam"
+ },
+ "Flora Anh Đào": {
+  "ok": true,
+  "lat": 10.807281,
+  "lng": 106.777976,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Flora Anh Đào, Đỗ Xuân Hợp, Khu phố 36, Phường Phước Long, Thành phố Hồ Chí Minh, 71321, Việt Nam"
+ },
+ "Safira Khang Điền": {
+  "ok": true,
+  "lat": 10.801436,
+  "lng": 106.794051,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Safira Khang Điền, Phường Long Trường, Thành phố Hồ Chí Minh, 71213, Việt Nam"
+ },
+ "Glory Heights - Vinhomes Grand Park": {
+  "ok": false
+ },
+ "Ricca": {
+  "ok": false
+ },
+ "The Origami": {
+  "ok": false
+ },
+ "KDC Khang An": {
+  "ok": false
+ },
+ "The Beverly - Vinhomes Grand Park": {
+  "ok": false
+ },
+ "Vinhomes Grand Park - The Origami": {
+  "ok": true,
+  "lat": 10.839579,
+  "lng": 106.842117,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Vinhomes Grand Park, Phường Long Bình, Thành phố Hồ Chí Minh, 71217, Việt Nam"
+ },
+ "The Glory Heights - Vinhomes Grand Park": {
+  "ok": false
+ },
+ "Nguyễn Kim": {
+  "ok": false
+ },
+ "Hà Đô Centrosa Garden": {
+  "ok": false
+ },
+ "Hà Đô": {
+  "ok": true,
+  "lat": 10.83627,
+  "lng": 106.666292,
+  "nguon": "ten+quan",
+  "diem": 108.9,
+  "cachQuanKm": 3.12,
+  "osmt": "Chung cư Hà Đô Z751, Hẻm 710/6 Phan Văn Trị, Khu phố 14, Phường Gò Vấp, Thành phố Hồ Chí Minh, 72100, Việt Nam"
+ },
+ "Ngô Gia Tự": {
+  "ok": false
+ },
+ "HaDo Centrosa Garden": {
+  "ok": false
+ },
+ "Kingdom 101": {
+  "ok": true,
+  "lat": 10.77573,
+  "lng": 106.662875,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Kingdom 101, Tô Hiến Thành, Khu phố 12, Phường Diên Hồng, Thành phố Hồ Chí Minh, 72521, Việt Nam"
+ },
+ "Xi Grand Court": {
+  "ok": true,
+  "lat": 10.767595,
+  "lng": 106.659898,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Xi Grand Court, Phường Diên Hồng, Thành phố Hồ Chí Minh, 72521, Việt Nam"
+ },
+ "Rivera Park Sài Gòn": {
+  "ok": true,
+  "lat": 10.769829,
+  "lng": 106.66407,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Căn Hộ Rivera Park Sài Gòn, 7/28, Phường Diên Hồng, Thành phố Hồ Chí Minh, 70000, Việt Nam"
+ },
+ "Lý Thường Kiệt": {
+  "ok": false
+ },
+ "Cây Mai": {
+  "ok": true,
+  "lat": 10.755513,
+  "lng": 106.650149,
+  "nguon": "ten+quan",
+  "diem": 136,
+  "cachQuanKm": 0.99,
+  "osmt": "Chung cư Cây Mai, 189, Phường Minh Phụng, Thành phố Hồ Chí Minh, 72624, Việt Nam"
+ },
+ "cư xá Bình thới": {
+  "ok": true,
+  "lat": 10.762324,
+  "lng": 106.649093,
+  "nguon": "ten+quan",
+  "diem": 136.5,
+  "cachQuanKm": 0.48,
+  "osmt": "Cư xá Bình Thới, Phường Bình Thới, Thành phố Hồ Chí Minh, 72622, Việt Nam"
+ },
+ "The Flemington": {
+  "ok": false
+ },
+ "Cư Xá Lữ Gia": {
+  "ok": true,
+  "lat": 10.771764,
+  "lng": 106.655267,
+  "nguon": "ten+quan",
+  "diem": 136.1,
+  "cachQuanKm": 0.9,
+  "osmt": "Cư xá Lữ Gia, Phường Phú Thọ, Thành phố Hồ Chí Minh, 72625, Việt Nam"
+ },
+ "Phú Thọ": {
+  "ok": true,
+  "lat": 10.762351,
+  "lng": 106.657669,
+  "nguon": "ten+quan",
+  "diem": 136.5,
+  "cachQuanKm": 0.52,
+  "osmt": "Khách sạn Phú Thọ, 915, Đường 3 Tháng 2, Khu phố 1, Phường Minh Phụng, Thành phố Hồ Chí Minh, 72624, Việt Nam"
+ },
+ "Bình Thới": {
+  "ok": true,
+  "lat": 10.759509,
+  "lng": 106.642537,
+  "nguon": "ten+quan",
+  "diem": 135.7,
+  "cachQuanKm": 1.26,
+  "osmt": "Chợ Bình Thới, Đường Xóm Đất, Khu phố 9, Phường Bình Thới, Thành phố Hồ Chí Minh, 72015, Việt Nam"
+ },
+ "Hoa Sen": {
+  "ok": true,
+  "lat": 10.348675,
+  "lng": 107.081591,
+  "nguon": "ten",
+  "diem": 125,
+  "cachQuanKm": null,
+  "osmt": "Hoa Sen, 159, Trương Công Định, Khu phố 14, Phường Vũng Tàu, Thành phố Hồ Chí Minh, 78207, Việt Nam"
+ },
+ "Prosper Plaza": {
+  "ok": true,
+  "lat": 10.830369,
+  "lng": 106.61843,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Prosper Plaza, Phường Đông Hưng Thuận, Thành phố Hồ Chí Minh, 71508, Việt Nam"
+ },
+ "Picity High Park": {
+  "ok": true,
+  "lat": 10.86599,
+  "lng": 106.66406,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Picity High Park (Gò Sao), 9A, Phường Thới An, Thành phố Hồ Chí Minh, 71513, Việt Nam"
+ },
+ "Tecco Green Nest": {
+  "ok": true,
+  "lat": 10.829619,
+  "lng": 106.6099,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Tecco Green Nest Apartment, 287, Phường Đông Hưng Thuận, Thành phố Hồ Chí Minh, 71508, Việt Nam"
+ },
+ "Đông Hải": {
+  "ok": true,
+  "lat": 10.787484,
+  "lng": 106.692269,
+  "nguon": "ten",
+  "diem": 125,
+  "cachQuanKm": null,
+  "osmt": "Cửa Hàng Giày Đông Hải, Đường Hai Bà Trưng, Khu phố 5, Phường Xuân Hòa, Thành phố Hồ Chí Minh, 72421, Việt Nam"
+ },
+ "Thái An 3": {
+  "ok": true,
+  "lat": 10.829061,
+  "lng": 106.629377,
+  "nguon": "ten",
+  "diem": 125,
+  "cachQuanKm": null,
+  "osmt": "Thái An 3, Hẻm 17 Đông Hưng Thuận 10B, Khu phố 16, Phường Đông Hưng Thuận, Thành phố Hồ Chí Minh, 71509, Việt Nam"
+ },
+ "Hưng Ngân Garden": {
+  "ok": false
+ },
+ "Topaz home": {
+  "ok": true,
+  "lat": 10.82892,
+  "lng": 106.619907,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Topaz Home, 102, Phường Đông Hưng Thuận, Thành phố Hồ Chí Minh, 71508, Việt Nam"
+ },
+ "Zen Tower": {
+  "ok": true,
+  "lat": 10.86113,
+  "lng": 106.654196,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "CĂN HỘ ZEN TOWER QUẬN 12, 34/1A, Phường Thới An, Thành phố Hồ Chí Minh, 71513, Việt Nam"
+ },
+ "The Parkland": {
+  "ok": true,
+  "lat": 10.876236,
+  "lng": 106.62919,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "The parkland, Phường Tân Thới Hiệp, Thành phố Hồ Chí Minh, Việt Nam"
+ },
+ "An Phú Đông": {
+  "ok": false
+ },
+ "Thái An Apartment": {
+  "ok": false
+ },
+ "CTL Tower": {
+  "ok": true,
+  "lat": 10.82206,
+  "lng": 106.618081,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư CTL Tower, Phường Đông Hưng Thuận, Thành phố Hồ Chí Minh, 71508, Việt Nam"
+ },
+ "Kim Tâm Hải": {
+  "ok": false
+ },
+ "Kim Tâm Hải Apartment": {
+  "ok": false
+ },
+ "Nguyễn Ngọc Phương": {
+  "ok": true,
+  "lat": 10.789123,
+  "lng": 106.708361,
+  "nguon": "ten+quan",
+  "diem": 174.4,
+  "cachQuanKm": 2.55,
+  "osmt": "Căn Hộ Chung Cư Nguyễn Ngọc Phương, Đường Nguyễn Ngọc Phương, Khu phố 3, Phường Thạnh Mỹ Tây, Thành phố Hồ Chí Minh, 72331, Việt Nam"
+ },
+ "Miếu Nổi": {
+  "ok": true,
+  "lat": 10.796093,
+  "lng": 106.693937,
+  "nguon": "ten+quan",
+  "diem": 135.8,
+  "cachQuanKm": 1.19,
+  "osmt": "Chung cư Miếu Nổi (5 tầng), Phường Gia Định, Thành phố Hồ Chí Minh, 72330, Việt Nam"
+ },
+ "Thanh Niên": {
+  "ok": false
+ },
+ "Cửu Long": {
+  "ok": true,
+  "lat": 10.790076,
+  "lng": 106.714588,
+  "nguon": "ten+quan",
+  "diem": 133.8,
+  "cachQuanKm": 3.23,
+  "osmt": "Trường Tiểu học Cửu Long, Hẻm 142 Ngô Tất Tố, Khu phố 18, Phường Thạnh Mỹ Tây, Thành phố Hồ Chí Minh, 72331, Việt Nam"
+ },
+ "Nam An": {
+  "ok": true,
+  "lat": 10.780441,
+  "lng": 106.735084,
+  "nguon": "ten+quan",
+  "diem": 131.4,
+  "cachQuanKm": 5.57,
+  "osmt": "Nam An Market, An Tư Công Chúa, Khu phố 25, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "Phạm Viết Chánh": {
+  "ok": false
+ },
+ "THẾ KỶ 21": {
+  "ok": false
+ },
+ "Conic boulevard": {
+  "ok": false
+ },
+ "The Landmark 81 - Vinhomes Central Park": {
+  "ok": false
+ },
+ "Saigonhomes": {
+  "ok": true,
+  "lat": 10.764993,
+  "lng": 106.601372,
+  "nguon": "ten+quan",
+  "diem": 175.6,
+  "cachQuanKm": 1.36,
+  "osmt": "Chung cư Saigonhomes Bình Tân, 819, Phường Bình Trị Đông, Thành phố Hồ Chí Minh, 71910, Việt Nam"
+ },
+ "Green Town Bình Tân": {
+  "ok": true,
+  "lat": 10.804737,
+  "lng": 106.593678,
+  "nguon": "ten+quan",
+  "diem": 92,
+  "cachQuanKm": 4.99,
+  "osmt": "Green Town A1, Đường số 1, Khu phố 12, Phường Bình Tân, Thành phố Hồ Chí Minh, 71913, Việt Nam"
+ },
+ "Lê Thành": {
+  "ok": true,
+  "lat": 10.764277,
+  "lng": 106.57931,
+  "nguon": "ten+quan",
+  "diem": 185.7,
+  "cachQuanKm": 1.26,
+  "osmt": "Chung cư Lê Thành Tân Tạo, Phường Bình Tân, Thành phố Hồ Chí Minh, 71916, Việt Nam"
+ },
+ "Akari City": {
+  "ok": true,
+  "lat": 10.717582,
+  "lng": 106.606908,
+  "nguon": "ten+quan",
+  "diem": 171.9,
+  "cachQuanKm": 5.07,
+  "osmt": "Khu đô thị Akari City, Phường An Lạc, Tân Túc, Thành phố Hồ Chí Minh, 71906, Việt Nam"
+ },
+ "The Privia": {
+  "ok": true,
+  "lat": 10.737082,
+  "lng": 106.619995,
+  "nguon": "ten+quan",
+  "diem": 172.8,
+  "cachQuanKm": 4.15,
+  "osmt": "The Privia, 158, Phường An Lạc, Thành phố Hồ Chí Minh, 71906, Việt Nam"
+ },
+ "Vĩnh Tường": {
+  "ok": true,
+  "lat": 10.750698,
+  "lng": 106.589861,
+  "nguon": "ten+quan",
+  "diem": 176,
+  "cachQuanKm": 1.03,
+  "osmt": "Chung cư Tân Tạo - Vĩnh Tường, Phường Tân Tạo, Thành phố Hồ Chí Minh, 71915, Việt Nam"
+ },
+ "Moonlight Park View": {
+  "ok": true,
+  "lat": 10.752039,
+  "lng": 106.620124,
+  "nguon": "ten+quan",
+  "diem": 173.6,
+  "cachQuanKm": 3.41,
+  "osmt": "Moonlight Park View, 36-40, Đường số 7, Khu phố 8, Phường An Lạc, Thành phố Hồ Chí Minh, 73118, Việt Nam"
+ },
+ "Imperial Place": {
+  "ok": false
+ },
+ "8X Rainbow": {
+  "ok": false
+ },
+ "nhất lan 3": {
+  "ok": true,
+  "lat": 10.752357,
+  "lng": 106.591787,
+  "nguon": "ten+quan",
+  "diem": 136.1,
+  "cachQuanKm": 0.87,
+  "osmt": "Chung cư Nhất Lan 3, Phường Tân Tạo, Thành phố Hồ Chí Minh, 71915, Việt Nam"
+ },
+ "An Lạc": {
+  "ok": true,
+  "lat": 10.738844,
+  "lng": 106.613049,
+  "nguon": "ten+quan",
+  "diem": 133.6,
+  "cachQuanKm": 3.45,
+  "osmt": "Trường Tiểu học An Lạc 3, 504/58C, Đường Kinh Dương Vương, Khu phố 23, Phường An Lạc, Thành phố Hồ Chí Minh, 71906, Việt Nam"
+ },
+ "Moonlight Boulevard": {
+  "ok": true,
+  "lat": 10.737193,
+  "lng": 106.613222,
+  "nguon": "ten+quan",
+  "diem": 173.4,
+  "cachQuanKm": 3.59,
+  "osmt": "Căn hộ Moonlight Boulevard, 510, Đường Kinh Dương Vương, Khu phố 23, Phường An Lạc, Thành phố Hồ Chí Minh, 71906, Việt Nam"
+ },
+ "Akari City Nam Long": {
+  "ok": false
+ },
+ "Tecco Town Bình Tân": {
+  "ok": true,
+  "lat": 10.754238,
+  "lng": 106.584387,
+  "nguon": "ten+quan",
+  "diem": 77.4,
+  "cachQuanKm": 0.89,
+  "osmt": "Công viên Tecco Town, Phường Tân Tạo, Thành phố Hồ Chí Minh, Việt Nam"
+ },
+ "Khu dân cư Khang An": {
+  "ok": false
+ },
+ "Cityland Park Hills": {
+  "ok": true,
+  "lat": 10.836234,
+  "lng": 106.667318,
+  "nguon": "ten+quan",
+  "diem": 184,
+  "cachQuanKm": 3.04,
+  "osmt": "Chung cư Cityland Park Hills, Phường Gò Vấp, Thành phố Hồ Chí Minh, 71422, Việt Nam"
+ },
+ "Khang Gia": {
+  "ok": true,
+  "lat": 10.843533,
+  "lng": 106.635646,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Khang Gia, Phường An Hội Tây, Thành phố Hồ Chí Minh, 71427, Việt Nam"
+ },
+ "Dream Home": {
+  "ok": true,
+  "lat": 10.855332,
+  "lng": 106.652817,
+  "nguon": "ten+quan",
+  "diem": 171.3,
+  "cachQuanKm": 5.66,
+  "osmt": "Chung Cư Dream Home 2, Hẻm 148, Phường An Hội Tây, Thành phố Hồ Chí Minh, 71427, Việt Nam"
+ },
+ "K26": {
+  "ok": true,
+  "lat": 10.831519,
+  "lng": 106.685929,
+  "nguon": "ten+quan",
+  "diem": 135.5,
+  "cachQuanKm": 1.52,
+  "osmt": "Chung cư K26, Phường Hạnh Thông, Thành phố Hồ Chí Minh, 71423, Việt Nam"
+ },
+ "Cityland Center Hills": {
+  "ok": true,
+  "lat": 10.827866,
+  "lng": 106.680339,
+  "nguon": "ten+quan",
+  "diem": 175.6,
+  "cachQuanKm": 1.38,
+  "osmt": "Cityland center hills, Đường Số 3, khu dân cư Cityland Centra Hill, Phường Hạnh Thông, Thành phố Hồ Chí Minh, 71423, Việt Nam"
+ },
+ "Phan Xích Long": {
+  "ok": false
+ },
+ "Orchard Park View": {
+  "ok": false
+ },
+ "Bàu Cát 2": {
+  "ok": false
+ },
+ "K300": {
+  "ok": false
+ },
+ "Phúc Yên": {
+  "ok": true,
+  "lat": 10.825494,
+  "lng": 106.630169,
+  "nguon": "ten+quan",
+  "diem": 133.4,
+  "cachQuanKm": 3.62,
+  "osmt": "Chung cư Phúc Yên 2, Hẻm 31 Phan Huy Ích, Phường Tân Sơn, Thành phố Hồ Chí Minh, 71509, Việt Nam"
+ },
+ "Tân Bình Apartment": {
+  "ok": false
+ },
+ "The Harmona": {
+  "ok": true,
+  "lat": 10.796529,
+  "lng": 106.641685,
+  "nguon": "ten+quan",
+  "diem": 78.3,
+  "cachQuanKm": 1.23,
+  "osmt": "Chung cư Harmona, Phường Tân Bình, Thành phố Hồ Chí Minh, 72123, Việt Nam"
+ },
+ "Lotus Garden": {
+  "ok": true,
+  "lat": 10.77363,
+  "lng": 106.635626,
+  "nguon": "ten+quan",
+  "diem": 185.5,
+  "cachQuanKm": 1.54,
+  "osmt": "Chung cư Sen Xanh - Lotus Garden, 36, Phường Tân Phú, Thành phố Hồ Chí Minh, 72017, Việt Nam"
+ },
+ "RichStar": {
+  "ok": true,
+  "lat": 10.772763,
+  "lng": 106.626749,
+  "nguon": "ten+quan",
+  "diem": 175.8,
+  "cachQuanKm": 1.2,
+  "osmt": "Chung cư Richstar 1, Phường Phú Thạnh, Thành phố Hồ Chí Minh, 72013, Việt Nam"
+ },
+ "Emerald - Celadon City": {
+  "ok": true,
+  "lat": 10.802846,
+  "lng": 106.611096,
+  "nguon": "ten+quan",
+  "diem": 172.1,
+  "cachQuanKm": 4.9,
+  "osmt": "Chung cư Emerald Precinct, Phường Tân Sơn Nhì, Thành phố Hồ Chí Minh, 72008, Việt Nam"
+ },
+ "Carillon 5": {
+  "ok": true,
+  "lat": 10.772725,
+  "lng": 106.632847,
+  "nguon": "ten+quan",
+  "diem": 185.7,
+  "cachQuanKm": 1.3,
+  "osmt": "Chung cư Carillon 5, 262/3, Phường Tân Phú, Thành phố Hồ Chí Minh, 72017, Việt Nam"
+ },
+ "Tây Thạnh": {
+  "ok": true,
+  "lat": 10.814632,
+  "lng": 106.626817,
+  "nguon": "ten+quan",
+  "diem": 171.1,
+  "cachQuanKm": 5.85,
+  "osmt": "BENLUXURY VIỆT NAM, 10, Đường D14B, Khu phố 10, Phường Tây Thạnh, Thành phố Hồ Chí Minh, 72000, Việt Nam"
+ },
+ "Trung Đông Plaza": {
+  "ok": true,
+  "lat": 10.757869,
+  "lng": 106.673304,
+  "nguon": "ten+quan",
+  "diem": 82,
+  "cachQuanKm": 4.97,
+  "osmt": "Trung tâm Thương Mại An Đông Plaza, Đường An Dương Vương, Khu phố 16, Phường An Đông, Thành phố Hồ Chí Minh, 72721, Việt Nam"
+ },
+ "Melody Residences": {
+  "ok": true,
+  "lat": 10.796366,
+  "lng": 106.636633,
+  "nguon": "ten+quan",
+  "diem": 183.1,
+  "cachQuanKm": 3.94,
+  "osmt": "Chung cư Melody Residences, 869, Đường Âu Cơ, Khu phố 49, Phường Tân Phú, Thành phố Hồ Chí Minh, 72008, Việt Nam"
+ },
+ "8x Đầm Sen": {
+  "ok": false
+ },
+ "Sacomreal": {
+  "ok": true,
+  "lat": 10.784072,
+  "lng": 106.635546,
+  "nguon": "ten+quan",
+  "diem": 174.4,
+  "cachQuanKm": 2.59,
+  "osmt": "Chung cư Sacomreal 584, 785/1, Hẻm 761 Đường Lũy Bán Bích, Khu phố 54, Phường Phú Thọ Hòa, Thành phố Hồ Chí Minh, 72012, Việt Nam"
+ },
+ "Oriental Plaza": {
+  "ok": true,
+  "lat": 10.789565,
+  "lng": 106.639365,
+  "nguon": "ten+quan",
+  "diem": 183.7,
+  "cachQuanKm": 3.31,
+  "osmt": "Chung cư Southern Dragon (Oriental Plaza), 685, Đường Âu Cơ, Khu phố 2, Phường Tân Phú, Thành phố Hồ Chí Minh, 72017, Việt Nam"
+ },
+ "Celadon City": {
+  "ok": true,
+  "lat": 10.801407,
+  "lng": 106.617159,
+  "nguon": "ten+quan",
+  "diem": 65,
+  "cachQuanKm": 4.54,
+  "osmt": "Nhà đậu xe Aeon Mall Tân Phú Celadon;Commercial_AEONMallTanPhu Storie 4, 30, Đường D6, Khu phố 6, Phường Tân Sơn Nhì, Thành phố Hồ Chí Minh, 72008, Việt Nam"
+ },
+ "Diamond Centery": {
+  "ok": false
+ },
+ "Carillon 2": {
+  "ok": true,
+  "lat": 10.772725,
+  "lng": 106.632847,
+  "nguon": "ten+quan",
+  "diem": 95.7,
+  "cachQuanKm": 1.3,
+  "osmt": "Chung cư Carillon 5, 262/3, Phường Tân Phú, Thành phố Hồ Chí Minh, 72017, Việt Nam"
+ },
+ "Topaz Garden": {
+  "ok": true,
+  "lat": 10.774993,
+  "lng": 106.63406,
+  "nguon": "ten+quan",
+  "diem": 185.4,
+  "cachQuanKm": 1.59,
+  "osmt": "Chung cư Topaz Garden, 4, Phường Tân Phú, Thành phố Hồ Chí Minh, 72017, Việt Nam"
+ },
+ "Khang Phú": {
+  "ok": true,
+  "lat": 10.780562,
+  "lng": 106.638432,
+  "nguon": "ten+quan",
+  "diem": 184.6,
+  "cachQuanKm": 2.36,
+  "osmt": "Chung cư Khang Phú, 67, Hẻm 65 Huỳnh Thiện Lộc, Khu phố 12, Phường Tân Phú, Thành phố Hồ Chí Minh, 72012, Việt Nam"
+ },
+ "Diamond Alnata": {
+  "ok": true,
+  "lat": 10.803715,
+  "lng": 106.615229,
+  "nguon": "ten+quan",
+  "diem": 172.2,
+  "cachQuanKm": 4.84,
+  "osmt": "Diamond Alnata, Phường Tân Sơn Nhì, Thành phố Hồ Chí Minh, 72008, Việt Nam"
+ },
+ "Khuông Việt": {
+  "ok": false
+ },
+ "An Gia Garden": {
+  "ok": true,
+  "lat": 10.80104,
+  "lng": 106.625905,
+  "nguon": "ten+quan",
+  "diem": 172.7,
+  "cachQuanKm": 4.35,
+  "osmt": "Chung cư An Gia Garden, Phường Tân Sơn Nhì, Thành phố Hồ Chí Minh, 72008, Việt Nam"
+ },
+ "Khang Gia Tân Hương": {
+  "ok": true,
+  "lat": 10.789463,
+  "lng": 106.618567,
+  "nguon": "ten+quan",
+  "diem": 173.8,
+  "cachQuanKm": 3.22,
+  "osmt": "Chung Cư Khang Gia Tân Hương, 377, Tân Hương, Khu phố 26, Phường Phú Thọ Hòa, Thành phố Hồ Chí Minh, 72011, Việt Nam"
+ },
+ "Diamond Brilliant": {
+  "ok": true,
+  "lat": 10.802578,
+  "lng": 106.614893,
+  "nguon": "ten+quan",
+  "diem": 172.3,
+  "cachQuanKm": 4.73,
+  "osmt": "Căn Hộ Cao Cấp Diamond Brilliant, Phường Tân Sơn Nhì, Thành phố Hồ Chí Minh, 72008, Việt Nam"
+ },
+ "Jamona Home Resort": {
+  "ok": true,
+  "lat": 10.870334,
+  "lng": 106.717354,
+  "nguon": "ten+quan",
+  "diem": 175.8,
+  "cachQuanKm": 1.18,
+  "osmt": "Jamona Home Resort, Hẻm 23 Đường số 12, Khu phố 2, Phường Hiệp Bình, Thành phố Hồ Chí Minh, 70000, Việt Nam"
+ },
+ "4S Riverside Linh Đông": {
+  "ok": false
+ },
+ "Linh Tây Tower": {
+  "ok": true,
+  "lat": 10.862032,
+  "lng": 106.758755,
+  "nguon": "ten+quan",
+  "diem": 172.8,
+  "cachQuanKm": 4.24,
+  "osmt": "Chung cư Linh Tây Tower, Đường số 1, Khu phố 16, Phường Linh Xuân, Thành phố Hồ Chí Minh, 75350, Việt Nam"
+ },
+ "Sài Gòn Metro Park": {
+  "ok": false
+ },
+ "TDH - Trường Thọ": {
+  "ok": true,
+  "lat": 10.839625,
+  "lng": 106.762543,
+  "nguon": "ten+quan",
+  "diem": 141.8,
+  "cachQuanKm": 5.17,
+  "osmt": "TDH Trường Thọ - Block A, 36A, Đường số 4, Khu phố 39, Phường Thủ Đức, Thành phố Hồ Chí Minh, 71319, Việt Nam"
+ },
+ "Urban Green": {
+  "ok": true,
+  "lat": 10.844524,
+  "lng": 106.719532,
+  "nguon": "ten+quan",
+  "diem": 175.3,
+  "cachQuanKm": 1.72,
+  "osmt": "Urban Green, Phường Hiệp Bình, Thành phố Hồ Chí Minh, Việt Nam"
+ },
+ "Tropic Garden": {
+  "ok": true,
+  "lat": 10.81412,
+  "lng": 106.728849,
+  "nguon": "ten+quan",
+  "diem": 171.8,
+  "cachQuanKm": 5.19,
+  "osmt": "Chung cư Tropic Garden, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "Flora Novia": {
+  "ok": true,
+  "lat": 10.86571,
+  "lng": 106.759466,
+  "nguon": "ten+quan",
+  "diem": 172.6,
+  "cachQuanKm": 4.36,
+  "osmt": "Flora Novia - Block A, Phạm Văn Đồng, Khu dân cư Areco Linh Tây, Phường Linh Xuân, Thành phố Hồ Chí Minh, 75350, Việt Nam"
+ },
+ "The River Thủ Thiêm": {
+  "ok": false
+ },
+ "An Lộc - An Phúc": {
+  "ok": true,
+  "lat": 10.798371,
+  "lng": 106.743661,
+  "nguon": "ten",
+  "diem": 125,
+  "cachQuanKm": null,
+  "osmt": "An Lộc, Vũ Tông Phan, Khu phố 1, Phường Bình Trưng, Thành phố Hồ Chí Minh, 71322, Việt Nam"
+ },
+ "Moonlight Residences": {
+  "ok": false
+ },
+ "Flora Kikyo": {
+  "ok": true,
+  "lat": 10.797994,
+  "lng": 106.7877,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Căn hộ Flora Kikyo, Đường Số 19, Khu đô thị Lakeview City, Phường Bình Trưng, Thành phố Hồ Chí Minh, 71322, Việt Nam"
+ },
+ "HausNeo": {
+  "ok": true,
+  "lat": 10.800755,
+  "lng": 106.788789,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung Cư Hausneo, 02, Phường Long Trường, Thành phố Hồ Chí Minh, 71213, Việt Nam"
+ },
+ "The Vista An Phú": {
+  "ok": false
+ },
+ "Sunview Town": {
+  "ok": true,
+  "lat": 10.865462,
+  "lng": 106.727394,
+  "nguon": "ten+quan",
+  "diem": 176,
+  "cachQuanKm": 1.01,
+  "osmt": "Chung Cư Sunview Town, Phường Hiệp Bình, Thành phố Hồ Chí Minh, 71318, Việt Nam"
+ },
+ "Lavita Charm": {
+  "ok": true,
+  "lat": 10.83705,
+  "lng": 106.763497,
+  "nguon": "ten+quan",
+  "diem": 181.6,
+  "cachQuanKm": 5.39,
+  "osmt": "Lavita Charm, Dự án đường Vành đai 2, Khu phố 39, Phường Thủ Đức, Thành phố Hồ Chí Minh, 71319, Việt Nam"
+ },
+ "Fresca Riverside": {
+  "ok": true,
+  "lat": 10.876718,
+  "lng": 106.723473,
+  "nguon": "ten+quan",
+  "diem": 175.1,
+  "cachQuanKm": 1.9,
+  "osmt": "Căn Hộ Fresca Riverside - Thủ Đức, Phường Tam Bình, Thành phố Hồ Chí Minh, 71312, Việt Nam"
+ },
+ "Đạt Gia Residence": {
+  "ok": false
+ },
+ "The Rainbow - Vinhomes Grand Park": {
+  "ok": false
+ },
+ "Jamila Khang Điền": {
+  "ok": true,
+  "lat": 10.795144,
+  "lng": 106.784468,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Chung cư Jamila Khang Điền, Phường Long Trường, Thành phố Hồ Chí Minh, 71213, Việt Nam"
+ },
+ "Lavita Garden": {
+  "ok": true,
+  "lat": 10.833863,
+  "lng": 106.761719,
+  "nguon": "ten+quan",
+  "diem": 181.6,
+  "cachQuanKm": 5.4,
+  "osmt": "Lavita Garden, Hẻm 15, Khu phố 44, Phường Thủ Đức, Thành phố Hồ Chí Minh, 71319, Việt Nam"
+ },
+ "Citisoho": {
+  "ok": false
+ },
+ "Vạn Phúc City": {
+  "ok": false
+ },
+ "vinhome grand park": {
+  "ok": true,
+  "lat": 10.841707,
+  "lng": 106.84185,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Sân Tập Golf Vinhome Grand Park, Masteri Centre Point, Vinhomes Grand Park, Phường Long Bình, Thành phố Hồ Chí Minh, 71217, Việt Nam"
+ },
+ "The Metropole Thủ Thiêm": {
+  "ok": true,
+  "lat": 10.778107,
+  "lng": 106.713333,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "The Metropole Thủ Thiêm, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "The Glory Heights": {
+  "ok": false
+ },
+ "Him Lam Phú An": {
+  "ok": false
+ },
+ "Thủ Thiêm Sky": {
+  "ok": true,
+  "lat": 10.81474,
+  "lng": 106.730368,
+  "nguon": "ten+quan",
+  "diem": 171.8,
+  "cachQuanKm": 5.16,
+  "osmt": "Chung cư Thủ Thiêm Sky, 188/1, Phường An Khánh, Thành phố Hồ Chí Minh, 71108, Việt Nam"
+ },
+ "The Navita": {
+  "ok": true,
+  "lat": 10.864732,
+  "lng": 106.733888,
+  "nguon": "ten+quan",
+  "diem": 175.4,
+  "cachQuanKm": 1.61,
+  "osmt": "The Navita, Phường Tam Bình, Thành phố Hồ Chí Minh, 71312, Việt Nam"
+ },
+ "Lakeview City": {
+  "ok": true,
+  "lat": 10.794307,
+  "lng": 106.77507,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Hồ sinh  thái Lakeview City, Phường Bình Trưng, Thành phố Hồ Chí Minh, 71322, Việt Nam"
+ },
+ "D'Lusso": {
+  "ok": true,
+  "lat": 10.789944,
+  "lng": 106.755129,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "D'Lusso Quận 2, Nguyễn Thị Định, Khu phố 10, Phường Bình Trưng, Thành phố Hồ Chí Minh, 71322, Việt Nam"
+ },
+ "Tecco tower": {
+  "ok": true,
+  "lat": 10.849168,
+  "lng": 106.746401,
+  "nguon": "ten+quan",
+  "diem": 173.9,
+  "cachQuanKm": 3.12,
+  "osmt": "Tecco Tower, 65, Linh Đông, Khu phố 46, Phường Hiệp Bình, Thành phố Hồ Chí Minh, 71221, Việt Nam"
+ },
+ "Linh Trung": {
+  "ok": true,
+  "lat": 10.856433,
+  "lng": 106.756656,
+  "nguon": "ten+quan",
+  "diem": 183,
+  "cachQuanKm": 4.02,
+  "osmt": "115 Linh Trung , Linh Trung, Kha Vạn Cân, Khu phố 2, Phường Thủ Đức, Thành phố Hồ Chí Minh, 75350, Việt Nam"
+ },
+ "Mizuki Park": {
+  "ok": true,
+  "lat": 10.714303,
+  "lng": 106.66247,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Mizuki Park, Xã Bình Hưng, Thành phố Hồ Chí Minh, 71813, Việt Nam"
+ },
+ "Terra Rosa": {
+  "ok": true,
+  "lat": 10.706046,
+  "lng": 106.643794,
+  "nguon": "ten",
+  "diem": 165,
+  "cachQuanKm": null,
+  "osmt": "Terra Rosa, Xã Bình Hưng, Thành phố Hồ Chí Minh, 71813, Việt Nam"
  }
 }

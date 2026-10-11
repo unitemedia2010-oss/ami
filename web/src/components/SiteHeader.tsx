@@ -32,6 +32,8 @@ export default function SiteHeader() {
   const [units, setUnits] = useState<AdminUnit[]>([]);
   const [q, setQ] = useState('');
   const [activeSearch, setActiveSearch] = useState('');
+  /** id quận đang được lọc — để tô đậm chip tương ứng ở menu */
+  const [activeDistrict, setActiveDistrict] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -44,6 +46,11 @@ export default function SiteHeader() {
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
     setActiveSearch(p.get('q') || p.get('type') || '');
+    // Tô đậm chip quận đang lọc. Thiếu phần này thì bấm chip thấy trang
+    // đổi sang quận khác nhưng chip vẫn nằm trung tính — dễ tưởng bấm
+    // không được.
+    const d = p.get('district');
+    setActiveDistrict(d ? Number(d) : null);
   }, [pathname]);
 
   useEffect(() => { setOpen(false); }, [pathname]);
@@ -185,21 +192,27 @@ export default function SiteHeader() {
 
               <nav aria-label="Khu vực"
                    className="flex min-w-0 flex-wrap items-center justify-center gap-1.5">
-                {units.map((d) => (
+                {units.map((d) => {
+                  const on = activeDistrict === d.id;
+                  return (
                   <Link
                     key={d.id}
                     href={`/tim-kiem/?district=${d.id}`}
-                    className="shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full
-                               text-[12.5px] font-semibold text-gold-100/75
-                               hover:text-white hover:bg-white/15
-                               transition-all duration-300"
+                    aria-current={on ? 'true' : undefined}
+                    className={`shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full
+                                text-[12.5px] font-semibold transition-all duration-300 ${
+                                  on
+                                    ? 'bg-grad-flame text-white shadow-glow'
+                                    : 'text-gold-100/75 hover:text-white hover:bg-white/15'
+                                }`}
                   >
                     {/* Bỏ tiền tố dài cho gọn, nhưng GIỮ "Quận" — bỏ cả nó
                         sẽ còn lại "1", "3" và người dùng không biết
                         đó là quận nào. */}
                     {d.name_new.replace(/^(Thành phố|Huyện|Thị xá)\s+/, '')}
                   </Link>
-                ))}
+                  );
+                })}
                 {units.length === 0 && (
                   <span className="text-[12.5px] text-white/50">Đang tải khu vực…</span>
                 )}

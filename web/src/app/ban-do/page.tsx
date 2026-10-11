@@ -1,11 +1,26 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { api, type AdminUnit, type MapProject } from '@/lib/api';
 import MapView from '@/components/MapView';
 import type { MapPoint } from '@/lib/map';
 import { SectionHeader, Note } from '@/components/ui';
+import { COMPARE_EVENT, getCompare } from '@/lib/compare';
+
+/** Nghe giỏ so sánh để bản đồ đánh dấu lại theo — không cần reload trang. */
+const CMP_EMPTY: ReturnType<typeof getCompare> = [];
+
+function useCompare() {
+  return useSyncExternalStore(
+    (cb) => {
+      window.addEventListener(COMPARE_EVENT, cb);
+      return () => window.removeEventListener(COMPARE_EVENT, cb);
+    },
+    getCompare,
+    () => CMP_EMPTY,       // hằng số — `() => []` sẽ gây render lặp
+  );
+}
 
 export default function MapPage() {
   const [all, setAll] = useState<MapProject[]>([]);
@@ -18,6 +33,7 @@ export default function MapPage() {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState('');
   const [picked, setPicked] = useState<MapProject | null>(null);
+  const compare = useCompare();
 
   useEffect(() => {
     api.adminUnits().then((r) => setUnits(r.districts)).catch(() => {});
@@ -28,6 +44,19 @@ export default function MapPage() {
   }, []);
 
   const soDaXacMinh = all.filter((p) => !p.approximate).length;
+
+  /* Vị trí tâm quận — để đánh dấu tin đang so sánh. Tin đăng không có toạ độ
+     riêng, chỉ biết thuộc quận nào, nên chấm sẽ nằm ở tâm quận.
+     Khoá theo SLUG vì CompareItem.d lưu district_slug, không phải id. */
+  const tamQuan = useMemo(() => {
+    const m = new Map<string, { lat: number; lng: number; name: string }>();
+    for (const u of units) {
+      const lat = (u as unknown as { lat?: number }).lat;
+      const lng = (u as unknown as { lng?: number }).lng;
+      if (lat != null && lng != null) m.set(u.slug, { lat, lng, name: u.name_new });
+    }
+    return m;
+  }, [units]);
 
   // lọc ở client cho tức thì, không gọi lại API mỗi lần gõ
   const rows = useMemo(() => {
@@ -54,6 +83,27 @@ export default function MapPage() {
     price: p.listings ? `${p.listings} tin đăng` : 'Chưa có tin',
     href: `/tim-kiem/?project=${p.id}`,
   }));
+
+  /* Chấm các tin đang so sánh. Nhiều tin cùng quận sẽ chồng lên nhau nên
+     đẩy nhẹ theo thứ tự để thấy được đủ số chấm. */
+  const cmpPoints: MapPoint[] = compare.flatMap((it, i) => {
+    const t = tamQuan.get(it.d);
+    if (!t) return [];
+    return [{
+      id: `cmp-${it.id}`,
+      name: it.title,
+      lat: t.lat + (i - 2) * 0.0016,
+      lng: t.lng + (i % 2 ? 0.0016 : -0.0016),
+      approximate: true,
+      comparing: true,
+      cmpIndex: i + 1,
+      price: `${it.price.toLocaleString('vi-VN')} triệu`,
+      href: `/chi-tiet?d=${it.d}&slug=${encodeURIComponent(it.slug)}`,
+    }];
+  });
+
+  /* So sánh phải nổi lên trên: gộp chấm so sánh vào cùng danh sách. */
+  const allPoints = [...cmpPoints, ...points];
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
@@ -112,6 +162,9 @@ export default function MapPage() {
         <div className="flex items-end pb-3">
           <p className="text-[13px] text-coal-500">
             <b className="text-flame-700">{rows.length}</b> dự án
+            {cmpPoints.length > 0 && (
+              <> · <b className="text-sky-600">{cmpPoints.length}</b> tin so sánh</>
+            )}
           </p>
           {(q || district || onlyWithListings || !onlyVerified) && (
             <button
@@ -131,9 +184,67 @@ export default function MapPage() {
           <iconify-icon icon="lucide:loader-2" className="text-3xl animate-spin" />
         </div>
       ) : (
-        <MapView points={points} onSelect={(p) => setPicked(
-          rows.find((r) => r.id === p.id) ?? null,
-        )} />
+        <>
+          <MapView points={allPoints} onSelect={(p) => {
+            /* Chấm so sánh không thuộc danh sách dự án nên không mở panel
+               chi tiết dự án; bấm vào chỉ mở popup của Leaflet. */
+            setPicked(rows.find((r) => r.id === p.id) ?? null);
+          }} />
+
+          {/* ------------------------------------------------------ chú giải */}
+          <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px]
+                          text-coal-500">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-full bg-flame-500 ring-2 ring-white" />
+              Dự án có vị trí thật
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-full bg-amber-300 ring-2 ring-white" />
+              Vị trí ước lượng theo quận
+            </span>
+            {cmpPoints.length > 0 && (
+              <span className="inline-flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded-full bg-sky-400 ring-2 ring-white" />
+                Tin đang so sánh — chấm đặt ở tâm quận
+              </span>
+            )}
+          </div>
+        </>
+      )}
+
+      {/* ------------------------------------------------- bảng tin đang so sánh */}
+      {compare.length > 0 && (
+        <section className="mt-8">
+          <h2 className="h2 mb-1">Tin đang so sánh trên bản đồ</h2>
+          <p className="text-[12.5px] text-coal-500 mb-4">
+            Chấm xanh đánh số theo thứ tự trong giỏ. Vị trí là <b>tâm quận</b> — tin
+            đăng không ghi toạ độ cụ thể, nên đây là khu vực chứ không phải địa chỉ
+            chính xác của căn nhà.
+          </p>
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {compare.map((it, i) => (
+              <a
+                key={it.id}
+                href={`/chi-tiet?d=${it.d}&slug=${encodeURIComponent(it.slug)}`}
+                className="flex items-start gap-2.5 p-3 rounded-xl bg-white/80
+                           border border-sky-200 hover:border-sky-400 transition-colors"
+              >
+                <span className="shrink-0 w-6 h-6 rounded-full bg-sky-400 text-slate-900
+                                 text-[11px] font-extrabold grid place-items-center">
+                  {i + 1}
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-[13px] font-bold text-coal-900 clamp-2">
+                    {it.title}
+                  </span>
+                  <span className="block text-[11.5px] text-coal-500 mt-0.5">
+                    {it.district_name} · {it.price.toLocaleString('vi-VN')} triệu
+                  </span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
       )}
 
       {/* -------------------------------------------------------- chi tiết chọn */}

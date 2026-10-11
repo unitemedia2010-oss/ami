@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { ListingCard as C, fmtPrice, fmtArea, timeAgo } from '@/lib/api';
 import { coverImage } from '@/lib/cover';
+import { useCardMenu } from '@/components/CardMenu';
+import { toggleCompare, removeCompare, getCompare, type CompareItem } from '@/lib/compare';
 
 /* =============================================================================
  *  Danh sách yêu thích — lưu trong localStorage, KHÔNG cần đăng nhập.
@@ -44,6 +46,26 @@ function toggleWatch(item: WatchItem): boolean {
 
 export function getWatchlist(): WatchItem[] {
   return read();
+}
+
+/** Đọc trạng thái yêu thích + so sánh, tự cập nhật khi giỏ thay đổi ở nơi khác. */
+function useFlags(id: string) {
+  const [watch, setWatch] = useState(false);
+  const [cmp, setCmp] = useState(false);
+  useEffect(() => {
+    const sync = () => {
+      setWatch(read().some((x) => x.id === id));
+      setCmp(getCompare().some((x) => x.id === id));
+    };
+    sync();
+    window.addEventListener('sgrealty:watchlist', sync);
+    window.addEventListener('sgrealty:compare', sync);
+    return () => {
+      window.removeEventListener('sgrealty:watchlist', sync);
+      window.removeEventListener('sgrealty:compare', sync);
+    };
+  }, [id]);
+  return { watch, cmp };
 }
 
 export function WatchButton({
@@ -93,11 +115,56 @@ export default function ListingCard({ l }: { l: C }) {
   if (l.bedrooms != null) specs.push(['lucide:bed-double', `${l.bedrooms}PN`]);
   if (l.floor_number != null) specs.push(['lucide:layers', `T${l.floor_number}`]);
 
+  const href = `/chi-tiet?d=${l.district_slug ?? ''}&slug=${encodeURIComponent(l.slug)}`;
+  const { watch, cmp } = useFlags(l.id);
+
+  const asCompare: CompareItem = {
+    id: l.id,
+    slug: l.slug,
+    d: l.district_slug ?? '',
+    title: l.title,
+    price: l.price,
+    type: l.type,
+    image: real ? l.images![0] : null,
+    area: l.area,
+    bedrooms: l.bedrooms,
+    district_name: l.district_name ?? null,
+    ward_name: l.ward_name ?? null,
+  };
+
+  /* Mảng mới mỗi lần render là cố ý: useCardMenu giữ nó trong ref và chỉ đo
+     lại khi x/y/độ dài đổi, nên không phát sinh vòng lặp. */
+  const { bind, menu } = useCardMenu([
+    {
+      icon: cmp ? 'lucide:git-compare-arrows' : 'lucide:plus',
+      label: cmp ? 'Bỏ khỏi so sánh' : 'Thêm để so sánh',
+      active: cmp,
+      onSelect: () => { cmp ? removeCompare(l.id) : toggleCompare(asCompare); },
+    },
+    {
+      icon: watch ? 'lucide:heart-fill' : 'lucide:heart',
+      label: watch ? 'Bỏ khỏi yêu thích' : 'Thêm vào yêu thích',
+      active: watch,
+      onSelect: () =>
+        toggleWatch({ id: l.id, slug: l.slug, title: l.title, d: l.district_slug ?? undefined }),
+    },
+    {
+      icon: 'lucide:share-2',
+      label: 'Chia sẻ tin này',
+      onSelect: () => {
+        const url = new URL(href, location.origin).toString();
+        if (navigator.share) {
+          navigator.share({ title: l.title, url }).catch(() => {});
+        } else {
+          navigator.clipboard?.writeText(url);
+        }
+      },
+    },
+  ]);
+
   return (
-    <Link
-      href={`/chi-tiet?d=${l.district_slug ?? ''}&slug=${encodeURIComponent(l.slug)}`}
-      className="card block group"
-    >
+    <Link href={href} className="card block group" {...bind}>
+      {menu}
       {/* ----------------------------------------------------------------- ảnh */}
       <div className="relative h-48 bg-cream-200 overflow-hidden">
         {img ? (
@@ -122,6 +189,26 @@ export default function ListingCard({ l }: { l: C }) {
 
         <WatchButton id={l.id} slug={l.slug} title={l.title} district={l.district_slug}
                        className="absolute top-3 right-3" />
+
+        {/* Nút so sánh luôn hiện (khác nút yêu thích) — người dùng điện thoại
+            không nào biết chuột phải, và đây là thao tác chính của giỏ. */}
+        <button
+          type="button"
+          aria-pressed={cmp}
+          aria-label={cmp ? `Bỏ ${l.title} khỏi so sánh` : `Thêm ${l.title} vào so sánh`}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            cmp ? removeCompare(l.id) : toggleCompare(asCompare);
+          }}
+          className={`btn-icon backdrop-blur absolute top-12 right-3
+                      transition-[opacity,transform] duration-200
+                      ${cmp
+                        ? 'bg-grad-flame text-white opacity-100'
+                        : 'bg-white/80 text-coal-400 hover:text-flame-600 hover:bg-white opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100'}`}
+        >
+          <iconify-icon icon={cmp ? 'lucide:git-compare-arrows' : 'lucide:git-compare'} className="text-lg" />
+        </button>
 
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
           {l.is_sponsored && (

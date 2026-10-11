@@ -177,14 +177,20 @@ export const staticApi = {
   },
 
   /* ------------------------------------------------------------- trang chủ */
+  /**
+   * ⚠ PHẢI chạy qua `baiViet` — không thể trả thẳng `index.featured`.
+   *   File index.json lưu bản ghi thô (trường `image` là URL đơn),
+   *   còn component cần `images: string[]`. Trả thẳng ra là mọi thẻ ở
+   *   trang chủ rơi về ảnh minh hoạ SVG dù dữ liệu có ảnh thật.
+   */
   async featured(n = 8) {
     const index = await loadIndex();
-    return { data: index.featured.slice(0, n) };
+    return { data: index.featured.slice(0, n).map(baiViet) };
   },
 
   async byType(type: 'sell' | 'rent', n = 8) {
     const index = await loadIndex();
-    return { data: index.featured.filter((x) => x.type === type).slice(0, n) };
+    return { data: index.featured.filter((x) => x.type === type).slice(0, n).map(baiViet) };
   },
 
   /* ------------------------------------------------------------------ chi tiết */

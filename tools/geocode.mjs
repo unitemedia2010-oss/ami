@@ -278,13 +278,27 @@ const ONLY_RETRY = argv.includes('--retry');
  */
 const REFILTER = argv.includes('--refilter');
 
-const all = JSON.parse(readFileSync(SRC, 'utf8'));
+const SRC_FILE = argv.includes('--from-projects')
+  ? join(process.cwd(), 'web/public/data/projects.json')
+  : join(HERE, 'projects.json');
+const COORD_OUT = argv.includes('--from-projects')
+  ? join(process.cwd(), 'tools/projects-coords.json')
+  : OUT;
+
+const all = JSON.parse(readFileSync(SRC_FILE, 'utf8'));
+/* projects.json dùng `name` + `district_name`; projects.json gốc dùng
+   `name` + `district`. Chuẩn hoá để vòng lặp bên dưới không phải rẽ nhánh. */
+const ds = all.map((p) => ({
+  name: p.name,
+  district: p.district || p.district_name || '',
+  address: p.address || '',
+}));
 
 /* Nạp kết quả đã có để chạy tiếp thay vì làm lại từ đầu.
    Lần chạy trước bị máy khởi động lại giữa chừng; nhờ cache truy vấn nên
    phần đã làm không mất công. */
-const kq = !REFILTER && existsSync(OUT) ? JSON.parse(readFileSync(OUT, 'utf8')) : {};
-const xuLy = (name, ghi) => { kq[name] = ghi; writeFileSync(OUT, JSON.stringify(kq, null, 1), 'utf8'); };
+const kq = !REFILTER && existsSync(COORD_OUT) ? JSON.parse(readFileSync(COORD_OUT, 'utf8')) : {};
+const xuLy = (name, ghi) => { kq[name] = ghi; writeFileSync(COORD_OUT, JSON.stringify(kq, null, 1), 'utf8'); };
 const tong = () => Object.keys(kq).length;
 const soOk = () => Object.values(kq).filter((x) => x.ok).length;
 
@@ -292,7 +306,7 @@ console.log(REFILTER
   ? `CHẤM LẠI — chỉ đọc cache (${Object.keys(cache).length} truy vấn), không gọi mạng`
   : `bắt đầu — đã có ${tong()} kết quả, ${Object.keys(cache).length} truy vấn trong cache`);
 
-for (const p of all) {
+for (const p of ds) {
   const name = (p.name || '').trim();
   if (!name) continue;
   if (kq[name]) continue;
@@ -345,14 +359,14 @@ for (const p of all) {
 
   // Ghi từng kết quả ngay thay vì đợi tới cuối: lần trước máy khởi động lại
   // giữa chừng và mất trắng toàn bộ kết quả chưa ghi.
-  if (tong() % 5 === 0) console.log(`  ${tong()}/${all.length} — định vị được ${soOk()}`);
+  if (tong() % 5 === 0) console.log(`  ${tong()}/${ds.length} — định vị được ${soOk()}`);
 }
 
 const bySource = {};
 for (const v of Object.values(kq)) if (v.ok) bySource[v.nguon] = (bySource[v.nguon] || 0) + 1;
 
-console.log(`\nxong ${tong()}/${all.length} dự án — định vị được ${soOk()}`);
+console.log(`\nxong ${tong()}/${ds.length} dự án — định vị được ${soOk()}`);
 console.log('theo nguồn:', JSON.stringify(bySource));
-console.log('ghi ra tools/projects-coords.json');
+console.log(`ghi ra ${COORD_OUT}`);
 
 console.log(`ghi ra tools/projects-coords.json`);

@@ -106,6 +106,16 @@ jobs:
           node tools/check_contrast_classes.mjs
           node tools/check_bundle_fold.mjs
 
+      - name: Soát dữ liệu
+        # districts.ts khai báo slug cho generateStaticParams của /quan/[slug].
+        # Trước đây viết tay nên lệch với districts.json: thiếu quan-2, quan-9,
+        # binh-thanh, nha-be (→ 404 vĩnh viễn trên static export) và có 6 slug
+        # không tồn tại. Nay file .ts do build_27k.mjs sinh ra; script này
+        # chặn trường hợp ai sửa tay làm hai file lệch nhau lần nữa.
+        run: |
+          node tools/check_districts_sync.mjs
+          node tools/check_map_data.mjs
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web/out
