@@ -49,7 +49,7 @@ export default function HomePage() {
             {/* ------------------------------------------------------ nội dung */}
             <div>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
-                               glass-dark text-[13px] font-semibold mb-6 animate-rise">
+                               glass-dark text-white text-[13px] font-semibold mb-6 animate-rise">
                 <iconify-icon icon="lucide:map-pin" className="text-gold-300" />
                 TP. Hồ Chí Minh — 21 đơn vị hành chính
               </span>
@@ -93,23 +93,13 @@ export default function HomePage() {
                 </button>
               </form>
 
-              {/* nhấn mạnh điểm khác biệt: tìm được bằng tên quận cũ */}
-              <div className="mt-6 flex flex-wrap items-center gap-2">
-                <span className="text-[12.5px] font-bold uppercase tracking-widest text-gold-300/80">
-                  Tìm nhanh
-                </span>
-                {['quận 9', 'quận 7', 'Thủ Đức', 'Bình Thạnh', 'Gò Vấp', 'Phú Nhuận'].map((s) => (
-                  <Link
-                    key={s}
-                    href={`/tim-kiem/?q=${encodeURIComponent(s)}`}
-                    className="px-3.5 py-1.5 rounded-full glass-dark text-[13px] font-semibold
-                               hover:bg-grad-flame hover:-translate-y-0.5
-                               transition-all duration-300"
-                  >
-                    {s}
-                  </Link>
-                ))}
-              </div>
+              {/* ⚠ ĐÃ BỎ dãy chip "Tìm nhanh" ở đây.
+                  Lý do: (1) nó lặp đúng những gì thanh đầu trang đã hiện,
+                  khiến quận xuất hiện ở ba nơi trên cùng một màn hình;
+                  (2) dãi này THIẾU class `text-white` nên chữ kế thừa màu
+                  mặc định — đen trên nền tối, không đọc được. Sửa màu thì
+                  vẫn nên bỏ vì đã trùng lặp. Link khu vực còn ở thanh đầu
+                  trang (khổ ≥ 1280px), menu mobile và trang /quan. */}
             </div>
 
             {/* --------------------------------------------------- thẻ số liệu */}
@@ -225,31 +215,46 @@ export default function HomePage() {
             <div className="relative overflow-hidden rounded-2xl bg-liquid px-6 md:px-10 py-10">
               <div aria-hidden className="absolute inset-0 bg-grid" />
               <div className="relative">
-                <h2 className="text-2xl font-extrabold text-white mb-4">
+                <h2 className="text-2xl font-extrabold text-white mb-3">
                   Tìm nhà đất TP.HCM theo khu vực
                 </h2>
-                <p className="text-gold-100/85 text-[14px] leading-relaxed mb-6 max-w-3xl">
-                  Trang tổng hợp tin mua bán và cho thuê bất động sản tại TP. Hồ Chí Minh,
-                  cập nhật liên tục. Hệ thống hỗ trợ tìm kiếm theo
-                  <b className="text-white"> tên đơn vị hành chính cũ</b> (quận 1, quận 7,
-                  quận 9, quận Thủ Đức, Bình Thạnh…) và <b className="text-white">tên mới</b>
-                  sau khi sáp nhập, giúp bạn tìm đúng khu vực mong muốn dù hệ thống
-                  hành chính đã thay đổi từ năm 2025.
+                <p className="text-gold-100/90 text-[14px] leading-relaxed mb-6 max-w-3xl">
+                  Trang tổng hợp tin mua bán và cho thuê tại TP.HCM. Gõ
+                  <b className="text-white"> tên quận cũ</b> (quận 1, quận 7, Thủ Đức…)
+                  vẫn ra kết quả đúng, dù hệ thống hành chính đã sáp nhập năm 2025.
                 </p>
-                <div className="flex flex-wrap gap-2">
+
+                {/* ⚠ Trước đây liệt kê 21 quận bằng 21 pill liên tiếp — chiếm
+                    cả màn hình cho một danh sách chữ, lại phần lớn là khu vực
+                    chưa có tin nào. Nay chỉ liệt kê khu vực thực sự có dữ
+                    liệu, phần đầy đủ để ở trang /quan.
+                    Màu: nền kính tối + chữ trắng đậm đặc — đọc chắc chắn
+                    trên mọi nền, không phụ thuộc lớp nền phía sau. */}
+                <div className="flex flex-wrap items-center gap-2">
                   {[
-                    'Quận 1', 'Quận 3', 'Quận 4', 'Quận 5', 'Quận 6', 'Quận 7',
-                    'Quận 8', 'Quận 10', 'Quận 11', 'Quận 12', 'Thủ Đức',
-                    'Bình Thạnh', 'Bình Tân', 'Gò Vấp', 'Phú Nhuận', 'Tân Bình',
-                    'Tân Phú', 'Bình Chánh', 'Củ Chi', 'Hóc Môn', 'Nhơn Trạch',
+                    'Quận 1', 'Quận 3', 'Quận 4', 'Quận 5',
+                    'Quận 6', 'Quận 8', 'Gò Vấp', 'Phú Nhuận', 'Tân Bình',
                   ].map((n) => (
                     <Link key={n} href={`/tim-kiem/?q=${encodeURIComponent(n)}`}
-                          className="px-3.5 py-1.5 rounded-full glass-dark text-[12.5px]
-                                     font-semibold text-white hover:bg-grad-flame
-                                     hover:-translate-y-0.5 transition-all duration-300">
+                          className="px-3.5 py-1.5 rounded-full bg-black/35
+                                     border border-white/30 text-[12.5px] font-semibold
+                                     text-white whitespace-nowrap
+                                     hover:bg-grad-flame hover:border-transparent
+                                     hover:-translate-y-0.5
+                                     transition-all duration-300">
                       {n}
                     </Link>
                   ))}
+
+                  <Link href="/quan"
+                        className="inline-flex items-center gap-1.5 px-4 py-1.5
+                                   rounded-full bg-grad-gold text-flame-900
+                                   text-[12.5px] font-extrabold whitespace-nowrap
+                                   shadow-glow hover:-translate-y-0.5
+                                   transition-all duration-300">
+                    Tất cả khu vực
+                    <iconify-icon icon="lucide:arrow-right" />
+                  </Link>
                 </div>
               </div>
             </div>

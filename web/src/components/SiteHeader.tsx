@@ -153,21 +153,27 @@ export default function SiteHeader() {
           </div>
 
           {/* ==================================================================
-              *  Hàng tìm kiếm + khu vực
+              *  Hàng tìm kiếm + chip khu vực — CANH GIỮA, mọi chip đều thấy được
               *
-              *  min-w-0 trên nav là BẮT BUỘC. Một flex item mặc định có
-              *  min-width:auto nên không co lại được dưới ngưỡng nội dung.
-              *  Thiếu nó, các chip quận bị nén thành dải hẹp, chữ xuống dòng,
-              *  kết quả là những "quả bầu dục" cao nghẹt như trong ảnh lỗi.
+              *  ⚠ KHÔNG dùng `overflow-x-auto no-scrollbar` cho dãy chip.
+              *     Cách đó cắt các chip nằm ngoài khung nhưng ẩn luôn thanh
+              *     cuộn, nên người dùng thấy "Tân Bình" sát mép phải rồi tưởng
+              *     hết — thực ra còn quận phía sau mà không bấm được.
+              *     `flex-wrap` giải quyết: mọi chip luôn hiện, hết chỗ thì xuống dòng.
+              *
+              *  ⚠ `min-w-0` trên nav là BẮT BUỘC. Flex item mặc định có
+              *     min-width:auto nên không co dưới ngưỡng nội dung; thiếu nó
+              *     chip bị nén thành dải hẹp và chữ xuống dòng.
               * ================================================================ */}
-          <div className="hidden lg:block pb-3">
-            <div className="flex items-center gap-4">
-              <form action="/tim-kiem" className="shrink-0 basis-[min(100%,440px)]">
+          <div className="hidden xl:block pb-3.5">
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+              {/* Ô tìm kiếm: rộng cố định để không lấn át dãy chip bên cạnh */}
+              <form action="/tim-kiem" className="w-[400px] max-w-full shrink-0">
                 <div className="flex">
                   <input
                     name="q" value={q}
                     onChange={(e) => setQ(e.target.value)}
-                    placeholder='Quận 9, Thủ Đức, Vinhomes… (gõ tên quận cũ vẫn ra)'
+                    placeholder='Tìm quận, dự án hoặc tên quận cũ…'
                     aria-label="Tìm kiếm bất động sản"
                     className={SEARCH_INPUT}
                   />
@@ -178,13 +184,13 @@ export default function SiteHeader() {
               </form>
 
               <nav aria-label="Khu vực"
-                   className="flex-1 min-w-0 flex items-center gap-1 overflow-x-auto no-scrollbar">
+                   className="flex min-w-0 flex-wrap items-center justify-center gap-1.5">
                 {units.map((d) => (
                   <Link
                     key={d.id}
-                    href={`/quan/${d.slug}`}
+                    href={`/tim-kiem/?district=${d.id}`}
                     className="shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full
-                               text-[12.5px] font-semibold text-gold-100/90
+                               text-[12.5px] font-semibold text-gold-100/75
                                hover:text-white hover:bg-white/15
                                transition-all duration-300"
                   >
@@ -201,22 +207,28 @@ export default function SiteHeader() {
             </div>
           </div>
 
-          {/* Màn hình vừa: chỉ ô tìm kiếm, không xếp chồng quá nhiều hàng */}
-          <div className="hidden md:block lg:hidden pb-3">
-            <form action="/tim-kiem">
-              <div className="flex">
-                <input
-                  name="q" value={q}
-                  onChange={(e) => setQ(e.target.value)}
-                  placeholder='Tìm quận, phường, dự án…'
-                  aria-label="Tìm kiếm bất động sản"
-                  className={SEARCH_INPUT}
-                />
-                <button type="submit" aria-label="Tìm" className={`${SEARCH_BTN} px-5`}>
-                  <iconify-icon icon="lucide:search" />
-                </button>
-              </div>
-            </form>
+          {/* Khung 1024–1279px: chỉ ô tìm kiếm.
+              Ô tìm kiếm (400px) + 9 chip quận (~680px) không vừa trong 960px
+              khung chứa → nếu ép hiện, chip rơi xuống dòng thứ hai và header cao
+              thêm ~33px. Thà chỉ hiện ô tìm kiếm; từ 1280px trở lên mới thêm
+              chip — lúc đó mọi thứ vừa đúng một hàng. */}
+          <div className="hidden md:block xl:hidden pb-3">
+            <div className="flex justify-center">
+              <form action="/tim-kiem" className="w-[400px] max-w-full shrink-0">
+                <div className="flex">
+                  <input
+                    name="q" value={q}
+                    onChange={(e) => setQ(e.target.value)}
+                    placeholder='Tìm quận, dự án hoặc tên quận cũ…'
+                    aria-label="Tìm kiếm bất động sản"
+                    className={SEARCH_INPUT}
+                  />
+                  <button type="submit" aria-label="Tìm" className={`${SEARCH_BTN} px-6 gap-1.5`}>
+                    <iconify-icon icon="lucide:search" /> Tìm
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </header>

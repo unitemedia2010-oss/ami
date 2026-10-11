@@ -86,6 +86,17 @@ jobs:
           fi
           echo "OK: cấu hình, dữ liệu tĩnh, tiền tố /ami, không lộ cột PII"
 
+      - name: Soát giao diện
+        # Ba lỗi đã xảy ra thật, đều KHÔNG làm build hỏng:
+        #   • class `bg-white/12` nằm ngoài thang opacity → Tailwind bỏ âm thầm,
+        #     nền biến mất mà không ai biết
+        #   • chip nền kính tối quên `text-white` → chữ đen trên nền đen
+        #   • regex bỏ dấu tiếng Việt bị hỏng → tìm "go vap" không ra "Gò Vấp"
+        run: |
+          node tools/check_tailwind_classes.mjs
+          node tools/check_contrast_classes.mjs
+          node tools/check_bundle_fold.mjs
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web/out
