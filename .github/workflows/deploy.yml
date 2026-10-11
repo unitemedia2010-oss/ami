@@ -56,7 +56,12 @@ jobs:
         #   • dữ liệu tĩnh bị .gitignore loài mất → trang trắng
         #   • thiếu file cấu hình .json → "Can't resolve '@/components/ui'"
         #   • quên tiền tố /ami → HTML mở được nhưng mọi ảnh 404
-        #   • lộ cột PII
+        #   • địa chỉ chi tiết lọt ra trang công khai
+        #
+        # ⚠ Về `address_line`: cột này CỐ Ý xuất hiện trong mã trang quản
+        #   trị (/admin/…/tao) vì đó là ô nhập liệu của môi giới. Nên ta
+        #   chỉ kiểm tra phần CÔNG KHAI, không kiểm tra cả thư mục admin.
+        #   Bản đầu tiên quét toàn bộ → deploy đỏ oan, phải sửa lại.
         run: |
           set -e
           for f in web/tsconfig.json web/package-lock.json web/public/data/listings.json; do
@@ -70,8 +75,13 @@ jobs:
             echo "::error::Thiếu tiền tố /ami trong HTML — kiểm tra NEXT_PUBLIC_BASE_PATH"
             exit 1
           fi
-          if grep -rn "address_line" web/out --include="*.html" --include="*.js"; then
-            echo "::error::Cột PII (address_line) lọt vào bản build — DỪNG lại"
+          if grep -rn "address_line" web/out/_next/static/chunks/app \
+             --include="*.js" --exclude-dir=admin; then
+            echo "::error::Cột PII address_line lọt vào mã trang CÔNG KHAI — DỪNG lại"
+            exit 1
+          fi
+          if grep -l "address_line" web/public/data/*.json; then
+            echo "::error::Dữ liệu tĩnh ship ra công khai chứa address_line — DỪNG lại"
             exit 1
           fi
           echo "OK: cấu hình, dữ liệu tĩnh, tiền tố /ami, không lộ cột PII"
