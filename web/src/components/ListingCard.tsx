@@ -189,6 +189,14 @@ export default function ListingCard({ l }: { l: C }) {
 
 /* =============================================================================
  *  Card dự án
+ *
+ *  Ưu tiên ảnh thật (hero_image). Khi chưa có ảnh — hiện với 441 dự án thì
+ *  vẫn còn 39 cái chưa gán được — hiển thị NỀN GRADIENT KÈM TÊN DỰ ÁN
+ *  thay vì tranh vẽ toà nhà.
+ *
+ *  Vì sao không dùng tranh vẽ: tranh toà nhà trông giống ảnh thật nhưng
+ *  không phải ảnh của dự án đó, dễ gây hiểu nhầm. Nền có chữ thì nói thẳng
+ *  đây là ảnh đại diện dựng từ dữ liệu, và vẫn đẹp.
  * ========================================================================== */
 export interface Project {
   id: string;
@@ -198,27 +206,69 @@ export interface Project {
   building_count?: number | null;
   apartment_count?: number | null;
   slug?: string;
-  /** số màu 0–360 để vẽ ảnh bìa khi không có ảnh thật */
+  /** số màu 0–360 để đổi tông nền, phân biệt các dự án không có ảnh */
   hue?: number | null;
 }
 
-export function ProjectCard({ p }: { p: Project }) {
-  const img = p.hero_image || coverImage(p.name, p.hue ?? 18, 0);
+/** Nền gradient + tên, dùng khi dự án chưa có ảnh thật */
+function ProjectCover({ name, hue = 18 }: { name: string; hue: number }) {
+  const h = ((hue % 360) + 360) % 360;
+  return (
+    <div
+      className="relative w-full h-full overflow-hidden"
+      style={{
+        background: `
+          radial-gradient(120% 90% at 18% 8%,  hsl(${h + 14} 92% 62%) 0%, transparent 55%),
+          radial-gradient(110% 80% at 88% 96%, hsl(${h - 10} 88% 48%) 0%, transparent 60%),
+          linear-gradient(145deg, hsl(${h + 6} 76% 44%), hsl(${h - 6} 82% 30%))
+        `,
+      }}
+    >
+      {/* lưới mờ cho đỡ trơn, giống họa tiết nền của trang chủ */}
+      <div aria-hidden className="absolute inset-0 opacity-[0.13] bg-grid" />
 
+      {/* tên dự án — thứ cần nhìn thấy nhất */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center">
+        <span className="block text-[10px] font-bold uppercase tracking-[0.22em]
+                         text-white/60 mb-2">
+          Dự án
+        </span>
+        <span className="block font-extrabold text-white leading-tight
+                         text-[17px] drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]
+                         line-clamp-3">
+          {name}
+        </span>
+      </div>
+
+      {/* đường kẻ nhấn ở chân cho đỡ nặng */}
+      <div aria-hidden
+           className="absolute inset-x-0 bottom-0 h-1
+                      bg-gradient-to-r from-transparent via-white/45 to-transparent" />
+    </div>
+  );
+}
+
+export function ProjectCard({ p }: { p: Project }) {
   return (
     <Link href={`/tim-kiem/?project=${p.id}`} className="card block group">
       <div className="relative h-48 bg-cream-200 overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={img}
-          alt={p.name}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover transition-transform duration-700
-                     group-hover:scale-110"
-        />
-        <div aria-hidden
-             className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 to-transparent" />
+        {p.hero_image ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={p.hero_image}
+              alt={p.name}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover transition-transform duration-700
+                         group-hover:scale-110"
+            />
+            <div aria-hidden
+                 className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 to-transparent" />
+          </>
+        ) : (
+          <ProjectCover name={p.name} hue={p.hue ?? 18} />
+        )}
         <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px]
                          font-extrabold uppercase tracking-wide glass-dark text-white">
           Dự án

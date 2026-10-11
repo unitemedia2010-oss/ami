@@ -130,7 +130,16 @@ export function coverImage(name: string, hue: number, variant = 0): string {
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
-/** Ảnh bìa dự án — dùng cùng bộ sinh nhưng luôn lấy biến thể 0 */
+/**
+ * Ảnh bìa dự án khi CHƯA có ảnh thật.
+ *
+ * ⚠ Đã bỏ tranh vẽ toà nhà. Tranh trông giống ảnh thật nhưng không phải ảnh
+ *   của dự án đó → người xem dễ hiểu nhầm. Nay thẻ dự án hiển thị nền
+ *   gradient kèm tên dự án (xem ProjectCover trong components/ListingCard.tsx).
+ *
+ *   Hàm này giữ lại cho chỗ cần một hình minh hoạ bất kỳ (ví dụ tin đăng
+ *   không có ảnh).
+ */
 export function projectCover(name: string, hue?: number | null) {
-  return coverImage(name || 'Dự án', hue ?? 18, 0);
+  return coverImage(name, hue ?? 18, 0);
 }

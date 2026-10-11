@@ -9,6 +9,8 @@ interface Project {
   id: string; slug: string; name: string; developer: string | null;
   address: string | null; apartment_count: number | null; building_count: number | null;
   is_published: boolean; is_verified: boolean; lat: number | null; lng: number | null;
+  /** URL ảnh đại diện. Rỗng → thẻ dự án hiện nền gradient kèm tên. */
+  hero_image: string | null;
 }
 
 function Projects() {
@@ -45,6 +47,30 @@ function Projects() {
   };
 
   const noCoords = rows.filter((p) => p.lat == null || p.lng == null).length;
+  const chuaCoAnh = rows.filter((p) => !p.hero_image).length;
+
+  /* -------- gán / xoá ảnh dự án ----------
+     Giao diện chạy được ngay. Việc lưu cần máy chủ: hiện bản deploy là
+     dữ liệu tĩnh trong web/public/data, không có API để ghi ngược lại.
+     Khi nối Worker/Supabase, hàm này chỉ cần đổi đường dẫn PATCH. */
+  const [editAnh, setEditAnh] = useState<Project | null>(null);
+
+  const luuAnh = async (p: Project, url: string) => {
+    const v = url.trim();
+    setBusy(p.id);
+    try {
+      await a.callApi(`/api/admin/projects?id=eq.${p.id}`, {
+        method: 'PATCH', body: JSON.stringify({ hero_image: v || null }),
+      });
+      setRows((prev) => prev.map((x) => (x.id === p.id ? { ...x, hero_image: v || null } : x)));
+      setEditAnh(null);
+    } catch (e: any) {
+      setErr(`${e.message} — chưa có máy chủ, thay đổi chưa được lưu. `
+        + 'Sau khi nối Supabase, thao tác này sẽ hoạt động.');
+    } finally {
+      setBusy('');
+    }
+  };
 
   return (
     <>
@@ -59,6 +85,15 @@ function Projects() {
             </a>
           }
         />
+
+        {chuaCoAnh > 0 && (
+          <div className="mb-4">
+            <Note tone="info" title={`${chuaCoAnh} dự án chưa có ảnh`}>
+              Dự án chưa có ảnh sẽ hiển thị nền gradient kèm tên thay vì ảnh.
+              Bấm biểu tượng <b>ảnh</b> cạnh tên dự án để dán đường dẫn ảnh.
+            </Note>
+          </div>
+        )}
 
         {noCoords > 0 && (
           <div className="mb-6">
@@ -99,6 +134,7 @@ function Projects() {
               <thead>
                 <tr className="border-b border-cream-200 text-left">
                   <th className="p-4 label-xs">Tên dự án</th>
+                  <th className="p-4 label-xs">Ảnh</th>
                   <th className="p-4 label-xs">Chủ đầu tư</th>
                   <th className="p-4 label-xs text-center">Toà</th>
                   <th className="p-4 label-xs">Toạ độ</th>
@@ -112,6 +148,53 @@ function Projects() {
                     <td className="p-4">
                       <p className="font-semibold text-coal-800">{p.name}</p>
                       {p.address && <p className="text-[11.5px] text-coal-400">{p.address}</p>}
+                    </td>
+                    <td className="p-4">
+                      <div className="flex items-center gap-2">
+                        {p.hero_image ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={p.hero_image} alt=""
+                               className="w-12 h-9 rounded object-cover shrink-0" />
+                        ) : (
+                          <span className="w-12 h-9 rounded bg-flame-50 text-flame-400
+                                           grid place-items-center shrink-0">
+                            <iconify-icon icon="lucide:image-off" />
+                          </span>
+                        )}
+                        <button
+                          disabled={busy === p.id}
+                          onClick={() => setEditAnh(editAnh?.id === p.id ? null : p)}
+                          className="btn-icon btn-sm text-coal-500 hover:text-flame-600"
+                          aria-label="Gán ảnh dự án"
+                        >
+                          <iconify-icon icon="lucide:image-plus" />
+                        </button>
+                      </div>
+                      {editAnh?.id === p.id && (
+                        <div className="mt-2 w-64 space-y-2">
+                          <input
+                            className="field-sm"
+                            defaultValue={p.hero_image || ''}
+                            placeholder="https://… đường dẫn ảnh"
+                            aria-label="Đường dẫn ảnh dự án"
+                          />
+                          <div className="flex gap-2">
+                            <button
+                              className="btn-primary btn-sm"
+                              disabled={busy === p.id}
+                              onClick={async (e) => {
+                                const input = (e.target as HTMLElement)
+                                  .closest('div')?.querySelector('input');
+                                await luuAnh(p, input?.value ?? '');
+                              }}
+                            >
+                              Lưu
+                            </button>
+                            <button className="btn-ghost btn-sm"
+                                    onClick={() => setEditAnh(null)}>Huỷ</button>
+                          </div>
+                        </div>
+                      )}
                     </td>
                     <td className="p-4 text-coal-500 whitespace-nowrap">{p.developer || '—'}</td>
                     <td className="p-4 text-center text-coal-500">{p.building_count ?? '—'}</td>
