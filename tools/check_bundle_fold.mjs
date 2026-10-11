@@ -31,19 +31,26 @@ for (const file of walk(DIR)) {
   while (i >= 0) {
     found++;
     const seg = c.slice(i, i + 80);
-    const hasRange = seg.includes('\\u0300-\\u036f');
-    // `đ` phải là U+0111, `Đ` là U+0110. Nếu biến thành ký tự ASCII
-    // (`d`, `D`) thì phép thay thế là vô nghĩa.
-    // Chú ý: toHexString() KHÔNG thêm số 0 ở đầu → "111", không phải "0111".
     const codes = showCodes(seg);
-    const hasDD = /<U\+111>/.test(codes) && /<U\+110>/.test(codes);
+    const hasRange = seg.includes('\\u0300-\\u036f')
+      || /\u0300-\u036f/.test(seg);   // dải ký tự thật
+    // `đ`/`Đ` phải là U+0111/U+0110 — hoặc viết bằng escape \u0111/\u0110.
+    // Nếu biến thành ký tự ASCII (`d`, `D`) thì phép thay thế là vô nghĩa.
+    const hasDD = (/<U\+111>/.test(codes) || /\\u0111/.test(seg))
+      && (/<U\+110>/.test(codes) || /\\u0110/.test(seg));
+    // Dạng an toàn là escape ASCII; dạng ký tự thật vẫn chạy đúng nhưng
+    // đã từng bị hỏng khi lưu file, nên báo riêng để nhắc chuẩn hoá.
+    const chuanHoa = seg.includes('\\u0300-\\u036f') && /\\u0111/.test(seg);
     const okAll = hasRange && hasDD;
     if (okAll) ok++;
-    console.log(`${okAll ? '✓' : '✗'} ${file.split(/[\\/]/).pop()}`);
-    console.log(`   ${codes.slice(10)}`);
+    if (!okAll || !chuanHoa) {
+      console.log(`${okAll ? (chuanHoa ? '~' : '!') : '✗'} ${file.split(/[\\/]/).pop()}${chuanHoa ? '' : '  ← nên dùng dạng escape \u0300-\u036f'}`);
+      console.log(`   ${codes.slice(10)}`);
+    }
     i = c.indexOf('NFD', i + 1);
   }
 }
 
 console.log(`\n${ok}/${found} bản sao hàm bỏ dấu trong bundle lành lặn.`);
+console.log('Ký hiệu: ✓ đúng  ·  ! chạy được nhưng nên dùng dạng escape  ·  ✗ HỎNG');
 if (ok !== found) process.exitCode = 1;

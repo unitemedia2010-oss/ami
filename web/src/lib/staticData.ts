@@ -69,10 +69,18 @@ const loadShard = (slug: string): Promise<RawListing[]> => {
   return shardP.get(slug)!;
 };
 
-/** Bỏ dấu để so khớp không phân biệt dấu, giống hàm cùng loại ở Worker */
+/** Bỏ dấu để so khớp không phân biệt dấu, giống hàm cùng loại ở Worker.
+ *
+ * ⚠ PHẢI dùng dạng escape \u0300-\u036f, KHÔNG gõ ký tự thật.
+ *   Dải ký tự tổ hợp gõ tay đã từng bị hỏng thành /['-?]/g khi lưu file —
+ *   biểu thức vẫn "hợp lệ" nên build không báo lỗi, nhưng mọi tìm kiếm
+ *   tiếng Việt không dấu ("go vap") đều không khớp "Gò Vấp".
+ *   Dạng escape chỉ gồm ký tự ASCII nên không thể bị biến đổi khi qua bất kỳ
+ *   bước encode nào.
+ */
 const fold = (s?: string | null) =>
-  (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
-    .replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase().trim();
+  (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/\u0111/g, 'd').replace(/\u0110/g, 'D').toLowerCase().trim();
 
 /* =============================================================================
  *  Bộ lọc
