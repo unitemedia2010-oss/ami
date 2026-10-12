@@ -87,32 +87,43 @@ export const PIN_ICON = (label: string, active = false) =>
  fill="${active ? '#9F1239' : '#E11D48'}" text-anchor="middle">${label}</text>
 </svg>`)}`;
 
-/** Marker nhỏ cho chế độ nhiều điểm */
+/**
+ * Marker của dự án — viền trắng dày + viền tối mảnh.
+ *
+ * ⚠ Vì sao cần viền tối: bản đồ nền OpenStreetMap đủ sắc màu (xanh lá cây,
+ * xanh nước, cát). Chấm cam trên nền xanh lá gần đó hòa vào màu nền nên
+ * khó thấy — đúng như bạn phản ánh. Viền trắng đơn thuần không đủ vì nền
+ * cũng có chỗ trắng. Thêm một viền tối mảnh ngoài viền trắng tạo đường
+ * phân cách ở mọi nền, đúng cách Google Maps làm.
+ */
 export const DOT_ICON = (active = false) =>
-  `data:image/svg+xml;charset=utf-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
-<circle cx="13" cy="13" r="11" fill="${active ? '#E11D48' : '#F97316'}" stroke="#fff" stroke-width="2.5"/>
-<circle cx="13" cy="13" r="4" fill="#fff"/>
+  `data:image/svg+xml;charset=utf-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+<circle cx="15" cy="15" r="13.2" fill="rgba(15,23,42,.42)"/>
+<circle cx="15" cy="15" r="11.6" fill="${active ? '#E11D48' : '#F97316'}" stroke="#fff" stroke-width="2.4"/>
+<circle cx="15" cy="15" r="4.2" fill="#fff"/>
 </svg>`)}`;
 
 /**
- * Marker của tin đang so sánh — toả sáng và có số thứ tự.
+ * Marker của tin đang so sánh — nền xanh đậm, viền trắng dày, số thứ tự.
  *
  * Vì sao vẽ khác hẳn: người dùng bỏ 5 tin vào giỏ rồi mở bản đồ để xem chúng
  * nằm ở đâu. Nếu vẽ y hệt marker dự án thì không phân biệt được cái nào là
- * cái họ đang chọn — mà đó mới là thứ cần nhìn.
+ * cái họ đang chọn — mà đó mới là thứ cần nhìn. Nền tối đậm giữ chấm nổi
+ * trên cả bản đồ sáng lẫn tối, khác hẳn chấm cam của dự án.
  */
 export const COMPARE_ICON = (n: number) =>
-  `data:image/svg+xml;charset=utf-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="38" height="46" viewBox="0 0 38 46">
+  `data:image/svg+xml;charset=utf-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="42" height="50" viewBox="0 0 42 50">
 <defs>
-<filter id="s" x="-60%" y="-60%" width="220%" height="220%">
-<feGaussianBlur stdDeviation="3.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+<filter id="s" x="-70%" y="-70%" width="240%" height="240%">
+<feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#0F172A" flood-opacity=".55"/>
+<feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#38BDF8" flood-opacity=".5"/>
 </filter></defs>
 <g filter="url(#s)">
-<path d="M19 2C9.7 2 2 9.7 2 19c0 12.4 17 27 17 27s17-14.6 17-27C36 9.7 28.3 2 19 2z"
-  fill="#0F172A" stroke="#38BDF8" stroke-width="3"/>
-<circle cx="19" cy="19" r="7.5" fill="#38BDF8"/>
-<text x="19" y="23" font-family="Segoe UI,sans-serif" font-size="10.5" font-weight="800"
- fill="#0F172A" text-anchor="middle">${n}</text>
+<path d="M21 2C10.8 2 2 10.8 2 21c0 13.2 19 27 19 27s19-13.8 19-27C40 10.8 31.2 2 21 2z"
+  fill="#0B1120" stroke="#38BDF8" stroke-width="3.4"/>
+<circle cx="21" cy="21" r="8.4" fill="#38BDF8"/>
+<text x="21" y="25.4" font-family="Segoe UI,sans-serif" font-size="11.5" font-weight="800"
+ fill="#0B1120" text-anchor="middle">${n}</text>
 </g></svg>`)}`;
 
 /** Tạo bản đồ đã cấu hình xong */
@@ -149,17 +160,16 @@ export function createMap(el: HTMLElement, points: MapPoint[], opts: {
     const icon = p.comparing
       ? L.icon({
           iconUrl: COMPARE_ICON(p.cmpIndex || 1),
-          iconSize: [38, 46],
-          iconAnchor: [19, 46],
-          popupAnchor: [0, -44],
-          /* zIndex cao để marker so sánh luôn nằm trên các marker khác. */
+          iconSize: [42, 50],
+          iconAnchor: [21, 50],
+          popupAnchor: [0, -48],
           className: 'cmp-pin',
         })
       : L.icon({
           iconUrl: DOT_ICON(),
-          iconSize: [26, 26],
-          iconAnchor: [13, 13],
-          popupAnchor: [0, -14],
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
+          popupAnchor: [0, -16],
         });
 
     const marker = L.marker([p.lat, p.lng], {

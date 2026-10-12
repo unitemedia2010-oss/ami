@@ -306,6 +306,26 @@
 
 .menu-in { animation: menuIn .14s ease-out; }
 
+
+/* Thanh cuộn mỏng — dùng cho khung bộ lọc tự cuộn */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(217 119 6 / 0.45) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgb(217 119 6 / 0.45);
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(217 119 6 / 0.7);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;

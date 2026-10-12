@@ -364,7 +364,19 @@ function SearchPageInner() {
 
       <div className="grid lg:grid-cols-[280px_1fr] gap-8">
         <aside className={mobileFilters ? 'block' : 'hidden lg:block'}>
-          <div className="section-card lg:sticky lg:top-32">{FilterPanel}</div>
+          {/* Bộ lọc dài hơn cả màn hình (loại nhà + khoảng giá + khu vực). Nếu
+              để cao không giới hạn thì phải cuộn CẢ TRANG mới tới cuối bộ lọc,
+              không thấy danh sách tin khi đang chọn tiêu chí — đúng điều bạn
+              nói. Giờ khung lọc tự cuộn riêng, luôn nhìn thấy cả bộ lọc lẫn
+              kết quả mà không phải cuộn trang.
+              `lg:h-[calc(100vh-9rem)]` chừa chỗ cho header dính ở trên. */}
+          <div className="section-card lg:sticky lg:top-32
+                          lg:flex lg:flex-col lg:h-[calc(100vh-9rem)] lg:overflow-hidden">
+            <div className="lg:overflow-y-auto lg:overscroll-contain lg:flex-1
+                            lg:pr-1 scrollbar-thin">
+              {FilterPanel}
+            </div>
+          </div>
         </aside>
 
         <section>

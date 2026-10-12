@@ -80,11 +80,14 @@ export function useCardMenu(items: MenuItem[]) {
     timer.current = setTimeout(() => {
       timer.current = null;
       eatClick.current = true;
-      /* Không dùng toạ độ điểm nhấn làm mốc trên mobile: ngón tay che mất
-         menu. Neo vào giữa thẻ cho dễ bấm trúng. */
+      /* Neo theo CÁCH THẺ bên phải, không theo điểm nhấn.
+       * Lý do: ngón tay đang che đúng chỗ menu sẽ hiện, và nếu neo giữa thẻ
+       * thì menu luôn tràn ra ngoài khung nhìn ở thẻ sát mép phải. Cách này
+       * đúng như menu ngữ cảnh của Windows và luôn nằm gọn trong thẻ. */
       const r = (e.target as HTMLElement).closest('[data-menu-anchor]')
         ?.getBoundingClientRect();
-      open(r ? r.left + r.width / 2 : e.clientX, r ? r.top + r.height / 2 : e.clientY);
+      if (r) open(r.right - 8, r.top + 12);
+      else open(e.clientX, e.clientY);
     }, HOLD_MS);
   }, [clear, open]);
 
@@ -189,9 +192,11 @@ function MenuPanel({ x, y, items, onClose }:
       ref={ref}
       data-card-menu=""
       role="menu"
-      style={pos}
-      className="fixed z-[100] min-w-[210px] rounded-xl bg-white shadow-2xl
+      className="fixed z-[100] rounded-xl bg-white shadow-2xl
                  border border-cream-200 p-1.5 origin-top-left menu-in"
+      /* max-w theo khung nhìn: trên điện thoại hẹp, min-w 210px cộng padding
+         trang có thể tràn; w-[min(240px,calc(100vw-24px))] chặn trước. */
+      style={{ ...pos, maxWidth: 'min(240px, calc(100vw - 24px))' }}
     >
       {items.map((it, i) => (
         <button

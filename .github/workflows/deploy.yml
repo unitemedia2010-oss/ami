@@ -111,6 +111,9 @@ jobs:
           # thật ở footer (3 mục cùng trỏ /tim-kiem/?type=rent với key={href}).
           node tools/check_duplicate_keys.mjs
           node tools/check_duplicate_keys_probe.mjs
+          # Chấm bản đồ hòa vào nền OSM là lỗi thị giác, build không báo.
+          # Kiểm bằng cách đọc chuỗi SVG trong map.ts, không cần trình duyệt.
+          node tools/check_marker_icons.mjs
           node tools/check_bundle_fold.mjs
 
       - name: Soát dữ liệu
