@@ -29,6 +29,20 @@ export default function MapView({
   const [failed, setFailed] = useState('');
   const approxCount = points.filter((p) => p.approximate).length;
 
+  /* KHONG dat `ready` vao mang phu thuoc.
+     `ready` duoc set BOI CHINH effect duoi day. Neu no nam trong deps thi:
+       setReady(true) -> effect chay lai -> cleanup huy ban do vua tao ->
+       tao ban do moi -> setReady(true) lan nua...
+     Leaflet giu lop tile dang tai nen; huy giua chung khien chung goi vao
+     marker da bi go -> nem `Cannot read properties of undefined (reading
+     '_leaflet_pos')` va SAP CA TRANG, khong chi mat ban do.
+     Da xay ra that o /ban-do.
+
+     Cung khong dua vao `points.length`: them mot tin vao gio so sanh lam danh
+     sach doi nhung do dai co khi giu nguyen, khien ban do giu du lieu cu.
+     Dung chuoi id lam khoa - noi dung doi la khoa doi. */
+  const pointsKey = points.map((p) => p.id).join('|');
+
   useEffect(() => {
     let alive = true;
     let instance: { map: any } | null = null;
@@ -39,15 +53,15 @@ export default function MapView({
         instance = createMap(el.current, points, { onSelect }) as any;
         setReady(true);
       })
-      .catch(() => setFailed('Không tải được thư viện bản đồ. Kiểm tra kết nối mạn.'));
+      .catch(() => setFailed('Khong tai duoc thu vien ban do. Kiem tra ket noi mang.'));
 
     return () => {
       alive = false;
-      // hủy đúng cách để Leaflet giải phóng listener và container
-      try { instance?.map.remove(); } catch { /* đã bị gỡ */ }
+      // huy dung cach de Leaflet giai phong listener va container
+      try { instance?.map.remove(); } catch { /* da bi go */ }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [points.length, ready]);
+  }, [pointsKey]);
 
   if (points.length === 0) {
     return (

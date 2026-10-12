@@ -104,6 +104,13 @@ jobs:
         run: |
           node tools/check_tailwind_classes.mjs
           node tools/check_contrast_classes.mjs
+          # Tự kiểm chứng chính script trên bằng các ca lỗi CỐ Ý, để lần
+          # nới điều kiện lọc sau này không âm thầm làm script hỏng.
+          node tools/check_contrast_probe.mjs
+          # React key trùng chỉ ghi ra console, build vẫn xanh — đã xảy ra
+          # thật ở footer (3 mục cùng trỏ /tim-kiem/?type=rent với key={href}).
+          node tools/check_duplicate_keys.mjs
+          node tools/check_duplicate_keys_probe.mjs
           node tools/check_bundle_fold.mjs
 
       - name: Soát dữ liệu

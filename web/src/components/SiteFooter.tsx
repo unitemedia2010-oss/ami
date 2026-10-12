@@ -16,8 +16,13 @@ const COLS = [
     links: [
       ['Căn hộ cho thuê', '/tim-kiem/?type=rent'],
       ['Cho thuê theo quận', '/quan'],
-      ['Văn phòng cho thuê', '/tim-kiem/?type=rent'],
-      ['Cửa hàng cho thuê', '/tim-kiem/?type=rent'],
+      /* ⚠ Ba mục dưới đây từng trỏ CÙNG một đường dẫn /tim-kiem/?type=rent —
+         nên chúng dẫn về một trang chung chung, không phải mục riêng. Nay
+         đã thêm cat= đúng loại. Đồng thời key={href} ở dưới đã hỏng vì
+         3 hàng trùng href khiến React cảnh báo "two children with the same
+         key" và có thể bỏ sót phần tử. */
+      ['Văn phòng cho thuê', '/tim-kiem/?type=rent&cat=van-phong'],
+      ['Cửa hàng cho thuê', '/tim-kiem/?type=rent&cat=mat-bang'],
     ],
   },
   {
@@ -26,7 +31,8 @@ const COLS = [
       ['Tất cả dự án', '/du-an'],
       ['Bản đồ dự án', '/ban-do'],
       ['So sánh dự án', '/so-sanh'],
-      ['Dự án nổi bật', '/du-an'],
+      /* Trùng href với "Tất cả dự án" — xoá thay vì để hai chỗ giống nhau. */
+      ['Dự án chung cư', '/du-an?cat=chung-cu'],
       ['Khu vực phía Đông', '/quan/thu-duc'],
     ],
   },
@@ -107,7 +113,11 @@ export default function SiteFooter() {
               </h3>
               <ul className="space-y-2.5">
                 {c.links.map(([label, href]) => (
-                  <li key={href}>
+                  /* key theo NHAN, khong theo href: hai muc khac nhau hoat
+                     dong hoan toan voi cung mot duong dan la chuyen binh
+                     thuong. Dung href lam key se lam React bao "two children
+                     with the same key" va co the bo sot phan tu. */
+                  <li key={label}>
                     <Link
                       href={href}
                       className="text-gold-100/70 text-sm hover:text-gold-300

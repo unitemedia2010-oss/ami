@@ -19,7 +19,7 @@
 
 import {
   useCallback, useEffect, useLayoutEffect, useRef, useState,
-  type CSSProperties, type ReactNode,
+  type CSSProperties,
 } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -185,8 +185,7 @@ function MenuPanel({ x, y, items, onClose }:
       role="menu"
       style={pos}
       className="fixed z-[100] min-w-[210px] rounded-xl bg-white shadow-2xl
-                 border border-cream-200 p-1.5 origin-top-left
-                 animate-[menuIn_.14s_ease-out]"
+                 border border-cream-200 p-1.5 origin-top-left menu-in"
     >
       {items.map((it, i) => (
         <button
@@ -208,13 +207,3 @@ function MenuPanel({ x, y, items, onClose }:
     </div>
   );
 }
-
-/* Khung nhỏ giúp tự xuất hiện menu. Nếu không có keyframes này, Tailwind sẽ
-   bỏ class và menu hiện tức thì — vẫn dùng được, chỉ mất hiệu ứng. */
-export function CardMenuStyle() {
-  return (
-    <style>{`@keyframes menuIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}`}</style>
-  );
-}
-
-export type { ReactNode };

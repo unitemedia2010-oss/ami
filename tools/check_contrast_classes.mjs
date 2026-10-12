@@ -48,6 +48,24 @@ for (const file of walk(SRC)) {
     if (!DARK_BG.test(chunk)) return;
     if (HAS_TEXT.test(chunk)) return;
 
+    /* ---- Loại trừ: lớp phủ trang suốt, không chứa chữ ----
+     * Ví dụ lớp mờ bấm-để-đóng bảng nâng:
+     *     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" aria-hidden />
+     * Nền đen đó chỉ để làm tối phần còn lại, bên trong rỗng — không có chữ
+     * nào để mà không đọc được. Bắt buộc thêm text-white chỉ để làm script
+     * im là lẽ ra phải im, và tệ hơn là dạy ta rằ có thể bỏ qua lỗi thật.
+     *
+     * Hai tín hiệu, cùng đáng tin:
+     *   • tự đóng (`/>` cuối chunk) → không có phần tử con, không thể có chữ
+     *   • aria-hidden → theo quy ước dùng trong dự án, đánh dấu trang trí
+     *     (lớp phủ gradient, vùng bấm vô hình) chứ không phải nội dung đọc
+     * Lỗi thật trước đây là chip `<span>` có chữ bên trong → không rơi vào
+     * hai trường hợp này nên vẫn bị bắt.
+     */
+    const tuDong = /\/>\s*$/.test(chunk);
+    const trangTri = /aria-hidden/.test(chunk);
+    if (tuDong || trangTri) return;
+
     // <button> và <a> thường đã có màu chữ từ lớp cha — bỏ qua <button>
     if (/<\s*button\b/.test(chunk)) return;
 

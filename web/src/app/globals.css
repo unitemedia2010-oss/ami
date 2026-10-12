@@ -297,6 +297,15 @@
 }
 
 /* Tôn trọng thiết lập giảm chuyển động — quan trọng cho người nhạy cảm thị giác */
+/* Menu ngữ cảnh (chuột phải / nhấn giữ) — nằm ở đây vì Tailwind loại bỏ
+   class animate dùng @keyframes định nghĩa trong file khác. */
+@keyframes menuIn {
+  from { opacity: 0; transform: scale(.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.menu-in { animation: menuIn .14s ease-out; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
