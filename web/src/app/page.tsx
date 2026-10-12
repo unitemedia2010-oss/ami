@@ -61,7 +61,7 @@ export default function HomePage() {
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
                                glass-dark text-white text-[13px] font-semibold mb-6 animate-rise">
                 <iconify-icon icon="lucide:map-pin" className="text-gold-300" />
-                TP. Hồ Chí Minh — 21 đơn vị hành chính
+                TP. Hồ Chí Minh — 23 đơn vị hành chính
               </span>
 
               <h1 className="text-4xl md:text-6xl font-extrabold leading-[1.08] mb-6
@@ -115,14 +115,23 @@ export default function HomePage() {
             {/* --------------------------------------------------- thẻ số liệu */}
             <div className="hidden lg:grid grid-cols-2 gap-4">
               {[
-                ['lucide:building',    'Tin đăng',      '27.000+'],
-                ['lucide:building-2',  'Dự án',        '190+'],
-                ['lucide:map',         'Quận / Huyện', '21'],
+                ['lucide:building',    'Tin đăng',      '27.659'],
+                ['lucide:building-2',  'Dự án',        '441'],
+                ['lucide:map',         'Quận / Huyện', '23'],
                 ['lucide:map-pinned',  'Phường / Xã',  '168'],
               ].map(([ic, label, value], i) => (
                 <div
                   key={label}
-                  className="glass rounded-2xl p-5 hover:-translate-y-1 hover:bg-white/20
+                  /* .glass là 55% trắng — thiết kế cho nền SÁNG. Đặt lên
+                     hero tối nó thành xám bẩn, đúng như ảnh người dùng
+                     gửi. Dùng .glass-dark (10% trắng) thì nổi trên nền
+                     tối mà không xỉn.
+
+                     text-white đặt TRÊN THẺ chứ không chỉ ở phần tử con:
+                     kính tối thì chữ mặc định phải là trắng, nếu không mọi thẻ
+                     thêm sau này lại rơi vào màu đen của trang. */
+                  className="glass-dark rounded-2xl p-5 text-white hover:-translate-y-1
+                             hover:bg-white/[0.15] hover:border-gold-400/40
                              transition-all duration-300 animate-rise"
                   style={{ animationDelay: `${i * 90}ms` }}
                 >

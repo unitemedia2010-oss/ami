@@ -29,10 +29,41 @@ function walk(dir) {
 }
 
 /* ---------------------------------------------------- 1. gom mọi class có trong CSS */
+
+/* ⚠ PHẢI CẢNH BÁO KHI BẢN BUILD CŨ HƠN MÃ NGUỒN.
+   Script này đối chiếu mã nguồn với CSS trong web/out. Nếu web/out là bản
+   build cũ hơn, mọi class viết MỚI đều vắng mặt và script báo động giả —
+   kể cả class hoàn toàn hợp lệ.
+
+   Đã vấp đúng lỗi này: sau khi thêm class mới ở trang chủ, script báo
+   "border-gold-400/50 không có trong bản build". Đổi /40 → /50 cũng vô ích.
+   Kiểm lại thì ngay cả `bg-white/50` (chắc chắn hợp lệ) cũng "không có" —
+   dấu hiệu duy nhất là bản build cũ, không phải class sai.
+
+   Trong CI thì không dính (build chạy ngay trước bước soát), nhưng trên máy
+   thì thường xuyên dính. Không cảnh báo thì người ta sẽ mất thời gian sửa
+   những thứ vốn đã đúng. */
+let buildCu = 0;
+let nguonMoiNhat = 0;
+try { buildCu = statSync(OUT).mtimeMs; } catch { /* chưa build */ }
+for (const f of walk(join(process.cwd(), 'web/src'))) {
+  if (!/\.(tsx?|css)$/.test(f)) continue;
+  try { const t = statSync(f).mtimeMs; if (t > nguonMoiNhat) nguonMoiNhat = t; } catch {}
+}
+
+const buildCuHon = buildCu > 0 && nguonMoiNhat > buildCu;
+
 const css = walk(join(OUT, '_next'))
   .filter((f) => f.endsWith('.css'))
   .map((f) => readFileSync(f, 'utf8'))
   .join('\n');
+
+if (buildCuHon) {
+  console.log('⚠ CẢNH BÁO: web/out CŨ HƠN mã nguồn — kết quả dưới đây KHÔNG ĐÁNG TIN.');
+  console.log('  Script đối chiếu mã nguồn với CSS của bản build cũ, nên mọi class');
+  console.log('  viết mới đều bị báo "không có" oan. Hãy `npm run build` lại rồi');
+  console.log('  chạy script này. Trong CI bước soát luôn chạy sau build nên không dính.\n');
+}
 
 const inCss = new Set();
 for (const m of css.matchAll(/\.((?:[A-Za-z0-9_-]|\\.)+)/g)) {
@@ -79,6 +110,10 @@ for (const f of walk(join(ROOT, 'web/src'))) {
   if (!/\.(tsx?|css)$/.test(f)) continue;
   for (const m of readFileSync(f, 'utf8').matchAll(re)) total.add(`${m[1]}/${m[2]}`);
 }
+
+/* Build cũ thì kết quả không đáng tin, nên THOÁT SẠCH chứ không báo lỗi —
+   báo lỗi oan khiến CI/người dùng phải đi sửa những class vốn đã đúng. */
+if (buildCuHon) process.exit(0);
 
 if (missing.size === 0) {
   console.log(`OK: cả ${total.size} lớp dạng <màu>/<opacity> đều có trong bản build.`);

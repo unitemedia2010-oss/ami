@@ -42,7 +42,25 @@ const CASES = [
     </div>`, false],
 ];
 
+/* PHẢI kiểm mã nguồn thật TRƯỚC khi ghi file probe.
+   Nếu mã nguồn đang có lỗi thật thì check_contrast_classes trả mã khác 0 vì
+   lý do đó — mọi ca thử đều bị coi là "bị bắt", kể cả ca KHÔNG PHẢI lỗi.
+   Lần chạy trước đúng vấp: 4 ca báo sai chỉ vì còn sót lỗi ở trang chủ.
+
+   ⚠ Và PHẢI chạy TRƯỚC khi ghi file probe. Lần này đặt nhầm sau, nên nó
+     thấy luôn lỗi của chính file thử nghiệm vừa ghi (trong đó cố tình có
+     lỗi) và báo đỏ mãi. Đây là dạng "công cụ tưởng đang kiểm chứng, thực
+     ra đang tự soi chính mình". */
 if (existsSync(F)) unlinkSync(F);
+let baselineSach = true;
+try {
+  execFileSync('node', [join(ROOT, 'tools/check_contrast_classes.mjs')],
+    { cwd: ROOT, stdio: 'pipe' });
+} catch {
+  baselineSach = false;
+  console.log('!! MÃ NGUỒN THẬT ĐANG CÓ LỖI — sửa hết trước khi kiểm chứng probe.');
+}
+
 writeFileSync(F, "'use client';\nexport default function P() {\n  return (\n    <div>\n"
   + CASES.map(([, jsx]) => jsx).join('\n') + '\n    </div>\n  );\n}\n', 'utf8');
 
@@ -72,8 +90,8 @@ for (const [ten, , phaiBat] of CASES) {
 }
 
 unlinkSync(F);
-if (bad) {
-  console.error(`\nFAIL: ${bad} ca sai. Script đang soát KHÔNG đúng.`);
+if (bad || !baselineSach) {
+  if (bad) console.error(`\nFAIL: ${bad} ca sai.`);
   process.exit(1);
 }
 console.log('\nOK: script bắt đúng lỗi thật và bỏ qua lớp phủ rỗng.');

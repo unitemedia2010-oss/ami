@@ -107,6 +107,11 @@ jobs:
           # Tự kiểm chứng chính script trên bằng các ca lỗi CỐ Ý, để lần
           # nới điều kiện lọc sau này không âm thầm làm script hỏng.
           node tools/check_contrast_probe.mjs
+          # Danh sach khu vuc trong o chon: mau cua <select> bi KE THUA
+          # xuong <option>. Trinh duyet ve nen trang cho danh sach nen chu
+          # trang = khong doc duoc gi. Da xay ra that tren ban live.
+          node tools/check_option_contrast.mjs
+          node tools/check_option_contrast_probe.mjs
           # React key trùng chỉ ghi ra console, build vẫn xanh — đã xảy ra
           # thật ở footer (3 mục cùng trỏ /tim-kiem/?type=rent với key={href}).
           node tools/check_duplicate_keys.mjs

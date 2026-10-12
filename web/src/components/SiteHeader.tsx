@@ -27,7 +27,13 @@ const SEARCH_INPUT =
 const SELECT_CLASS =
   'h-10 shrink-0 max-w-[190px] px-3 text-[13px] font-semibold ' +
   'bg-white/[0.12] backdrop-blur-xl border-y border-white/20 text-white ' +
-  'focus:border-gold-400 focus:outline-none transition-all duration-300';
+  'focus:border-gold-400 focus:outline-none transition-all duration-300 ' +
+  // Day la cho danh sach khu vuc MAT CHU — da xay ra that tren ban live.
+  // `text-white` tren <select> duoc ke thua cho <option>. Khi mo dropdown,
+  // trinh duyet ve nen TRANG cho danh sach nhung chu van trang: trang tren
+  // trang, khong doc duoc gi. Phai ep RIENG cho option, khong duoc chi dua
+  // vao mau cua select.
+  '[&>option]:bg-white [&>option]:text-coal-900 [&>option]:font-semibold';
 
 const SEARCH_BTN =
   'shrink-0 h-10 rounded-r-full bg-grad-flame text-white font-bold text-[13px] ' +
