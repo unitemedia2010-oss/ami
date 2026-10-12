@@ -146,6 +146,11 @@ jobs:
           # nguoi dung bao khong thay cach xoa. Nay co nut X tron tren anh.
           node tools/check_compare_remove.mjs
           node tools/check_compare_remove_probe.mjs
+          # Bo cuc theo giao dien mau: header gon, bo loc ban do mot hang,
+          # hop chi tiet ben phai. Ba quyet dinh bo cuc — script giu khoi
+          # troi nguoc ve kieu cu khi ai sua header.
+          node tools/check_map_layout.mjs
+          node tools/check_map_layout_probe.mjs
 
       - uses: actions/upload-pages-artifact@v3
         with:

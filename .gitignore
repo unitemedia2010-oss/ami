@@ -63,3 +63,12 @@ scrape-full.log
 Thumbs.db
 .vscode/
 .idea/
+
+# ---- file tam do script kiem thu de lai --------------------------------
+# Da xay ra: file page.tsx.probe nam trong web/src bi git add -A nuot
+# vao commit, va Next se co compile no. Chan theo DUOI file de khong dung
+# toi file nguon that.
+*.probe
+*.bak
+*.orig
+*.rej

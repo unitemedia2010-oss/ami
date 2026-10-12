@@ -15,16 +15,79 @@ const NAV = [
 
 /** class dùng chung cho mọi ô tìm kiếm trong header */
 const SEARCH_INPUT =
-  'flex-1 min-w-0 h-10 px-5 rounded-l-full text-[13.5px] font-medium ' +
+  'flex-1 min-w-0 h-10 px-4 text-[13.5px] font-medium ' +
   'bg-white/[0.12] backdrop-blur-xl border border-white/20 text-white ' +
   'placeholder:text-white/60 ' +
   'focus:bg-white/[0.2] focus:border-gold-400 focus:ring-2 ' +
   'focus:ring-gold-400/50 focus:outline-none transition-all duration-300';
 
+/* Ô chọn khu vực — đóng vai trò "France, Nice" trong giao diện mẫu.
+   Dùng <select> thuần để không cần JavaScript: form submit với
+   ?q=…&district=… là tìm kiếm theo khu vực. */
+const SELECT_CLASS =
+  'h-10 shrink-0 max-w-[190px] px-3 text-[13px] font-semibold ' +
+  'bg-white/[0.12] backdrop-blur-xl border-y border-white/20 text-white ' +
+  'focus:border-gold-400 focus:outline-none transition-all duration-300';
+
 const SEARCH_BTN =
   'shrink-0 h-10 rounded-r-full bg-grad-flame text-white font-bold text-[13px] ' +
   'shadow-glow hover:brightness-110 transition-all duration-300 ' +
-  'inline-flex items-center whitespace-nowrap';
+  'inline-flex items-center gap-1.5 whitespace-nowrap px-5';
+
+/* =============================================================================
+ *  Ô tìm kiếm + chọn khu vực
+ *
+ *  Tách riêng để dùng lại được ở header và (sau này) ở trang bản đồ, và để
+ *  việc thay đổi sau này chỉ sửa một chỗ.
+ * ============================================================================= */
+function SearchBar({
+  q, setQ, units, activeDistrict,
+}: {
+  q: string;
+  setQ: (v: string) => void;
+  units: AdminUnit[];
+  activeDistrict: number | null;
+}) {
+  return (
+    <form action="/tim-kiem" className="w-full max-w-[760px] shrink-0">
+      <div className="flex items-stretch rounded-full overflow-hidden
+                      shadow-lift border border-white/20">
+        <span aria-hidden
+              className="shrink-0 grid place-items-center pl-5 pr-2 bg-white/[0.12]
+                         border-r border-white/20">
+          <iconify-icon icon="lucide:map-pin" className="text-gold-300 text-base" />
+        </span>
+        <input
+          name="q" value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder='Tìm quận, dự án hoặc tên quận cũ…'
+          aria-label="Tìm kiếm bất động sản"
+          className={`${SEARCH_INPUT} rounded-none`}
+        />
+        <label className="sr-only" htmlFor="hd-district">Khu vực</label>
+        <select
+          id="hd-district"
+          name="district"
+          defaultValue={activeDistrict ?? ''}
+          className={SELECT_CLASS}
+        >
+          <option value="">Tất cả khu vực</option>
+          {units.map((d) => (
+            <option key={d.id} value={d.id}>{d.name_new}</option>
+          ))}
+        </select>
+        <button type="submit" className={`${SEARCH_BTN} rounded-none`}>
+          <iconify-icon icon="lucide:search" /> Tìm
+        </button>
+      </div>
+      {units.length === 0 && (
+        <p className="mt-1.5 text-center text-[11.5px] text-white/60">
+          Đang tải danh sách khu vực…
+        </p>
+      )}
+    </form>
+  );
+}
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -74,7 +137,7 @@ export default function SiteHeader() {
         <div aria-hidden className="absolute inset-0 bg-grid" />
 
         <div className="relative px-4 md:px-8">
-          <div className="mx-auto max-w-7xl flex items-center gap-4 h-[68px]">
+          <div className="mx-auto max-w-7xl flex items-center gap-4 h-16">
             {/* ---------------------------------------------------------- logo */}
             <Link href="/" className="flex items-center gap-2 shrink-0 group">
               <span className="w-10 h-10 rounded-xl bg-grad-flame grid place-items-center
@@ -160,95 +223,35 @@ export default function SiteHeader() {
           </div>
 
           {/* ==================================================================
-              *  Hàng tìm kiếm + chip khu vực — CANH GIỮA, mọi chip đều thấy được
+              *  Thanh tìm kiếm + chọn khu vực — MỘT HÀNG, canh giữa
               *
-              *  ⚠ KHÔNG dùng `overflow-x-auto no-scrollbar` cho dãy chip.
-              *     Cách đó cắt các chip nằm ngoài khung nhưng ẩn luôn thanh
-              *     cuộn, nên người dùng thấy "Tân Bình" sát mép phải rồi tưởng
-              *     hết — thực ra còn quận phía sau mà không bấm được.
-              *     `flex-wrap` giải quyết: mọi chip luôn hiện, hết chỗ thì xuống dòng.
+              *  Trước đây ở đây là dãy 23 CHIP QUẬN. Nó chiếm nguyên một hàng
+              *  và làm header nặng — mất 2–3 dòng ở màn vừa. Nay gộp thành một
+              *  ô chọn khu vực cạnh ô tìm kiếm, đúng kiểu ô "France, Nice" của
+              *  giao diện mẫu: một chỗ duy nhất để chỉ định nơi cần tìm.
               *
-              *  ⚠ `min-w-0` trên nav là BẮT BUỘC. Flex item mặc định có
-              *     min-width:auto nên không co dưới ngưỡng nội dung; thiếu nó
-              *     chip bị nén thành dải hẹp và chữ xuống dòng.
+              *  ⚠ Dùng <select> thuần, không dùng state + JS. Form submit ra
+              *     /tim-kiem?q=…&district=N — hoạt động kể cả khi JavaScript
+              *     chưa tải xong, và mở được bằng Enter.
+              *
+              *  ⚠ <option> trên nền tối: Safari/Chrome đổ bảng xuống trắng,
+              *     chữ đen là đọc được — nên KHÔNG ép màu trắng cho option.
               * ================================================================ */}
-          <div className="hidden xl:block pb-3.5">
-            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-              {/* Ô tìm kiếm: rộng cố định để không lấn át dãy chip bên cạnh */}
-              <form action="/tim-kiem" className="w-[400px] max-w-full shrink-0">
-                <div className="flex">
-                  <input
-                    name="q" value={q}
-                    onChange={(e) => setQ(e.target.value)}
-                    placeholder='Tìm quận, dự án hoặc tên quận cũ…'
-                    aria-label="Tìm kiếm bất động sản"
-                    className={SEARCH_INPUT}
-                  />
-                  <button type="submit" aria-label="Tìm" className={`${SEARCH_BTN} px-6 gap-1.5`}>
-                    <iconify-icon icon="lucide:search" /> Tìm
-                  </button>
-                </div>
-              </form>
-
-              <nav aria-label="Khu vực"
-                   className="flex min-w-0 flex-wrap items-center justify-center gap-1.5">
-                {units.map((d) => {
-                  const on = activeDistrict === d.id;
-                  return (
-                  <Link
-                    key={d.id}
-                    href={`/tim-kiem/?district=${d.id}`}
-                    aria-current={on ? 'true' : undefined}
-                    className={`shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full
-                                text-[12.5px] font-semibold transition-all duration-300 ${
-                                  on
-                                    ? 'bg-grad-flame text-white shadow-glow'
-                                    : 'text-gold-100/75 hover:text-white hover:bg-white/15'
-                                }`}
-                  >
-                    {/* Bỏ tiền tố dài cho gọn, nhưng GIỮ "Quận" — bỏ cả nó
-                        sẽ còn lại "1", "3" và người dùng không biết
-                        đó là quận nào. */}
-                    {d.name_new.replace(/^(Thành phố|Huyện|Thị xá)\s+/, '')}
-                  </Link>
-                  );
-                })}
-                {units.length === 0 && (
-                  <span className="text-[12.5px] text-white/50">Đang tải khu vực…</span>
-                )}
-              </nav>
-            </div>
-          </div>
-
-          {/* Khung 1024–1279px: chỉ ô tìm kiếm.
-              Ô tìm kiếm (400px) + 9 chip quận (~680px) không vừa trong 960px
-              khung chứa → nếu ép hiện, chip rơi xuống dòng thứ hai và header cao
-              thêm ~33px. Thà chỉ hiện ô tìm kiếm; từ 1280px trở lên mới thêm
-              chip — lúc đó mọi thứ vừa đúng một hàng. */}
-          <div className="hidden md:block xl:hidden pb-3">
+          <div className="hidden md:block pb-3">
             <div className="flex justify-center">
-              <form action="/tim-kiem" className="w-[400px] max-w-full shrink-0">
-                <div className="flex">
-                  <input
-                    name="q" value={q}
-                    onChange={(e) => setQ(e.target.value)}
-                    placeholder='Tìm quận, dự án hoặc tên quận cũ…'
-                    aria-label="Tìm kiếm bất động sản"
-                    className={SEARCH_INPUT}
-                  />
-                  <button type="submit" aria-label="Tìm" className={`${SEARCH_BTN} px-6 gap-1.5`}>
-                    <iconify-icon icon="lucide:search" /> Tìm
-                  </button>
-                </div>
-              </form>
+              <SearchBar
+                q={q} setQ={setQ} units={units} activeDistrict={activeDistrict}
+              />
             </div>
           </div>
         </div>
       </header>
 
-      {/* ============================================================= menu mobile */}
+      {/* ============================================================= menu mobile
+          `top-16` phải khớp chiều cao hàng logo (h-16 = 64px); lệch thì menu
+          đè lên logo hoặc hở ra một khe trống. */}
       {open && (
-        <div className="lg:hidden fixed inset-0 top-[68px] z-40 bg-liquid overflow-y-auto">
+        <div className="lg:hidden fixed inset-0 top-16 z-40 bg-liquid overflow-y-auto">
           <div aria-hidden className="absolute inset-0 bg-grid" />
           <div className="relative px-4 py-5">
             <form action="/tim-kiem" className="mb-5 flex">
