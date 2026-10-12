@@ -122,7 +122,13 @@ export function useCardMenu(items: MenuItem[]) {
   useEffect(() => {
     if (!anchor) return;
     const onDown = (e: PointerEvent) => {
-      if (!(e.target as HTMLElement).closest('[data-card-menu]')) close();
+      /* target có thể không phải Element (Document, Window, hoặc lỗi SVG ở
+         trình duyệt cũ). Gọi .closest trên những thứ đó sẽ ném TypeError, và
+         vì ném trong listener nên menu sẽ KHÔNG đóng lại — đúng cái lỗi
+         khó tìm mà bài học này cảnh báo. */
+      const t = e.target;
+      if (t instanceof Element && t.closest('[data-card-menu]')) return;
+      close();
     };
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); };
     const onScroll = () => close();
