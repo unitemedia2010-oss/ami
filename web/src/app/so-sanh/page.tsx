@@ -7,7 +7,9 @@ import { api, type ListingCard as C, fmtPrice, fmtArea } from '@/lib/api';
 import { coverImage } from '@/lib/cover';
 import { WatchButton } from '@/components/ListingCard';
 import { Note, SectionHeader, BarChart } from '@/components/ui';
-import { COMPARE_MAX } from '@/lib/compare';
+import {
+  COMPARE_MAX, COMPARE_EVENT, getCompare, removeCompare,
+} from '@/lib/compare';
 
 /* Giới hạn lấy từ compare.ts để giỏ và trang so sánh không lệch nhau.
    Trước đây hằng số nằm riêng ở đây là 4 trong khi giỏ cho 5 — người dùng
@@ -19,11 +21,37 @@ function CompareInner() {
   const router = useRouter();
 
   /* Mỗi mục trong tham số `ids` có dạng "slug|quận" — cần cả hai vì dữ liệu
-     được chia theo quận, biết slug thôi không tải được tin. */
-  const ids = (sp.get('ids') || '').split(',').filter(Boolean).slice(0, MAX);
+     được chia theo quận, biết slug thôi không tải được tin.
+
+     ⚠ URL KHÔNG có ids thì phải đọc GIỎ SO SÁNH.
+     Trước đây trang này chỉ đọc URL, nên bấm "So sánh" ở menu trên cùng —
+     tức vào /so-sanh không có ids — thì thấy "Chưa chọn tin nào để so sánh"
+     dù người dùng đã bỏ 4 tin vào giỏ. Giỏ và trang này là hai nơi cùng
+     giữ danh sách nên phải đọc chung một nguồn. */
+  const idsTuUrl = (sp.get('ids') || '').split(',').filter(Boolean).slice(0, MAX);
+  const [ids, setIds] = useState<string[]>(idsTuUrl);
+
+  /* Đồng bộ: URL có ids thì URL là chuẩn; URL rỗng thì lấy từ giỏ.
+     Nghe sự kiện của giỏ để xoá một tin ở đây thì bảng cập nhật luôn. */
+  useEffect(() => {
+    if (idsTuUrl.length) { setIds(idsTuUrl); return; }
+    setIds(getCompare().map((x) => `${x.slug}|${x.d}`).slice(0, MAX));
+  }, [sp.toString()]);
+
+  useEffect(() => {
+    const sync = () => {
+      setIds(getCompare().map((x) => `${x.slug}|${x.d}`).slice(0, MAX));
+    };
+    window.addEventListener(COMPARE_EVENT, sync);
+    return () => window.removeEventListener(COMPARE_EVENT, sync);
+  }, []);
+
   const [items, setItems] = useState<C[]>([]);
   const [loading, setLoading] = useState(false);
 
+  /* ⚠ Phụ thuộc phải là `ids` chứ không phải `sp.toString()`.
+     Khi danh sách đến từ GIỎ, URL không đổi khi giỏ đổi — nên theo dõi
+     `sp` sẽ không nạp lại, xoá một tin ở bảng xong dữ liệu không đổi. */
   useEffect(() => {
     if (ids.length === 0) { setItems([]); return; }
     setLoading(true);
@@ -37,11 +65,18 @@ function CompareInner() {
     )
       .then((list) => setItems(list.filter(Boolean) as C[]))
       .finally(() => setLoading(false));
-  }, [sp.toString()]);
+  }, [ids.join(',')]);
 
+  /* Xoá một tin: cập nhật CẢ URL lẫn giỏ, vì hai nơi có thể là nguồn. */
   const remove = (raw: string) => {
-    const next = ids.filter((s) => s !== raw);
-    router.push(next.length ? `/so-sanh?ids=${encodeURIComponent(next.join(','))}` : '/so-sanh');
+    if (idsTuUrl.length) {
+      const next = idsTuUrl.filter((s) => s !== raw);
+      router.push(next.length ? `/so-sanh?ids=${encodeURIComponent(next.join(','))}` : '/so-sanh');
+      return;
+    }
+    const [slug] = raw.split('|');
+    const item = getCompare().find((x) => x.slug === slug);
+    if (item) removeCompare(item.id);
   };
 
   // --------------------------------------------------------------- hàng so sánh
@@ -71,14 +106,15 @@ function CompareInner() {
     <div className="max-w-7xl mx-auto px-4 md:px-8 py-10">
       <SectionHeader
         title="So sánh bất động sản"
-        sub="Tối đa 4 tin cùng lúc — nhìn ra điểm khác biệt nhanh chóng"
+        sub={`Tối đa ${MAX} tin cùng lúc — nhìn ra điểm khác biệt nhanh chóng`}
       />
 
       {ids.length === 0 ? (
         <>
           <Note tone="info" title="Chưa chọn tin nào để so sánh">
-            Bấm biểu tượng <b>trái tim</b> trên thẻ tin, hoặc dùng nút “So sánh” bên dưới
-            mỗi tin, rồi quay lại trang này.
+            Bấm <b>chuột phải</b> vào thẻ tin (trên điện thoại <b>nhấn giữ</b>), rồi
+            chọn “Thêm để so sánh”. Ngoài ra có nút <b>so sánh</b> trên mỗi thẻ.
+            Danh sách đã chọn nằm ở giờ dưới cùng và tự giữ khi bạn rời trang.
           </Note>
 
           <div className="mt-8">

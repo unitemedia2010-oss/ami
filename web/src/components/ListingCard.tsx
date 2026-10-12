@@ -375,8 +375,20 @@ export function ProjectCard({ p }: { p: Project }) {
         )}
 
         <div className="flex items-center justify-between pt-2.5 border-t border-cream-200">
-          <span className="text-[13px] font-extrabold grad-text">
-            {p.building_count ? `${p.building_count} toà` : 'Xem tin'}
+          {/* ⚠ Hiện SỐ TIN ĐĂNG, không phải số toà.
+              Đây là trang tin đăng: người đọc cần biết dự án có bao nhiêu tin
+              để bấm vào xem, không cần biết mấy toà. Tệ hơn, `building_count`
+              chỉ có ở 64/441 dự án nên 377 thẻ rơi về "Xem tin" — vô nghĩa
+              với người đọc. `apartment_count` là số tin thật trong dữ liệu.
+
+              129 dự án (từ danh mục cũ) chưa có tin nào trong dataset. Ghi
+              "Xem tin" khiến người đọc bấm vào rồi thấy trang rỗng, nên nói
+              thẳng là chưa có — thà không có còn hơn hứa rồi thất vọng. */}
+          <span className={`text-[13px] font-extrabold ${
+            p.apartment_count ? 'grad-text' : 'text-coal-400'}`}>
+            {p.apartment_count
+              ? `${p.apartment_count.toLocaleString('vi-VN')} tin đăng`
+              : 'Chưa có tin'}
           </span>
           <span className="text-[11px] font-bold text-coal-400 group-hover:text-flame-700
                            transition-colors duration-300 inline-flex items-center gap-1">

@@ -139,6 +139,9 @@ jobs:
           # bộ lọc hỏng. Script này chạy lại đúng thuật toán lọc trên dữ
           # liệu thật và so số tin ra với con số popup hiện trên bản đồ.
           node tools/check_project_filter.mjs
+          # Thẻ dự án từng hiện "N toà" — thông tin của chủ đầu tư, không
+          # phải thứ người đọc trang tin đăng cần, và chỉ 64/441 dự án có.
+          node tools/check_project_card_label.mjs
 
       - uses: actions/upload-pages-artifact@v3
         with:
