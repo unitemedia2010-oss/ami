@@ -7,6 +7,7 @@ import MapView from '@/components/MapView';
 import type { MapPoint } from '@/lib/map';
 import { SectionHeader, Note } from '@/components/ui';
 import { COMPARE_EVENT, getCompare } from '@/lib/compare';
+import { u } from '@/lib/basePath';
 
 /** Nghe giỏ so sánh để bản đồ đánh dấu lại theo — không cần reload trang. */
 const CMP_EMPTY: ReturnType<typeof getCompare> = [];
@@ -81,11 +82,15 @@ export default function MapPage() {
     address: p.address,
     approximate: p.approximate,
     price: p.listings ? `${p.listings} tin đăng` : 'Chưa có tin',
-    href: `/tim-kiem/?project=${p.id}`,
+    /* ⚠ Bắt buộc bọc u(). Link này nằm TRONG popup do Leaflet dựng bằng
+       thẻ <a> phẳng — Next không gắn basePath cho nó, nên href thô sẽ
+       nhảy ra ngoài thư mục /ami và gặp 404 "Site not found" trên
+       GitHub Pages. Đã xảy ra thật: bấm "Xem tin →" trên bản đồ ra 404. */
+    href: u(`/tim-kiem/?project=${p.id}`),
   }));
 
-  /* Chấm các tin đang so sánh. Nhiều tin cùng quận sẽ chồng lên nhau nên
-     đẩy nhẹ theo thứ tự để thấy được đủ số chấm. */
+  /* Cham cac tin dang so sanh. Nhieu tin cung quan se chong len nhau nen
+     day nhe theo thu tu de thay du so cham. */
   const cmpPoints: MapPoint[] = compare.flatMap((it, i) => {
     const t = tamQuan.get(it.d);
     if (!t) return [];
@@ -98,7 +103,7 @@ export default function MapPage() {
       comparing: true,
       cmpIndex: i + 1,
       price: `${it.price.toLocaleString('vi-VN')} triệu`,
-      href: `/chi-tiet?d=${it.d}&slug=${encodeURIComponent(it.slug)}`,
+      href: u(`/chi-tiet?d=${it.d}&slug=${encodeURIComponent(it.slug)}`),
     }];
   });
 

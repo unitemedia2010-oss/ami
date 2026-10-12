@@ -61,7 +61,14 @@ interface Index {
 
 /* --------------------------------------------------------------------- cache */
 let indexP: Promise<Index> | null = null;
-const loadIndex = (): Promise<Index> => (indexP ??= getJson<Index>('index.json'));
+
+/** Nạp index.json VÀ projects.json.
+ *  projects.json cần cho baiViet tra toạ độ dự án; gộp vào đây vì mọi
+ *  nơi gọi baiViet đều đã gọi loadIndex trước đó. */
+const loadIndex = (): Promise<Index> => (indexP ??= Promise.all([
+  getJson<Index>('index.json'),
+  loadProjects(),
+]).then(([i]) => i));
 
 const shardP = new Map<string, Promise<RawListing[]>>();
 const loadShard = (slug: string): Promise<RawListing[]> => {
@@ -132,6 +139,26 @@ export const staticApi = {
     const [index, units] = await Promise.all([loadIndex(), this.adminUnits()]);
     const districts = units.districts;
 
+    /* `?project=` tren URL mang MA du an (prj-x40), khong phai ten.
+       Tin dang luu project_name (ten du an), khong co project_id — nen phai
+       tra ma → ten truoc roi moi loc duoc.
+       Truoc day so thang `project_name.includes("prj-x40")` nen khong tin
+       nao khop; va vi dieu kien loc khong bo tin nao ra, trang hien TOAN BO
+       27.659 tin — nguoi dung tuong bo loc hong. */
+    let projectKey = f.project?.trim() || '';
+    if (projectKey) {
+      /* Dùng bảng tra đầy đủ, KHÔNG dùng this.projects() — hàm đó cắt còn
+         60 dự án cho trang /du-an, nên một dự án ngoài 60 mục đầu sẽ không
+         tra được và bộ lọc rơi về hiện toàn bộ tin. */
+      await loadProjects();
+      const p = PROJECTS_BY_NAME!.get(projectKey.trim().toLowerCase())
+        || [...PROJECTS_BY_NAME!.values()].find(
+          (x: any) => x.slug === projectKey || x.id === projectKey);
+      /* Khong tra duoc ma thi de nguyen chuoi — van ho tro go ten du an
+         truc tiep tren URL nhu truoc. */
+      projectKey = p ? p.name : projectKey;
+    }
+
     /* xác định cần tải file nào */
     let slugs: string[] = [];
     let qDistrict: any[] = [];
@@ -160,7 +187,7 @@ export const staticApi = {
 
     if (f.type) rows = rows.filter((l) => l.type === f.type);
     if (f.category) rows = rows.filter((l) => l.category === f.category);
-    if (f.project) rows = rows.filter((l) => fold(l.project_name).includes(fold(f.project)));
+    if (projectKey) rows = rows.filter((l) => fold(l.project_name).includes(fold(projectKey)));
     if (f.bedrooms) rows = rows.filter((l) => (l.bedrooms ?? 0) >= f.bedrooms!);
     if (f.min != null) rows = rows.filter((l) => l.price >= f.min!);
     if (f.max != null) rows = rows.filter((l) => l.price <= f.max!);
@@ -200,6 +227,9 @@ export const staticApi = {
    * trong ứng dụng đều tự mang theo quận nên người dùng không phải làm gì.
    */
   async detail(slug: string, district: string) {
+    /* loadIndex kéo cả projects.json để baiViet tra được toạ độ dự án —
+       trang chi tiết là nơi cần toạ độ nhiều nhất (bản đồ vị trí dự án). */
+    await loadIndex();
     const rows = await loadShard(district);
     const data = rows.find((l) => l.slug === slug);
     if (!data) throw new Error('Không tìm thấy tin');
@@ -250,11 +280,47 @@ export const staticApi = {
 
 /* ---------------------------------------------------------------- đổi tên field */
 /**
+ * Tra DỰ ÁN theo tên.
+ *
+ * Tin đăng chỉ lưu TÊN dự án, không có khoá ngoại — nên phải tra theo tên.
+ * projects.json nạp MỘT LẦN bằng loadProjects(); baiViet là hàm đồng bộ
+ * nên không thể tự nạp (sẽ phải chờ Promise 27.659 lần).
+ *
+ * ⚠ So tên KHÔNG phân biệt hoa thường và khoảng trắng: dữ liệu cào về có cả
+ *   "Vạn Đô" lẫn "Vạn đô" cùng chỉ một dự án, so khít sẽ mất tin.
+ */
+let PROJECTS_BY_NAME: Map<string, any> | null = null;
+
+/** Nạp projects.json một lần rồi dựng bảng tra. Gọi trước khi dùng baiViet. */
+async function loadProjects() {
+  if (PROJECTS_BY_NAME) return;
+  const all = await getJson<any[]>('projects.json');
+  PROJECTS_BY_NAME = new Map(
+    all.filter((x) => x.name)
+      .map((x) => [(x.name || '').trim().toLowerCase(), x]),
+  );
+}
+
+/** Đồng bộ — chỉ dùng sau khi loadProjects() đã chạy xong. */
+function projectByName(name: string) {
+  if (!PROJECTS_BY_NAME) return null;
+  return PROJECTS_BY_NAME.get((name || '').trim().toLowerCase()) ?? null;
+}
+
+/**
  * File JSON dùng tên rút gọn cho tiện mã. Hàm này đổi sang đúng tên mà
  * component dùng, để phía component không cần biết mình đang chạy ở chế độ nào.
  * Quan trọng: `price` giữ nguyên giá trị, KHÔNG nhân thêm — vẫn là TRIỆU.
  */
 function baiViet(r: RawListing) {
+  /* Tra toạ độ của DỰ ÁN gắn với tin, tra theo tên.
+     Trước đây project_lat/project_lng đặt null cứng nên trang chi tiết
+     không bao giờ hiện bản đồ — dù dữ liệu có sẵn 1.998 tin thuộc dự án
+     đã định vị (1.421 tin có toạ độ thật).
+
+     projects.json được nạp một lần rồi ghi nhớ: baiViet chạy cho TỪNG tin
+     (27.659 lần), nạp lại file mỗi lần là 27.659 lần đọc mạng. */
+  const p = r.project_name ? projectByName(r.project_name) : null;
   return {
     id: r.id,
     slug: r.slug,
@@ -272,12 +338,12 @@ function baiViet(r: RawListing) {
     furniture: null,
     features: null,
     images: r.image ? [r.image] : null,
-    project_id: null,
+    project_id: p?.id ?? null,
     project_name: r.project_name,
-    project_slug: null,
-    project_lat: null,
-    project_lng: null,
-    project_lat_approximate: null,
+    project_slug: p?.slug ?? null,
+    project_lat: p?.lat ?? null,
+    project_lng: p?.lng ?? null,
+    project_lat_approximate: p ? p.lat_approximate !== false : null,
     project_amenities: null,
     /** dùng để mở đúng file dữ liệu khi bấm vào tin */
     district_slug: r.district_slug,

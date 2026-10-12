@@ -6,6 +6,7 @@ import { api } from '@/lib/api';
 import { ProjectCard, ListingCardSkeleton, type Project } from '@/components/ListingCard';
 import MapView from '@/components/MapView';
 import { SectionHeader, Note } from '@/components/ui';
+import { u } from '@/lib/basePath';
 
 export default function DuAnPage() {
   const [list, setList] = useState<Project[]>([]);
@@ -35,7 +36,9 @@ export default function DuAnPage() {
     lng: p.lng,
     address: p.address,
     approximate: p.lat_approximate,
-    href: `/tim-kiem/?project=${p.id}`,
+    /* Bọc u(): đây là <a> phẳng do Leaflet dựng trong popup, Next không
+       gắn basePath cho nó — thiếu /ami thì bấm ra 404 "Site not found". */
+    href: u(`/tim-kiem/?project=${p.id}`),
   }));
 
   return (

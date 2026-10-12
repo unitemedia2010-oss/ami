@@ -6,6 +6,7 @@ import { api, type ListingCard as C } from '@/lib/api';
 import ListingCard, { ListingCardSkeleton, ProjectCard, type Project } from '@/components/ListingCard';
 import { SectionHeader, StatCard, Note } from '@/components/ui';
 import MapView from '@/components/MapView';
+import { u } from '@/lib/basePath';
 
 /* Phím tắt dùng đúng hạng mục đã gom trong tools/build_27k.mjs.
    Trước đây dùng `?q=chung cư` — tức tìm trong TIÊU ĐỀ tin, nên những tin
@@ -316,7 +317,8 @@ function HomeMap() {
             address: p.address,
             approximate: p.approximate,
             price: p.listings ? `${p.listings} tin` : null,
-            href: `/tim-kiem/?project=${p.id}`,
+            /* Bọc u(): <a> phẳng trong popup Leaflet, không có basePath. */
+            href: u(`/tim-kiem/?project=${p.id}`),
           })),
         );
       })

@@ -114,6 +114,10 @@ jobs:
           # Chấm bản đồ hòa vào nền OSM là lỗi thị giác, build không báo.
           # Kiểm bằng cách đọc chuỗi SVG trong map.ts, không cần trình duyệt.
           node tools/check_marker_icons.mjs
+          # <a href="/…"> và href trong popup Leaflet KHÔNG được Next gắn
+          # basePath — thiếu /ami là 404 "Site not found" khi người dùng bấm.
+          # <Link> thì Next tự gắn nên không tính.
+          node tools/check_raw_paths.mjs
           node tools/check_bundle_fold.mjs
 
       - name: Soát dữ liệu
@@ -125,6 +129,12 @@ jobs:
         run: |
           node tools/check_districts_sync.mjs
           node tools/check_map_data.mjs
+          # `?project=` mang MÃ dự án (prj-x40) nhưng tin đăng chỉ lưu TÊN.
+          # Trước đây so thẳng mã với tên nên không tin nào khớp, và vì điều
+          # kiện lọc không loại tin nào, trang hiện TOÀN BỘ 27.659 tin — tưởng
+          # bộ lọc hỏng. Script này chạy lại đúng thuật toán lọc trên dữ
+          # liệu thật và so số tin ra với con số popup hiện trên bản đồ.
+          node tools/check_project_filter.mjs
 
       - uses: actions/upload-pages-artifact@v3
         with:

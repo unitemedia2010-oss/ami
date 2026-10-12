@@ -49,6 +49,11 @@ function SearchPageInner() {
     min: sp.get('min') ? Number(sp.get('min')) : undefined,
     max: sp.get('max') ? Number(sp.get('max')) : undefined,
     bedrooms: sp.get('bedrooms') ? Number(sp.get('bedrooms')) : undefined,
+    /* ⚠ THIẾU DÒNG NÀY thì bộ lọc theo dự án không bao giờ chạy.
+       Bản đồ, thẻ dự án và popup đều dựng link `/tim-kiem/?project=<mã>`
+       nhưng danh sách tham số ở đây không lấy `project` — nên trang hiện
+       TOÀN BỘ tin thay vì tin của dự án đó, người dùng tưởng bộ lọc hỏng. */
+    project: sp.get('project') || undefined,
     sort: (sp.get('sort') as Filters['sort']) || 'newest',
     page: Number(sp.get('page')) || 1,
     per_page: 24,

@@ -72,10 +72,10 @@ export default async function DistrictPage({ params }: { params: Promise<{ slug:
 
       {/* ------------------------------------------------------------- CTA */}
       <div className="grid sm:grid-cols-2 gap-3 mb-10">
-        <a href={`/tim-kiem/?q=${q}`} className="btn-primary h-14 text-[15px]">
+        <a href={u(`/tim-kiem/?q=${q}`)} className="btn-primary h-14 text-[15px]">
           <iconify-icon icon="lucide:shopping-bag" /> Tin mua bán tại {d.name_new}
         </a>
-        <a href={`/tim-kiem/?type=rent&q=${q}`} className="btn-outline h-14 text-[15px]">
+        <a href={u(`/tim-kiem/?type=rent&q=${q}`)} className="btn-outline h-14 text-[15px]">
           <iconify-icon icon="lucide:key-round" /> Tin cho thuê tại {d.name_new}
         </a>
       </div>
