@@ -9,6 +9,7 @@ const NAV = [
   { href: '/', label: 'Trang Chủ', match: '/' },
   { href: '/du-an', label: 'Dự Án', match: '/du-an' },
   { href: '/ban-do', label: 'Bản Đồ', match: '/ban-do' },
+  { href: '/kham-pha', label: 'Bản Đồ Mới (Estates)', match: '/kham-pha' },
   { href: '/so-sanh', label: 'So Sánh', match: '/so-sanh' },
   { href: '/lien-he', label: 'Liên Hệ', match: '/lien-he' },
 ];

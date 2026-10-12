@@ -33,7 +33,7 @@ const VALUES = [
 
 const TIMELINE = [
   { year: '2024', title: 'Khởi đầu', body: 'Nhóm cập nhật tin bất động sản thủ công tại khu vực Thủ Thiêm và Đông TP.HCM.' },
-  { year: 'Đầu 2025', title: 'Mở rộng khu vực', body: 'Phủ sóng 21 đơn vị hành chính cấp huyện và 168 phường, xã.' },
+  { year: 'Đầu 2025', title: 'Mở rộng khu vực', body: 'Phủ sóng 23 đơn vị hành chính cấp huyện và 168 phường, xã.' },
   { year: '07/2025', title: 'Sáp nhập hành chính', body: 'Ra mắt tính năng tra cứu theo tên quận cũ sau khi hệ thống hành chính thay đổi.' },
   { year: '2026', title: 'Nền tảng SGREALTY', body: 'Tách PII khỏi dữ liệu công khai, triển khai lớp phòng chống thu thập dữ liệu tự động.' },
 ];

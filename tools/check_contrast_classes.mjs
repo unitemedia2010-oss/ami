@@ -45,6 +45,11 @@ for (const file of walk(SRC)) {
       j++;
       chunk += '\n' + lines[j];
     }
+
+    /* Nhin tiếp 5 dòng phía dưới. Chunk chỉ dừng ở dấu `>` mở thẻ, nên
+       phần tử con nằm NGOÀI chunk — ví dụ `<div className="…bg-black">`
+       rồi mới tới `<img …>`. Không nhìn tiếp thì khung ảnh bị báo nhầm. */
+    const phiaDuoi = lines.slice(j + 1, j + 6).join('\n');
     if (!DARK_BG.test(chunk)) return;
     if (HAS_TEXT.test(chunk)) return;
 
@@ -62,9 +67,23 @@ for (const file of walk(SRC)) {
      * Lỗi thật trước đây là chip `<span>` có chữ bên trong → không rơi vào
      * hai trường hợp này nên vẫn bị bắt.
      */
+    /* THÊM hai trường hợp, lấy từ lỗi thật ở trang /kham-pha:
+         · `fixed inset-0` — lớp phủ toàn màn của hộp thoại. Nền đen chỉ để
+           làm mờ phần còn lại; mọi chữ nằm trong thẻ con có nền riêng
+           (modal liên hệ nền trắng, modal 360° nền zinc-950).
+         · chứa `<img` — khung chứa ảnh (`relative aspect-video bg-black`).
+           Nền tối ở đó là để ảnh nổi lên, chữ do phần tử con tự mang màu.
+       Lỗi thật trước đây là chip <span> có chữ bên trong: không rơi vào hai
+       trường hợp này nên vẫn bị bắt. */
     const tuDong = /\/>\s*$/.test(chunk);
     const trangTri = /aria-hidden/.test(chunk);
-    if (tuDong || trangTri) return;
+    const lopPhuToanMan = /fixed\s+inset-0/.test(chunk);
+    /* `<img>` hoặc phần tử con có nền sáng riêng (`bg-white`,
+       `bg-zinc-950`…) → nền tối ở đây chỉ làm nền lót, chữ thuộc con. */
+    const conCoNenRieng =
+      /<img\b/.test(chunk) || /<img\b/.test(phiaDuoi)
+      || /className="[^"]*\bbg-(white|cream|zinc-50|zinc-100|zinc-900|zinc-950)\b/.test(phiaDuoi);
+    if (tuDong || trangTri || lopPhuToanMan || conCoNenRieng) return;
 
     // <button> và <a> thường đã có màu chữ từ lớp cha — bỏ qua <button>
     if (/<\s*button\b/.test(chunk)) return;

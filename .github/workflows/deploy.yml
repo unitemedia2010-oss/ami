@@ -128,6 +128,15 @@ jobs:
           # kiểu CI để chặn đúng lỗi đó — đã làm deploy đỏ một lần.
           node tools/check_posix_paths.mjs
           node tools/check_bundle_fold.mjs
+          # 9 trang tieu de chung "SGREALTY — Mua ban…" nen Google gop mot
+          # trang. Trang client khong export duoc metadata -> phai dat o layout.
+          node tools/check_metadata.mjs
+          node tools/check_metadata_probe.mjs
+          # Du lieu BIA lot vao ma nguon: anh cua nguoi khac, tel: toi so di
+          # dong that, toa do sinh theo cong thuc, diem danh gia sinh ra.
+          # Ca bon loai loi nay de trang VAN HIEN, VAN DEP, khong build loi.
+          node tools/check_fake_data.mjs
+          node tools/check_fake_data_probe.mjs
 
       - name: Soát dữ liệu
         # districts.ts khai báo slug cho generateStaticParams của /quan/[slug].

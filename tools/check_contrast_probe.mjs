@@ -40,6 +40,26 @@ const CASES = [
     <div className="bg-white px-3 py-1 rounded-lg">
       Ten quan
     </div>`, false],
+
+  /* Hai ca sau lấy từ trang /kham-pha: script đã báo động giả cho chúng
+     trước khi được sửa. */
+  ['lop phu modal toan man, con co nen rieng (KHONG phai loi)', `
+    <div className="fixed inset-0 z-50 flex items-center p-4 bg-black/40">
+      <div className="bg-white rounded-2xl p-6 text-coal-900">
+        Lien he
+      </div>
+    </div>`, false],
+
+  ['khung anh nen toi, con la <img> (KHONG phai loi)', `
+    <div className="relative aspect-video bg-black">
+      <img src="/x.jpg" alt="" />
+      <div className="absolute inset-0 text-white">Keo de xoay</div>
+    </div>`, false],
+
+  ['khung nen toi that su, phan tu con KHONG mang mau (loi that)', `
+    <div className="relative aspect-video bg-black">
+      <p>Khong ai gan mau chu</p>
+    </div>`, true],
 ];
 
 /* PHẢI kiểm mã nguồn thật TRƯỚC khi ghi file probe.
