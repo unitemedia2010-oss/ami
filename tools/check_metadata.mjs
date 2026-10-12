@@ -97,8 +97,6 @@ for (const x of thu) {
   if (x.coMetadata) continue;
   if (x.duong === '/') continue;               // trang chủ là chuẩn so sánh
   if (x.duong.startsWith('/admin')) continue;   // trang quản trị, không cần SEO
-  /* /kham-pha chưa commit nên chưa có trên live — không phải lỗi bản live. */
-  if (x.duong === '/kham-pha') continue;
   ket.push({ duong: x.duong, file: x.file });
 }
 

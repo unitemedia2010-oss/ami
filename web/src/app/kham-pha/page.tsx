@@ -353,14 +353,25 @@ export default function KhamPhaPage() {
           center: [10.7850, 106.7180],
           zoom: 14,
           zoomControl: false,
-          attributionControl: false,
+          /* Trước đây tắt hẳn. OSM bắt buộc phải ghi công khi dùng gạch của
+           * họ, nên bật lại; dùng gạch của nhà cung cấp khác thì mới tắt. */
+          attributionControl: true,
         });
 
-        // CartoDB Positron monochrome light tiles
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        // Gạch lát OSM — cùng nguồn với /ban-do (lib/map.ts).
+        // Trước đây dùng CartoDB `basemaps.cartocdn.com`; dịch vụ đó nay bắt
+        // API key và mọi ô gạch hiện watermark "API KEY REQUIRED" đè lên bản đồ.
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
-          subdomains: 'abcd',
+          // OSM yêu cầu ghi công khi dùng gạch của họ — tắt attribution là
+          // vi phạm điều khoản, nên bật lại (xem dòng attributionControl).
+          attribution: '&copy; OpenStreetMap',
         }).addTo(map);
+
+        // Trước đây tắt zoomControl mà không thay bằng gì cả → không cách nào
+        // phóng to bản đồ. Mặc định Leaflet đặt nút ở góc TRÊN trái, đúng chỗ
+        // dãy chip lọc đang nằm nên đè nhau; đặt sang góc dưới phải.
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
 
         // Organic curve boundary polygon enclosing District 1, Ba Son, Thu Thiem
         const saigonBoundary: [number, number][] = [
