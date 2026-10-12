@@ -14,7 +14,7 @@
  *   Cách dùng:  node tools/check_contrast_classes.mjs
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 
 const SRC = join(process.cwd(), 'web/src');
 
@@ -71,7 +71,10 @@ for (const file of walk(SRC)) {
 
     const m = chunk.match(/className="([^"]*)"/) || chunk.match(/className=\{`([^`]*)`\}/);
     suspects.push({
-      file: file.replace(process.cwd() + '\\', ''),
+      /* relative() chứ không phải replace(cwd + '\\'): cách cắt bằng chuỗi
+         chỉ đúng trên Windows, trên Linux dấu `\` không khớp nên đường dẫn
+         hiển thị thành toàn bộ đường dẫn tuyệt đối. */
+      file: relative(process.cwd(), file),
       line: i + 1,
       cls: (m ? m[1] : chunk).replace(/\s+/g, ' ').trim().slice(0, 70),
     });

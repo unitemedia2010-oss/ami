@@ -16,7 +16,7 @@
  *   Cách dùng:  node tools/check_raw_paths.mjs
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 
 const SRC = join(process.cwd(), 'web/src');
 
@@ -49,8 +49,14 @@ function laTheA(src, idx) {
 
 for (const file of walk(SRC)) {
   if (!/\.tsx?$/.test(file)) continue;
-  const rel = file.replace(process.cwd() + '\\', '').replace(/\\/g, '/');
-  const src = readFileSync(join(SRC, rel.replace(/^web\/src\//, '')), 'utf8');
+  /* ⚠ ĐỪNG dựa vào process.cwd() để cắt tiền tố.
+     `file.replace(process.cwd() + '\\', '')` CHỈ đúng trên Windows. Trên
+     Linux dấu `\` không có trong đường dẫn nên không cắt được, `rel` giữ
+     nguyên đường dẫn tuyệt đối — rồi `join(SRC, rel)` ghép thành đường
+     dẫn sai và ENOENT. Script chạy được ở máy nhưng chết trên CI.
+     Cách đúng: so sánh với chính SRC đã biết, dùng path.relative. */
+  const rel = 'web/src/' + relative(SRC, file).replace(/\\/g, '/');
+  const src = readFileSync(file, 'utf8');
 
   for (const m of src.matchAll(RE_A)) {
     tong++;

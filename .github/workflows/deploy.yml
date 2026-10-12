@@ -118,6 +118,10 @@ jobs:
           # basePath — thiếu /ami là 404 "Site not found" khi người dùng bấm.
           # <Link> thì Next tự gắn nên không tính.
           node tools/check_raw_paths.mjs
+          # Script soát chạy được trên Windows nhưng chết trên Linux khi
+          # cắt tiền tố bằng replace(cwd + '\\'). Script này mô phỏng đường dẫn
+          # kiểu CI để chặn đúng lỗi đó — đã làm deploy đỏ một lần.
+          node tools/check_posix_paths.mjs
           node tools/check_bundle_fold.mjs
 
       - name: Soát dữ liệu

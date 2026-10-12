@@ -15,7 +15,7 @@
  *   Cách dùng:  node tools/check_duplicate_keys.mjs
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 
 const SRC = join(process.cwd(), 'web/src');
 
@@ -59,7 +59,9 @@ for (const file of walk(SRC)) {
         const prev = seen.get(href);
         if (prev) {
           problems.push({
-            file: file.replace(process.cwd() + '\\', ''),
+            /* relative() chứ không phải replace(cwd + '\\'): cách cắt bằng
+               chuỗi chỉ đúng trên Windows. */
+            file: relative(process.cwd(), file),
             line: dong + off,
             href,
             truoc: prev.label,
