@@ -137,6 +137,11 @@ jobs:
           # Ca bon loai loi nay de trang VAN HIEN, VAN DEP, khong build loi.
           node tools/check_fake_data.mjs
           node tools/check_fake_data_probe.mjs
+          # Icon SVG thieu class kich thuoc se phinh to ~300px va de len noi
+          # dung — do className trong component la GIA TRI MAC DINH nen bi
+          # thay chu khong phai noi them. Da thay tren ban live o /kham-pha.
+          node tools/check_icon_size.mjs
+          node tools/check_icon_size_probe.mjs
 
       - name: Soát dữ liệu
         # districts.ts khai báo slug cho generateStaticParams của /quan/[slug].

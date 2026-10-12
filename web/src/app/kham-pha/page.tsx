@@ -747,7 +747,7 @@ export default function KhamPhaPage() {
             {/* Region Search Pill (matching "France, Nice" input) */}
             <div className="absolute top-18 left-5 z-20 pointer-events-auto">
               <div className="bg-white rounded-full shadow-[0_6px_20px_rgba(0,0,0,0.08)] border border-zinc-100 px-4 py-2 flex items-center gap-3 w-64 md:w-80 transition-all focus-within:ring-2 focus-within:ring-zinc-900/20">
-                <Icons.Search className="text-zinc-400 shrink-0" />
+                <Icons.Search className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
                 <div className="flex flex-col flex-1 leading-tight">
                   <span className="text-[10px] font-medium text-zinc-400">Khu vực tìm kiếm</span>
                   <input
@@ -926,7 +926,7 @@ export default function KhamPhaPage() {
 
                     {/* Address */}
                     <div className="flex items-center gap-1.5 text-zinc-400 text-xs mb-3.5">
-                      <Icons.MapPin className="text-zinc-400 shrink-0" />
+                      <Icons.MapPin className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
                       <span className="truncate">{activeProp.address}</span>
                     </div>
 
@@ -937,18 +937,18 @@ export default function KhamPhaPage() {
                           số 2 / 1 cho mọi tin. */}
                       {activeProp.beds != null && (
                         <div className="flex items-center gap-1.5">
-                          <Icons.Bed className="text-zinc-400" />
+                          <Icons.Bed className="w-3.5 h-3.5 text-zinc-400" />
                           <span>{activeProp.beds} PN</span>
                         </div>
                       )}
                       {activeProp.baths != null && (
                         <div className="flex items-center gap-1.5">
-                          <Icons.Bath className="text-zinc-400" />
+                          <Icons.Bath className="w-3.5 h-3.5 text-zinc-400" />
                           <span>{activeProp.baths} WC</span>
                         </div>
                       )}
                       <div className="flex items-center gap-1.5">
-                        <Icons.Area className="text-zinc-400" />
+                        <Icons.Area className="w-3.5 h-3.5 text-zinc-400" />
                         <span className="whitespace-nowrap">{activeProp.area}</span>
                       </div>
                     </div>
@@ -1088,15 +1088,15 @@ export default function KhamPhaPage() {
 
                     <div className="flex items-center gap-3 pt-1 border-t border-zinc-100 text-[11px] text-zinc-600 font-semibold">
                       <div className="flex items-center gap-1">
-                        <Icons.Bed className="text-zinc-400" />
+                        <Icons.Bed className="w-3.5 h-3.5 text-zinc-400" />
                         <span>{item.beds}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Icons.Bath className="text-zinc-400" />
+                        <Icons.Bath className="w-3.5 h-3.5 text-zinc-400" />
                         <span>{item.baths}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Icons.Area className="text-zinc-400" />
+                        <Icons.Area className="w-3.5 h-3.5 text-zinc-400" />
                         <span>{item.area}</span>
                       </div>
                     </div>
@@ -1179,7 +1179,7 @@ export default function KhamPhaPage() {
           <div className="bg-zinc-950 text-white rounded-3xl max-w-3xl w-full overflow-hidden border border-zinc-800">
             <div className="px-6 py-4 border-b border-zinc-800 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Icons.Compass360 className="text-teal-400" />
+                <Icons.Compass360 className="w-3.5 h-3.5 text-teal-400" />
                 <span className="font-bold text-sm">360° Virtual Tour • {activeProp.title}</span>
               </div>
               <button onClick={() => setIsTourOpen(false)} className="text-zinc-400 hover:text-white">
