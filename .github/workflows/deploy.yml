@@ -142,6 +142,10 @@ jobs:
           # Thẻ dự án từng hiện "N toà" — thông tin của chủ đầu tư, không
           # phải thứ người đọc trang tin đăng cần, và chỉ 64/441 dự án có.
           node tools/check_project_card_label.mjs
+          # Bang so sanh truoc day chi co dong chu nho "Bo khoi so sanh" —
+          # nguoi dung bao khong thay cach xoa. Nay co nut X tron tren anh.
+          node tools/check_compare_remove.mjs
+          node tools/check_compare_remove_probe.mjs
 
       - uses: actions/upload-pages-artifact@v3
         with:

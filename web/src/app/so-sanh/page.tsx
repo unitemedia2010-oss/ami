@@ -160,9 +160,26 @@ function CompareInner() {
                               {l.title}
                             </span>
                           </Link>
+                          {/* Nút X trên ảnh — nút chữ ở dưới quá nhỏ và dễ bị
+                              bỏ qua, người dùng tưởng không có cách xoá. */}
                           <button
                             onClick={() => remove(l.district_slug ? `${l.slug}|${l.district_slug}` : l.slug)}
-                            className="mt-2 text-[11px] text-red-600 hover:underline
+                            /* aria-label BẮT BUỘC: icon trong nút không đọc
+                               được bằng trình đọc màn hình. Nút tim bên cạnh
+                               không có nhãn nên dễ bấm nhầm. */
+                            aria-label={`Bỏ khỏi so sánh: ${l.title}`}
+                            title="Bỏ khỏi so sánh"
+                            /* top-11 = 44px: nút tim cao 40px tính từ top-0, đặt
+                               ở top-9 (36px) sẽ đè lên tim 4px. */
+                            className="absolute top-11 right-0 z-10 w-7 h-7 rounded-full
+                                       bg-red-500 text-white shadow hover:bg-red-600
+                                       transition-colors grid place-items-center"
+                          >
+                            <iconify-icon icon="lucide:x" className="text-sm" />
+                          </button>
+                          <button
+                            onClick={() => remove(l.district_slug ? `${l.slug}|${l.district_slug}` : l.slug)}
+                            className="mt-2 text-[11px] font-semibold text-red-600 hover:underline
                                        flex items-center gap-1"
                           >
                             <iconify-icon icon="lucide:trash-2" /> Bỏ khỏi so sánh
